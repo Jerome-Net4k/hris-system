@@ -1,0 +1,43 @@
+body{
+    background-image: url('images/LTOBG.jpg');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+
+}
+
+.header{
+    width: 35%;
+    text-align: center;
+}
+td,th{
+    text-align: center;
+}
+.filter{
+    max-width: 120px;
+}
+.search{
+    width: 7%;
+}
+.sad:hover{
+    color: azure;
+}
+.mainLogo{
+    margin-left: 10px;
+}
+
+.roundTable{
+    border-radius: 10px;
+    
+}
+
+.level{
+    text-align: left;
+}
+
+.schoolName{
+    width: 200px;
+}
+.salarJob{
+    size: 10px;
+}

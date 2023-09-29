@@ -1,0 +1,202 @@
+/* RESET STYLES & HELPER CLASSES
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+:root {
+  --level-1: #8dccad;
+  --level-2: #f5cc7f;
+  --level-3: #7b9fe0;
+  --level-4: #f27c8d;
+  --black: black;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+ol {
+  list-style: none;
+}
+
+/* body {
+  margin: 50px 0 100px;
+  text-align: center;
+  font-family: "Inter", sans-serif;
+} */
+
+.container {
+
+  width: fit-content;
+  padding: 0 10px;
+  margin: 0 auto;
+}
+
+.rectangle {
+  position: relative;
+  padding: 30px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+  width: fit-content;
+}
+
+
+/* LEVEL-1 STYLES
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+.level-1 {
+  width: 200px;
+/*  margin: 0 0 0px 0;*/
+  margin-left: 0;
+  background: var(--level-1);
+/*  width: fit-content;*/
+}
+
+/*.level-1::before {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 2px;
+  height: 20px;
+  background: var(--black);
+}*/
+
+
+/* LEVEL-2 STYLES
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+.level-2-wrapper {
+  position: relative;
+/*  display: grid;*/
+  display: block;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.level-2-wrapper::before {
+  content: "";
+  position: absolute;
+  top: -20px;
+/*  width: 50%;*/
+  height: 2px;
+  background: var(--black);
+}
+
+
+.level-2-wrapper li {
+  position: relative;
+}
+
+.level-2 {
+  margin: 0 auto 20px;
+  background: var(--level-2);
+}
+
+
+.level-2::after {
+  display: none;
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 0%;
+  transform: translate(-100%, -50%);
+  width: 20px;
+  height: 2px;
+  background: var(--black);
+}
+
+/* LEVEL-4 STYLES
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+.level-4-wrapper {
+  position: relative;
+  width: 70%;
+  margin-left: auto;
+  margin-top: 0;
+}
+
+.level-4-wrapper::before {
+  content: "";
+  position: absolute;
+  top: -20px;
+  left: -20px;
+  width: 2px;
+  height: calc(100% + 20px);
+  background: var(--black);
+}
+
+.level-4-wrapper li + li {
+  margin-top: 20px;
+}
+
+.level-4 {
+  font-weight: normal;
+  background: var(--level-4);
+}
+
+.level-4::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 0%;
+  transform: translate(-100%, -50%);
+  width: 20px;
+  height: 2px;
+  background: var(--black);
+}
+
+
+/* MQ STYLES
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+/*@media screen and (max-width: 700px) {*/
+  .rectangle {
+    padding: 20px 10px;
+  }
+
+  .level-1,
+  .level-2 {
+    width: 100%;
+  }
+
+  .level-1 {
+    margin-bottom: 20px;
+  }
+
+  .level-1::before,
+  .level-2-wrapper > li::before {
+    display: none;
+  }
+  
+  .level-2-wrapper,
+  .level-2-wrapper::after,
+  .level-2::after {
+    display: block;
+  }
+
+  .level-2-wrapper {
+    width: 90%;
+    margin-left: 25%;
+  }
+
+  .level-2-wrapper::before {
+    left: -20px;
+    width: 2px;
+    height: calc(100% + 40px);
+  }
+
+  .level-2-wrapper > li:not(:first-child) {
+    margin-top: 50px;
+  }
+/*}*/
+
+
+/* FOOTER
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+.page-footer {
+  position: fixed;
+  right: 0;
+  bottom: 20px;
+  display: flex;
+  align-items: center;
+  padding: 5px;
+}
+
+.page-footer a {
+  margin-left: 4px;
+}

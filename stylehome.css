@@ -1,0 +1,45 @@
+
+*{
+    font-family: sans-serif;
+}
+
+body{
+    background-image: url('images/LTOBG.jpg');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+
+}
+
+.header{
+    
+    text-align: center;
+    padding-top: 30px;
+}
+td,th{
+    text-align: left;
+}
+.filter{
+    max-width: 140px;   
+}
+.search{
+    width: 7%;
+}
+.sad:hover{
+    color: azure;
+}
+.mainLogo{
+    margin-left: 10px;
+}
+
+.roundTable{
+    border-radius: 10px;
+    
+}
+
+.title{
+    font-size: 50px;
+}
+.ext{
+    width: 10%;
+}

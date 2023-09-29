@@ -1,0 +1,74 @@
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+    
+    .sort {
+        cursor: pointer;
+        padding: 5px;
+    }
+    
+    /* design of the arrow */
+    .arrow {
+        position: relative;
+        width: 18px;
+        height: 10px;
+        transition: 0.5s;
+        margin-left: 5px;
+    }
+    
+    .arrow::before,
+    .arrow::after {
+        content: "";
+        position: absolute;
+        top: 50%; /* for the css at the center rotate */
+        width: 3px;
+        height: 10px;
+        border-radius: 1px;
+        background: #0d6efd;
+        transition: 0.5s;
+    }
+    
+    .arrow1::before {
+        left: 0;
+        transform: translate(4px, -50%) rotate(-47deg);
+    }
+    
+    .arrow1::after {
+        right: 0;
+        transform: translate(-4px, -50%) rotate(47deg);
+    }
+    
+    .chevron1.active {
+        transform: rotate(-180deg);
+    }
+
+    .chevron1.active1::before{
+        transform: translate(4px, -50%) rotate(45deg);
+    }
+    .chevron1.active1::after{
+        transform: translate(-4px, -50%) rotate(-45deg);
+    }
+
+    
+    .chevron2.active {
+        transform: rotate(-180deg);
+    }
+  
+    
+    .chevron2.active1::before{
+        transform: translate(4px, -50%) rotate(45deg);
+    }
+    .chevron2.active1::after{
+        transform: translate(-4px, -50%) rotate(-45deg);
+    }
+
+    
+    .chevron3.active2::before{
+        transform: translate(4px, -50%) rotate(-133deg);
+    }
+
+    .chevron3.active2::after{
+        transform: translate(-4px, -50%) rotate(133deg);
+    }
