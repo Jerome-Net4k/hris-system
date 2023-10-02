@@ -27,12 +27,69 @@ $.ajax({
 
 })
 </script>
+
+<script>
+
+
+$("#newData").on("click",function(){
+          window.location.href="personalInfo.php";
+        })
+
+        $("#fil").change(function(){
+          fil = $("#fil").val();
+          // alert(fil);
+        })
+          $("input#searchBar").keypress(function(){
+            var searchBar = $("input#searchBar").val();
+              if(searchBar.length >= 2){
+                $.ajax({
+                  url: "proc_personalInfo.php",
+                  type: "POST",
+                  data: {searchBar: searchBar,
+                          fil: fil},
+                  success: function(data){
+                    $("#content").html(data)
+                  }
+                })
+              }
+              else{
+                load();
+              }
+          })
+        var fil = 'surname';
+
+
+        
+        function load(){
+          var sortval = "lname";
+          var sortwhat = "ASC";
+          // var emptype = "WHERE soa='" + btnload + "'";
+          var emptype = "";
+          $.ajax({
+            url:"proc_personalInfo.php",
+            type: "POST",
+            data: {sortval:sortval, sortwhat:sortwhat,emptype:emptype},
+            success: function(data){
+             $("#content").html(data)
+            }
+          })
+        }
+</script>
+
+
+
+
+
 </head>
 
 <body>
       <div class="container bg-light mt-2">
         <table class="table">
-            <th>NAME</th>
+        <input type="text" class="form-control" id="searchBar">
+              <button class="btn btn-primary" id="search"><i class="fas fa-search"></i> Search</button>
+            </div>
+            <th>SURNAME</th>
+            <th>FIRST NAME</th>
             <th>DESIGNATION</th>
             <th class="text-center">ACTION</th>
             <tbody id="list">

@@ -43,9 +43,9 @@ class Rnrrec{
         include 'connection.php';
         $query = "INSERT INTO `rnr_table`(`empNo`, `day`, `hrs`, `min`, `leavetype`, `auwp`, `auwop`, `leavedate`) 
         VALUES (?,?,?,?,?,?,?,?)";
-       $stmt = $con->prepare($query);
-       $stmt->bind_param('ssssssss',$id,$day,$hrs,$min,$leavetype,$auwp,$auwop,$leavedate);
-       $stmt->execute();
+        $stmt = $con->prepare($query);
+        $stmt->bind_param('ssssssss',$id,$day,$hrs,$min,$leavetype,$auwp,$auwop,$leavedate);
+        $stmt->execute();
 
         }
     }
