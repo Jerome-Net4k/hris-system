@@ -38,6 +38,18 @@ class Rnrrec{
         $result = $stmt->get_result();
         return $result;
     }
+
+//updating data to leavecredits
+    function edit_rnrrecord($id, $day, $hrs, $min, $leavetype, $auwp, $auwop, $credits, $leavemonth, $leavedate_from, $leavedate_to, $vl_bal, $sl_bal){
+        include'connection.php';
+        $query ="UPDATE  FROM `rnr_table` WHERE (`empNo`, `day`, `hrs`, `min`, `leavetype`, `auwp`, `auwop`, `credits`, `leavemonth`, `leavedate_from`, `leavedate_to`, `vl_bal`, `sl_bal`) 
+        VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)";
+        $stmt =$con->prepare($query);
+        $stmt->execute();
+
+    }
+
+//uploading data to leavecredits
     function upload_rnrrec($id, $day, $hrs, $min, $leavetype, $auwp, $auwop, $credits, $leavemonth, $leavedate_from, $leavedate_to, $vl_bal, $sl_bal) {
         include 'connection.php';
         

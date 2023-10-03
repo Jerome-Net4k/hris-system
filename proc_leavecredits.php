@@ -61,13 +61,13 @@ function leaverecord($Rnrrec){
 
 function displayRecords($monthRecords){
     echo '<tr><td class="fw-bold">MONTH OF '.date('F', strtotime($monthRecords[0]['leavemonth'])).'</td>
-          <td class="text-center">2.50</td>
-          <td></td>
-          <td class="text-center">+ 1.25</td>
-          <td class="text-center">+ 1.25</td>
-          <td colspan="5"></td>
+        <td class="text-center">2.50</td>
+        <td></td>
+        <td class="text-center">+ 1.25</td>
+        <td class="text-center">+ 1.25</td>
+        <td colspan="5"></td>
 
-          </tr>';
+        </tr>';
     foreach($monthRecords as $row){
         echo '<tr>
                 <td>'.$row['day'].'-'.$row['hrs'].'-'.$row['min'].'</td>
@@ -87,7 +87,7 @@ function displayRecords($monthRecords){
         }
         echo '<td class="text-center">';
         if ($row['auwop'] != '0.000') {
-          echo $row['auwop'];
+        echo $row['auwop'];
         };
     }
 }

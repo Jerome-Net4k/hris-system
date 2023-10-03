@@ -1,8 +1,8 @@
 <?php
-  session_start();
-  if(!isset($_SESSION['user'])){
+session_start();
+if(!isset($_SESSION['user'])){
     header("Location:views_login.php");
-  }
+}
 
 ?>
 
@@ -15,16 +15,16 @@
     <link rel="stylesheet" type="text/css" href="stylepage.css">
 </head>
 <script>
-  $(document).ready(function(){
- 
+$(document).ready(function(){
+
     $.ajax({
-          type: "GET",
-          url: "proc_leavecredits.php?id=" + <?php echo $_GET['id']?> +  "&proc=record",
-          success: function(data){
-           $("#leaverecords").html(data);
-          }
+        type: "GET",
+        url: "proc_leavecredits.php?id=" + <?php echo $_GET['id']?> +  "&proc=record",
+        success: function(data){
+        $("#leaverecords").html(data);
+        }
         })
-     
+    
 })
 function printSection() {
                 var printContents = document.getElementById("my-section").innerHTML;
@@ -35,7 +35,7 @@ function printSection() {
             }
 </script>
 <style>
-         @media print {
+        @media print {
             body *:not(#my-section):not(#my-section *) {
                 visibility: hidden;
             }

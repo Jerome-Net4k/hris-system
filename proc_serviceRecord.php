@@ -164,7 +164,7 @@ function editServeRecord($serviceRec){
             <td class="text-size">'.$row['branch'].'</td>
             <td class="text-size">'.$row['abs'].'</td>
             <td class="text-size text-start">'.$row['cause'].'</td>
-          </tr>';
+        </tr>';
         }
         }
     }

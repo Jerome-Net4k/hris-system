@@ -280,9 +280,6 @@ $.ajax({
             <!-- Button trigger modal -->
              <button type="button" class="btn btn-dark" id="addrec" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
              <i class="fi fi-rr-layer-plus"> ADD RECORDS</i> </button>    
-             <button type="button" class="btn btn-dark" id="addrec" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-             <i class="fi fi-rr-layer-plus"> EDIT RECORDS</i> </button> 
-             <!--<button type="button" class="btn btn-primary btn-lg">EDIT </button>-->
             </div>
            <div class="row align-items">
           
