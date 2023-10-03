@@ -174,5 +174,4 @@
             </script>';
         }
 
-        echo"hellow TEST";
 ?>
