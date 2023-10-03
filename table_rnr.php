@@ -46,7 +46,6 @@ class Rnrrec{
         VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)";
         $stmt =$con->prepare($query);
         $stmt->execute();
-
     }
 
 //uploading data to leavecredits
@@ -54,11 +53,10 @@ class Rnrrec{
         include 'connection.php';
         
         $query = "INSERT INTO `rnr_table`(`empNo`, `day`, `hrs`, `min`, `leavetype`, `auwp`, `auwop`, `credits`, `leavemonth`, `leavedate_from`, `leavedate_to`, `vl_bal`, `sl_bal`) 
-                VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)";
+        VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)";
         $stmt = $con->prepare($query);
         $stmt->bind_param('sssssssssssss', $id, $day, $hrs, $min, $leavetype, $auwp, $auwop, $credits, $leavemonth, $leavedate_from, $leavedate_to, $vl_bal, $sl_bal);
         $stmt->execute();
-
         }
     }
 

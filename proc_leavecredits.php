@@ -20,7 +20,7 @@ if(isset($_GET['proc'])){
         $id = $_GET['id'];
         echo getLeaveData($id,$Rnrrec);
     }
-   
+
 }
 function getLeaveData($id,$Rnrrec){
     $result = $Rnrrec->get_rnrleaveTbl($id);
@@ -124,10 +124,10 @@ function displayRecords($monthRecords){
         var empNo = $(this).val();
         window.location.href="leavemanage.php?id=" + empNo;
     })
- 
+
 </script>';
 }
-  
+
 
 function uploadrnrrec($serviceRec,$Rnrrec){
     $day = $_POST['day'];
@@ -143,7 +143,6 @@ function uploadrnrrec($serviceRec,$Rnrrec){
     $leavedate_to = $_POST['leavedate_to'];
     $vl_bal = $_POST['vl_bal'];
     $sl_bal = $_POST['sl_bal'];
-  
     $Rnrrec->upload_rnrrec($id,$day,$hrs,$min,$leavetype,$auwp,$auwop,$credits,$leavemonth,$leavedate_from,$leavedate_to,$vl_bal,$sl_bal);
     echo 'nice';
 

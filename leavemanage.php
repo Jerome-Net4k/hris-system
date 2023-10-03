@@ -15,7 +15,7 @@
 }
     </style>
     <script>
- $(document).ready(function() {
+$(document).ready(function() {
   $("#addrec").on("click",function(){
             $.ajax({
                 type: "GET",
@@ -135,7 +135,7 @@ $.ajax({
           type: "GET",
           url: "proc_leavecredits.php?id=" + <?php echo $_GET['id']?> +  "&proc=record",
           success: function(data){
-           $("#leaverecords").html(data);
+          $("#leaverecords").html(data);
           }
         })
 
@@ -143,7 +143,7 @@ $.ajax({
           type: "GET",
           url: "proc_leavecredits.php?id=" + <?php echo $_GET['id']?> +  "&proc=balance",
           success: function(data){
-           $("#balance").html(data);
+          $("#balance").html(data);
           }
         })
 
