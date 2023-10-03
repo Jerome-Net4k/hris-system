@@ -38,13 +38,13 @@ class Rnrrec{
         $result = $stmt->get_result();
         return $result;
     }
-
-    function upload_rnrrec($id,$day,$hrs,$min,$leavetype,$auwp,$auwop,$leavedate){
+    function upload_rnrrec($id, $day, $hrs, $min, $leavetype, $auwp, $auwop, $credits, $leavemonth, $leavedate_from, $leavedate_to, $vl_bal, $sl_bal) {
         include 'connection.php';
-        $query = "INSERT INTO `rnr_table`(`empNo`, `day`, `hrs`, `min`, `leavetype`, `auwp`, `auwop`, `leavedate`) 
-        VALUES (?,?,?,?,?,?,?,?)";
+        
+        $query = "INSERT INTO `rnr_table`(`empNo`, `day`, `hrs`, `min`, `leavetype`, `auwp`, `auwop`, `credits`, `leavemonth`, `leavedate_from`, `leavedate_to`, `vl_bal`, `sl_bal`) 
+                VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)";
         $stmt = $con->prepare($query);
-        $stmt->bind_param('ssssssss',$id,$day,$hrs,$min,$leavetype,$auwp,$auwop,$leavedate);
+        $stmt->bind_param('sssssssssssss', $id, $day, $hrs, $min, $leavetype, $auwp, $auwop, $credits, $leavemonth, $leavedate_from, $leavedate_to, $vl_bal, $sl_bal);
         $stmt->execute();
 
         }

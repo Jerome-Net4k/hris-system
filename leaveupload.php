@@ -21,7 +21,7 @@ $auwop = filter_var($auwop, FILTER_SANITIZE_STRING);
 
 // Insert the values into your database
 // Example using PDO
-$db = new PDO("mysql:host=localhost;dbname=hr_management", "root", "");
+$db = new PDO("mysql:host=localhost;dbname=hr_management2", "root", "");
 $stmt = $db->prepare("INSERT INTO rnr_table (empNo, day, hrs, min, auwp, leavetype, leavedate, auwop) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
 $stmt->execute([$empNo, $day, $hrs, $min, $auwp, $leavetype, $leavedate, $auwop]);
 
