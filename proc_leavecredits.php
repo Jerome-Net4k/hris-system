@@ -22,6 +22,14 @@ if(isset($_GET['proc'])){
     }
 
 }
+/**
+ * Retrieves the leave data for a specific ID.
+ *
+ * @param int $id The ID of the leave data to retrieve.
+ * @param datatype $Rnrrec The Rnrrec object used to retrieve the leave data.
+ * @throws Some_Exception_Class If there is an error retrieving the leave data.
+ * @return string The leave data encoded in JSON format.
+ */
 function getLeaveData($id,$Rnrrec){
     $result = $Rnrrec->get_rnrleaveTbl($id);
     $row = $result->fetch_assoc();
@@ -29,6 +37,13 @@ function getLeaveData($id,$Rnrrec){
 }
 
 
+/**
+ * Generates the function comment for the given function body.
+ *
+ * @param object $Rnrrec The Rnrrec object.
+ * @throws None
+ * @return None
+ */
 function leaverecord($Rnrrec){
     $id = $_GET['id'];  
     $result =  $Rnrrec->get_rnrrecordTbl($id);
