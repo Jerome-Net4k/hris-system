@@ -55,7 +55,7 @@
         $mc_bal = $_POST['mc_bal'];
         $sp_bal = $_POST['sp_bal'];
         $rb_bal = $_POST['rb_bal'];
-      
+    
         $Rnrrec->upload_rnrrec($id,$day,$hrs,$min,$leavetype,$auwp,$auwop,$leavedate,$vl_bal,$sl_bal,$fl_bal,$pl_bal,$ml_bal,$pt_bal,$mc_bal,$sp_bal,$rb_bal);
 
     }
@@ -92,7 +92,7 @@
         
         </script>';
     }       
-         
+        
         function servrec($Rnrrec){
             $id = $_GET['id'];  
             $result =  $Rnrrec->get_servicerec($id);
@@ -101,17 +101,17 @@
                 echo ' <tr>
                 <td class="fw-bold fs-5 text-center " style="padding:1px;">Name:</td>
                 <td class="fs-5" style="padding:1px;">'.$row['name'].'</td>
-                 </tr>
+                </tr>
                 <tr><td class="fw-bold fs-5 text-center" style="padding:1px;">Division Office:</td>
                 <td class="fs-5" style="padding:1px;">'.$row['designation'].'</td>
                 </tr>
                 <tr> <td class="fw-bold fs-5 text-center" style="padding:1px;">1st Day of service: </td>
-                 <td class="fs-5" style="padding:1px;">'.$row['serveRecFrom'].'</td>
+                <td class="fs-5" style="padding:1px;">'.$row['serveRecFrom'].'</td>
                 </tr>';
             }}
         }    
         function rnrleaverec($Rnrrec){
-         echo'<tr><td>asdadsasdsas</td></tr>';             
+        echo'<tr><td>asdadsasdsas</td></tr>';             
             }
 
         function rnrrecord($Rnrrec){
@@ -153,6 +153,13 @@
             </script>';
         }
 
+        /**
+         * Function to view the rnr record.
+         *
+         * @param object $Rnrrec The Rnrrec object.
+         * @throws Some_Exception_Class description of exception
+         * @return void
+         */
         function viewrnrrecord($Rnrrec){
             $id = $_GET['id'];  
             $result =  $Rnrrec->get_rnrrecordTbl($id);

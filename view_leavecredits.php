@@ -88,7 +88,7 @@ $("#newData").on("click",function(){
         <input type="text" class="form-control" id="searchBar">
               <button class="btn btn-primary" id="search"><i class="fas fa-search"></i> Search</button>
             </div>
-            <th>SURNAME</th>
+            <th>LAST NAME</th>
             <th>FIRST NAME</th>
             <th>DESIGNATION</th>
             <th class="text-center">ACTION</th>

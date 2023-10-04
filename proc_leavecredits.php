@@ -100,10 +100,12 @@ function displayRecords($monthRecords){
         while($row = $result->fetch_assoc()){
             echo ' <tr>
             <td>'.$row['name'].'</td>
+            
+            <td>'.$row['name'].'</td>
     
             <td>'.$row['designation'].'</td>
                 
-            <td style="text-align: center;">
+            <td style="text-align: left;">
                 <button class="btn btn-outline-success p-1" id="view" value="'.$row['empNo'].'" ><i class="far fa-eye"></i> |  Records</button>
                 <button class="btn btn-outline-secondary p-1" value="'.$row['empNo'].'" id="edit"><i class="far fa-edit"></i> | Manage Leave </button>
             </td>
@@ -129,6 +131,14 @@ function displayRecords($monthRecords){
 }
 
 
+/**
+ * Uploads the Rnrrec using the provided serviceRec.
+ *
+ * @param object $serviceRec The serviceRec object.
+ * @param object $Rnrrec The Rnrrec object.
+ * @throws None
+ * @return None
+ */
 function uploadrnrrec($serviceRec,$Rnrrec){
     $day = $_POST['day'];
     $hrs = $_POST['hrs'];
