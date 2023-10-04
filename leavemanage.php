@@ -297,6 +297,7 @@ $.ajax({
                         <th>From</th>
                         <th>To</th>
                         <th class="text-center">Absence/Undertimes<br> without Pay</th>
+                        <th class="text-center">Action</th>
                     </tr>
                     <tbody id="leaverecords">   
                     </tbody>
