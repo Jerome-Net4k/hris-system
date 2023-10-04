@@ -58,15 +58,15 @@ function load(){
       <div class="container table-responsive">
         <div class="d-flex justify-content-center pt-1">
             <table class="table bg-white shadow-sm roundTable">
-               <tr>
-                <th>NAME</th>
+              <tr>
+              <th>NAME</th>
                 <th>DIVISION</th>
                 <th class="header">Action</th>
-               </tr>
-               <!-- ajax request -->
-               <tbody id="content">
+              </tr>
+              <!-- ajax request -->
+              <tbody id="content">
 
-               </tbody>      
+              </tbody>      
             </table>
 
             
