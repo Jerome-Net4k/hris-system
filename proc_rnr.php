@@ -173,42 +173,15 @@
                 <td class="text-center" style="padding:4px">'.$row['auwop'].'</td>
                 </tr>';                
             }}
-            echo'<script> 
-            $("button#btndel").on("click",function(){
-                var empNo = $(this).val();
-                window.location.href="rnrdash.php?id=" + empNo;
-                })
-            </script>';
+            else{
+                echo'<script> 
+                $("button#btndel").on("click",function(){
+                    var empNo = $(this).val();
+                    window.location.href="rnrdash.php?id=" + empNo;
+                    })
+                </script>';
+            }
+
         }
-/**
- * Function to view and update the rnr record.
- *
- * @param object $Rnrrec The Rnrrec object.
- * @throws Some_Exception_Class description of exception
- * @return void
- */
-function viewAndUpdateRnrRecord($Rnrrec){
-    $id = $_GET['id'];  
-    $result =  $Rnrrec->get_rnrrecordTbl($id);
-    if($result->num_rows > 0){
-        while($row = $result->fetch_assoc()){
-            echo'<tr>
-                <td class="text-center" style="padding:4px">'.$row['day'].'-'.$row['hrs'].'-'.$row['min'].'</td>
-                <td class="text-center" style="padding:4px">'.$row['auwp'].'</td>
-                <td style="padding:4px">'.$row['leavetype'].'</td>
-                <td style="padding:4px">'.$row['leavedate'].'</td>
-                <td class="text-center" style="padding:4px">'.$row['auwop'].'</td>
-                <td class="text-center" style="padding:4px">
-                    <button type="submit" class="btn btn-success " id="rec"><i class="fi fi-rr-edit"> Update</i></button>
-                </td>
-            </tr>';                
-        }
-    }
-    echo'<script> 
-        $("button#btndel").on("click",function(){
-            var empNo = $(this).val();
-            window.location.href="rnrdash.php?id=" + empNo;
-        })
-    </script>';
-}
+
 ?>

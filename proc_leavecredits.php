@@ -81,8 +81,15 @@ function displayRecords($monthRecords){
         <td class="text-center">+ 1.25</td>
         <td class="text-center">+ 1.25</td>
         <td colspan="5"></td>
-
+        <td class="text-center" style="padding:4px"><button type="submit" class="btn btn-success " id="handleUpdateButton"><i class="fi fi-rr-edit"> Update</i></button></td>
+        
         </tr>';
+        echo'<script> 
+        $("button#btndel").on("click",function(){
+            var empNo = $(this).val();
+            window.location.href="rnrdash.php?id=" + empNo;
+            })
+        </script>';
     foreach($monthRecords as $row){
         echo '<tr>
                 <td>'.$row['day'].'-'.$row['hrs'].'-'.$row['min'].'</td>
