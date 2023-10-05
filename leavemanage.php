@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
     <title>Document</title>
     <style>
         input::-webkit-outer-spin-button,
@@ -16,6 +16,28 @@
 }
     </style>
     <script>
+
+
+$(document).ready(function() {
+      $(".show-modal").on("click", function() {
+        $(".modal").show();
+      });
+      
+      $(".hide-modal").on("click", function() {
+        $(".modal").hide();
+      });
+
+      $(".toggle-form1").on("click", function() {
+        $(".form1").toggle();
+      });
+
+      $(".toggle-form2").on("click", function() {
+        $(".form2").toggle();
+      });
+    });
+
+
+
 $(document).ready(function() {
   $("#addrec").on("click",function(){
             $.ajax({
@@ -235,14 +257,14 @@ $.ajax({
                 
             }
             }
-         
+            
 
             })
             $('#leavemonth').on('click', function() {
                 $('#credits').val('2.50');
               });
 
-             
+              
               $("#leavemonth").on("click", function() {
   var vl_bal = parseFloat($('#vl_bal').val());
   var sl_bal = parseFloat($('#sl_bal').val());
@@ -279,32 +301,30 @@ $.ajax({
             <div class="container-fluid pt-2">
             <div class="d-flex justify-content-end ">
             <!-- Button trigger modal -->
-            <button type="button" class="btn btn-dark" id="addrec" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-            <i class="fi fi-rr-layer-plus"> ADD RECORDS</i> </button>    
+            <button type="button" class="btn btn-dark" id="addrec" data-bs-toggle="modal" data-bs-target="#staticBackdrop"><i class="fi fi-rr-layer-plus"> ADD | EDIT</i> </button> 
+            
             </div>
-           <div class="row align-items">
+            <div class="row align-items">
           
-
             <div class="col">     
             <table class="table table-sm caption-top">
                 <caption class="fw-bold fs-4">Records</caption>
                     <tr>
-                        <th class="text-start">Period/Particular</th>
+                        <th class="text-start">Period|Particular</th>
                         <th class="text-center">Earned</th>
-                        <th class="text-center">Absence/Undertimes<br> with Pay</th>
+                        <th class="text-center">Absence|Undertimes<br> with Pay</th>
                         <th class="text-center">Balance VL</th>
                         <th class="text-center">Balance SL</th>
                         <th>Leave Type</th>
                         <th>From</th>
                         <th>To</th>
-                        <th class="text-center">Absence/Undertimes<br> without Pay</th>
+                        <th class="text-center">Absence|Undertimes<br> without Pay</th>
                     </tr>
                     <tbody id="leaverecords">   
                     </tbody>
-
                 </tbody>
                 </table>
-    
+                
             </div>
             </div>
             </div>
@@ -315,12 +335,16 @@ $.ajax({
   <div class="modal-dialog modal-xl">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title fw-bold" id="staticBackdropLabel">ADD RECORD</h5>
+        <h5 class="modal-title fw-bold" id="staticBackdropLabel" button="onclick" >ADD RECORD123 |</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+
       </div>
       <div class="modal-body">
       <div class="row g-2">
         <div class="col-md">
+          <tr>
+            <td>Data</td>
+          </tr>
         <div class="form-floating">
         <input type="month" id="leavemonth" onchange="updateLeaveDates()"  class="form-control w-25" require>
         <label for="sname">MONTH FOR*</label>
@@ -330,13 +354,13 @@ $.ajax({
      <table class="table table-sm table-borderless">
       <tr>
                     <tbody id="body">
-                        <th class="text-center">Time/Day</th>
-                        <th class="text-center">Absence/Undertimes<br> with Pay</th>
+                        <th class="text-center">Day|Time</th>
+                        <th class="text-center">Absence|Undertimes<br> with Pay</th>
                         <th class="text-center">Credits</th>
                         <th class="text-center">Leave Type</th>
                         <th class="text-center">From</th>
                         <th class="text-center">To</th>
-                        <th class="text-center">Absence/Undertimes<br> without Pay</th>
+                        <th class="text-center">Absence|Undertimes<br> without Pay</th>
                     </tr>
 
                      <tr>
@@ -399,6 +423,23 @@ $.ajax({
 </div>
 
 
+<div class="modal">
+    <div class="modal-content">
+      <h2>Modal TitleTEST</h2>
+      <form class="form1">
+        <h3>Form 1</h3>
+        <!-- Form 1 fields here -->
+      </form>
+      <button class="toggle-form1">Toggle Form 1</button>
+      <form class="form2 hide">
+        <h3>Form 2</h3>
+        <!-- Form 2 fields here -->
+      </form>
+      <button class="toggle-form2">Toggle Form 2</button>
+      <button class="hide-modal">Close Modal</button>
+    </div>
+  </div>
+
 
 
 
@@ -406,5 +447,6 @@ $.ajax({
 </body>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/izitoast/1.4.0/js/iziToast.min.js" integrity="sha512-Zq9o+E00xhhR/7vJ49mxFNJ0KQw1E1TMWkPTxrWcnpfEFDEXgUiwJHIKit93EW/XxE31HSI5GEOW06G6BF1AtA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script src="//cdn.jsdelivr.net/npm/izitoast@1.4.0/dist/js/iziToast.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </html>
