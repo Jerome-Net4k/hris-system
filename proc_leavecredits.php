@@ -73,25 +73,22 @@ function leaverecord($Rnrrec){
         echo'<tr><td class=" text-center fw-bold fs-5"colspan="10">NO DATA FOUND PLEASE ADD RECORD</td></tr>';
     }
 }
-
+//for displaying Month records to leavemanage.php credits
 function displayRecords($monthRecords){
-    echo '<tr><td class="fw-bold">MONTH OF '.date('F', strtotime($monthRecords[0]['leavemonth'])).'</td>
+    echo '<tr>
+        <td>'.$monthRecords[0]['leavemonth'].'</td>
+        <td class="fw-bold">MONTH OF '.date('F', strtotime($monthRecords[0]['leavemonth'])).'</td>
         <td class="text-center">2.50</td>
         <td></td>
         <td class="text-center">+ 1.25</td>
         <td class="text-center">+ 1.25</td>
         <td colspan="5"></td>
-        <td class="text-center" style="padding:4px"><button type="submit" class="btn btn-success " id="region"><i class="fi fi-rr-edit"> Update</i></button></td>
+        
         
         </tr>';
-        echo'<script> 
-        $("button#fsdf").on("click",function(){
-            var empNo = $(this).val();
-            window.location.href="rnrdash.php?id=" + empNo;
-            })
-        </script>';
     foreach($monthRecords as $row){
         echo '<tr>
+                <td></td>
                 <td>'.$row['day'].'-'.$row['hrs'].'-'.$row['min'].'</td>
                 <td></td>
                 <td class="text-center">'.$row['auwp'].'</td>

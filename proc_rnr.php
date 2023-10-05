@@ -9,7 +9,7 @@
 
     if(isset($_GET['proc'])){
         $proc = $_GET['proc'];
-      
+        
         if($proc == 'load'){
             loadServiceRecord($serviceRec);
         } 
