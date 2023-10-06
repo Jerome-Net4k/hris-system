@@ -50,15 +50,15 @@ function loadPersonalInfo($personalInfo){
 
 
             echo '<script type = "text/javascript">
-
+            
             $("#uploadFilesInactive' . $row['empno'] . '").on("click",function (e){
                 var fileDialog = $(\'<input type="file">\');
                 fileDialog.click();
                 fileDialog.on("change",onFileSelected);
-                  return false;
-              })
+                return false;
+            })
         
-              </script>';
+            </script>';
         }   
     }
     else{
@@ -90,7 +90,7 @@ function searchPersonalInfo($personalInfo){
         }
     }
     else{
-        echo '<tr><td colspan="5" class="text-center"><h1>No Data Found</h1></td></tr>';
+        echo '<tr><td colspan="5" class="text-center"><h1>No Data Foundtest</h1></td></tr>';
     }
 
 }
