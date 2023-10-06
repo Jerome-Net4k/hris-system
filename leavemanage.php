@@ -15,7 +15,29 @@
         margin: 0;
 }
     </style>
-    <script>
+
+  <script>
+    //Edit the month selection option
+    // Get the month value from the PHP code
+    var selectedMonth = '<?php echo date('F', strtotime($monthRecords[0]['leavemonth'])); ?>';
+
+    // Find the select element
+    var monthSelect = document.getElementById('month');
+
+    // Loop through the options and set the selected option based on the value
+    for (var i = 0; i < monthSelect.options.length; i++) {
+      if (monthSelect.options[i].text === selectedMonth) {
+        monthSelect.options[i].selected = true;
+        break;
+      }
+    }
+  </script>
+  <script>
+
+
+
+
+
 
 //
 $(document).ready(function() {
@@ -325,14 +347,14 @@ $(document).ready(function() {
   var vl_bal = parseFloat($('#vl_bal').val());
   var sl_bal = parseFloat($('#sl_bal').val());
 
-  if (leavemonth === "") {
+  /**if (leavemonth === "") {
     iziToast.error({
       title: 'Error!',
       message: 'Please select a month.',
       position: 'topRight'
     });
     return;
-  }
+  }*/
 
   var halfCredits = credits / 2;
 
@@ -561,8 +583,8 @@ $.ajax({
             <div class="container-fluid pt-2">
             <div class="d-flex justify-content-end ">
             <!-- Button trigger modal -->
-            <button type="button" class="btn btn-dark" id="addrec" data-bs-toggle="modal" data-bs-target="#staticBackdrop"><i class="fi fi-rr-layer-plus"> ADD RECORD</i> </button>
-            <button type="button" class="btn btn-dark" id="editrec" data-bs-toggle="modal" data-bs-target="#staticBackdrop"><i class="fi fi-rr-layer-plus"> EDIT RECORD</i> </button> 
+            <button type="button" class="btn btn-success" id="addrec" data-bs-toggle="modal" data-bs-target="#staticBackdrop"><i class="fi fi-rr-layer-plus"> ADD RECORD</i> </button>
+            <button type="button" class="btn btn-warning" id="editrec" data-bs-toggle="modal" data-bs-target="#staticBackdrop"><i class="fi fi-rr-layer-plus"> EDIT RECORD</i> </button> 
             </div>
             <div class="row align-items">
           
@@ -605,10 +627,25 @@ $.ajax({
           <tr>
             <td>Data</td>
           </tr>
-        <div class="form-floating">
+       <!-- <div class="form-floating">
         <input type="month" id="leavemonth" onchange="updateLeaveDates()"  class="form-control w-25" require>
         <label for="sname">MONTH FOR*</label>
-          </div>
+          </div>-->
+          <label for="month">Select Month:</label>
+  <select id="month" name="month">
+    <option value="1">January</option>
+    <option value="2">February</option>
+    <option value="3">March</option>
+    <option value="4">April</option>
+    <option value="5">May</option>
+    <option value="6">June</option>
+    <option value="7">July</option>
+    <option value="8">August</option>
+    <option value="9">September</option>
+    <option value="10">October</option>
+    <option value="11">November</option>
+    <option value="12">December</option>
+  </select>
     </div>
   </div>
       <table class="table table-sm table-borderless">
@@ -696,7 +733,7 @@ $.ajax({
   <div class="modal-dialog modal-xl">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title fw-bold" id="staticBackdropLabel" button="onclick" >EDIT RECORD</h5>
+        <h5 class="modal-title fw-bold" id="" button="onclick" >EDIT RECORDsasdfs</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 
       </div>
@@ -707,9 +744,7 @@ $.ajax({
 
           </tr>
         <div class="form-floating">
-        <input type="month" id="leavemonth" onchange="updateLeaveDates()"  class="form-control w-25" require>
-        <label for="sname">MONTH FORasda*</label>
-          </div>
+
     </div>
   </div>
      <table class="table table-sm table-borderless">
@@ -788,6 +823,7 @@ $.ajax({
   </div>
   </div>
   </div>
+</div>
 </body>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/izitoast/1.4.0/js/iziToast.min.js" integrity="sha512-Zq9o+E00xhhR/7vJ49mxFNJ0KQw1E1TMWkPTxrWcnpfEFDEXgUiwJHIKit93EW/XxE31HSI5GEOW06G6BF1AtA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script src="//cdn.jsdelivr.net/npm/izitoast@1.4.0/dist/js/iziToast.min.js"></script>

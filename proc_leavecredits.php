@@ -76,7 +76,6 @@ function leaverecord($Rnrrec){
 //for displaying Month records to leavemanage.php credits
 function displayRecords($monthRecords){
     echo '<tr>
-        <td>'.$monthRecords[0]['leavemonth'].'</td>
         <td class="fw-bold">MONTH OF '.date('F', strtotime($monthRecords[0]['leavemonth'])).'</td>
         <td class="text-center">2.50</td>
         <td></td>
@@ -88,7 +87,6 @@ function displayRecords($monthRecords){
         </tr>';
     foreach($monthRecords as $row){
         echo '<tr>
-                <td></td>
                 <td>'.$row['day'].'-'.$row['hrs'].'-'.$row['min'].'</td>
                 <td></td>
                 <td class="text-center">'.$row['auwp'].'</td>
