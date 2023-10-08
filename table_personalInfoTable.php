@@ -34,16 +34,14 @@ class personalInfo{
         return $result;
     }
 
-<<<<<<<<<<<<<  ✨ Codeium AI Suggestion  >>>>>>>>>>>>>>
-+    /**
-+     * Retrieve data from a specific table in the database based on a given value.
-+     *
-+     * @param string $table The name of the table to retrieve data from.
-+     * @param mixed $value The value to search for in the specified table.
-+     * @throws Some_Exception_Class A description of the exception that could be thrown.
-+     * @return mysqli_result|bool The result set from the executed query, or false on failure.
-+     */
-<<<<<  bot-db476424-6259-4a24-b429-2f2f96e69a4c  >>>>>
+    /**
+     * Retrieve data from a specific table in the database based on a given value.
+     *
+     * @param string $table The name of the table to retrieve data from.
+     * @param mixed $value The value to search for in the specified table.
+     * @throws Some_Exception_Class A description of the exception that could be thrown.
+     * @return mysqli_result|bool The result set from the executed query, or false on failure.
+     */
     function get_wldcrdTbl($table,$value){
         include 'connection.php';
         $query = "SELECT * FROM `emp_table` WHERE `".$table."` LIKE ?";
@@ -88,14 +86,12 @@ class personalInfo{
         return $result;
     }
 
-<<<<<<<<<<<<<  ✨ Codeium AI Suggestion  >>>>>>>>>>>>>>
-+    /**
-+     * Retrieves all inactive Tblank records from the personalInfo_inactive_table.
-+     *
-+     * @throws Some_Exception_Class description of exception
-+     * @return Some_Return_Value the result set containing the inactive Tblank records
-+     */
-<<<<<  bot-ce07f1d4-3264-4087-b2b8-35cb48d40ff5  >>>>>
+    /**
+     * Retrieves all inactive Tblank records from the personalInfo_inactive_table.
+     *
+     * @throws Some_Exception_Class description of exception
+     * @return Some_Return_Value the result set containing the inactive Tblank records
+     */
     function get_inactiveTblank(){
         include 'connection.php';
         $query = "SELECT * FROM `personalInfo_inactive_table` WHERE `surname` = '' ORDER BY `idno`";
