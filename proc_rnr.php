@@ -152,7 +152,6 @@
                 })
             </script>';
         }
-
         /**
          * Function to view the rnr record.
          *
