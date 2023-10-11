@@ -129,3 +129,10 @@
 .hide {
 	display: none;
 }
+/* Style for the close button */
+.close {
+	color: #aaa;
+	float: right;
+	font-size: 28px;
+	font-weight: bold;
+}

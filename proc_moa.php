@@ -6,12 +6,10 @@
         moarec($moadata);
     }
 
-    function moarec($moadata) {
-        include "connection.php";
-      
+function moarec($moadata) {
+include "connection.php";
         $input = $_POST["input"];
         $query = "SELECT * FROM moa_tbl";
-      
         if ($input != "") {
           $query .= " WHERE name LIKE '{$input}%' ";
         }

@@ -31,9 +31,9 @@ if(isset($_GET['proc'])){
  * @return string The leave data encoded in JSON format.
  */
 function getLeaveData($id,$Rnrrec){
-    $result = $Rnrrec->get_rnrleaveTbl($id);
-    $row = $result->fetch_assoc();
-    return json_encode($row);
+                                    $result = $Rnrrec->get_rnrleaveTbl($id);
+                                    $row = $result->fetch_assoc();
+                                    return json_encode($row);
 }
 
 
@@ -75,13 +75,13 @@ function leaverecord($Rnrrec){
 }
 //for displaying Month records to leavemanage.php credits
 function displayRecords($monthRecords){
-    echo '<tr>
-        <td class="fw-bold">MONTH OF '.date('F', strtotime($monthRecords[0]['leavemonth'])).'</td>
-        <td class="text-center">2.50</td>
-        <td></td>
-        <td class="text-center">+ 1.25</td>
-        <td class="text-center">+ 1.25</td>
-        <td colspan="5"></td>
+    
+    echo '<tr><td class="fw-bold">MONTH OF '.date('F', strtotime($monthRecords[0]['leavemonth'])).'</td>
+    <td class="text-center">2.50</td>
+    <td></td>
+    <td class="text-center">+ 1.25</td>
+    <td class="text-center">+ 1.25</td>
+    <td colspan="5"></td>
         
         
         </tr>';

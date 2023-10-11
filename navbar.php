@@ -27,6 +27,7 @@ echo '<script>
   </script>
  ';
 
+<<<<<<< HEAD
 if($_SESSION['user'] != 'Admin'){
   echo '<nav class="navbar navbar-expand-lg navbar-light" style="background-color: #1548C3;">
 <div class="container-fluid">
@@ -105,61 +106,9 @@ if($_SESSION['user'] != 'Admin'){
               <a class="dropdown-item" href="#">Mentoring</a>
               <a class="dropdown-item" href="#">On-Boarding</a>
               <a class="dropdown-item" href="#">Job Rotation</a></div>
+=======
+>>>>>>> b33e95d21ba67c4fed85807c48283dea7df2662e
 
-              <a class="dropdown-item fw-bold" href="#" id="int">INTERNATIONAL</a>
-              <div id="hideInt">
-              <a class="dropdown-item" href="#">In-House Training</a>
-              <a class="dropdown-item" href="#">Out-House Training</a>
-              <a class="dropdown-item" href="#">Coaching</a>
-              <a class="dropdown-item" href="#">Mentoring</a>
-              <a class="dropdown-item" href="#">On-Boarding</a>
-              <a class="dropdown-item" href="#">Job Rotation</a></div>
-
-              
-            </div>
-          </li>
-          <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle h5 text-white" href="#" id="Others" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            OJT
-          </a>
-          <div class="dropdown-menu" aria-labelledby="ojt">
-            <a class="dropdown-item" href="view_intern.php">LIST OF INTERN</a>
-            <a class="dropdown-item" href="view_moa.php">LIST OF MOA</a>
-            <a class="dropdown-item" href="ojt_tablelist.php">OJT TABLE</a>
-            <a class="dropdown-item" href="ojt_tablemonthly.php">OJT DTR</a>
-          </div>
-        </li> 
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle h5 text-white" href="#" id="Others" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              Others
-            </a>
-            <div class="dropdown-menu" aria-labelledby="Others">
-              <a class="dropdown-item" href="#">ARTA</a>
-              <a class="dropdown-item" href="#">GAD</a>
-              <a class="dropdown-item" href="#">EA</a>
-              <a class="dropdown-item" href="#">PRIME</a>
-              <a class="dropdown-item" href="#">DIRECTORY</a>
-              <a class="dropdown-item" href="flagcere_attendance_view.php">FLAG CEREMONY</a>
-              <a class="dropdown-item" href="orgchart_main.php" target="_blank">ORG CHART</a>
-              <a class="dropdown-item" href="views_archive.php">ARCHIVE</a>
-            </div>
-          </li> 
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle h5 text-white" href="#" id="Others" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              Account
-            </a>
-            <div class="dropdown-menu" aria-labelledby="Others">
-              <a class="dropdown-item" href="#">View Account</a>
-              <a class="dropdown-item" href="logoutProc.php">Logout</a>
-            </div>
-          </li> 
-        </ul>
-    </div>
-    </div>
-    
-  </nav>';
-}
-else{
   echo '<nav class="navbar navbar-expand-lg navbar-light" style="background-color: #1548C3;">
   <div class="container-fluid">
   <a class="navbar-brand" href="#">
@@ -170,7 +119,6 @@ else{
       </button>
       <h3 class="text-white fs-3 mt-3">Human Resource Development Section<br><span><h4 class="fs-4">Information System</h4></span></h3>
       <div class="collapse navbar-collapse d-flex justify-content-end me-2" id="navbarNavDropdown">
-     
         <ul class="navbar-nav">
           <li class="nav-item active">
             <a class="nav-link h5 text-white" href="views_index.php">Home</a>
@@ -278,12 +226,11 @@ else{
               </div>
             </li> 
             <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle h5 text-white" href="#" id="Others" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              '.$_SESSION['uname'].'
-              </a>
-              <div class="dropdown-menu" aria-labelledby="Others">
-                <a class="dropdown-item" href="#">View Account</a>
-                <a class="dropdown-item" href="logoutProc.php">Logout</a>
+                <a class="nav-link dropdown-toggle h5 text-white" href="#" id="Others" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                </a>
+                  <div class="dropdown-menu" aria-labelledby="Others">
+                  <a class="dropdown-item" href="#">View Account</a>
+                  <a class="dropdown-item" href="logoutProc.php">Logout</a>
               </div>
             </li> 
           </ul>
@@ -291,6 +238,6 @@ else{
       </div>
       
     </nav>';
-}
+  
 
 ?>
