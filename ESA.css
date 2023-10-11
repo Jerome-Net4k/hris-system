@@ -1,0 +1,92 @@
+* {
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+.row {
+  margin-left: -5px;
+  margin-right: -5px;
+  text-align: left;
+}
+
+.column {
+  float: right;
+  width: 50%;
+  padding: 5px;
+  text-align: left;
+}
+
+
+.row::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  border-spacing: 0;
+  table-layout: fixed;
+  overflow: hidden;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+  background-color: #fff;
+  font-size: 12px;  
+}
+
+
+th {
+  color: white; /* Header text color */
+  text-align: left; 
+  padding: 16px;
+  background-color: #0d6efd;     
+}
+
+td {
+padding: 16px;
+text-align: left;
+}
+
+tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+
+tr:hover {
+  background-color: #0d6efd;   
+}
+
+
+caption {
+  font-size: 24px;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 10px;
+  caption-side: Center;
+}
+h3 {
+text-align: center;
+}
+/* Add this CSS to your existing styles */
+.table-header {
+background-color: #666; /* Header background color */
+color: white; /* Header text color */
+text-align: center; /* Center align text within the header cell */
+padding: 16px;
+}
+
+/* Button styles */
+.close-button {
+  background-color: #ffffff;
+  color: #333333;
+  border: none;
+  padding: 8px 16px;
+  font-size: 14px;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+}
+
+.close-button:hover {
+  background-color: #eaeaea;
+}

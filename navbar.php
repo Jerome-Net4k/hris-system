@@ -80,7 +80,6 @@ if($_SESSION['user'] != 'Admin'){
               </div>
               <a class="dropdown-item fw-bold" href="" id="pr">Monitoring of Submission</a>
               <a class="dropdown-item fw-bold" href="" id="pr">Success Indicator</a>
-              <a class="dropdown-item fw-bold" href="pds_view_uploadfile.php">PDS FORM</a>
             </div>
           </li>
           <li class="nav-item dropdown">
@@ -99,6 +98,7 @@ if($_SESSION['user'] != 'Admin'){
             <div class="dropdown-menu" aria-labelledby="L&D">
             <a class="dropdown-item fw-bold" href="#" id="local">LOCAL</a>
               <div id="hideLocal">
+              <a class="dropdown-item" href="ESA.php">Employee Seminar Attended</a>
               <a class="dropdown-item" href="views_lnd.php">In-House Training</a>
               <a class="dropdown-item" href="#">Out-House Training</a>
               <a class="dropdown-item" href="#">Coaching</a>
@@ -212,7 +212,6 @@ else{
               </div>
               <a class="dropdown-item fw-bold" href="" id="pr">Monitoring of Submission</a>
               <a class="dropdown-item fw-bold" href="" id="pr">Success Indicator</a>
-              <a class="dropdown-item fw-bold" href="pds_view_uploadfile.php">PDS FORM</a>
             </div>
             </li>
             <li class="nav-item dropdown">
@@ -231,9 +230,10 @@ else{
               <div class="dropdown-menu" aria-labelledby="L&D">
               <a class="dropdown-item fw-bold" href="#" id="local">LOCAL</a>
                 <div id="hideLocal">
+                <a class="dropdown-item" href="ESA.php">Employee Seminar Attended</a>
                 <a class="dropdown-item" href="views_lnd.php">In-House Training</a>
                 <a class="dropdown-item" href="#">Out-House Training</a>
-                <a class="dropdown-item" href="#">Coaching</a>
+                <a class="dropdown-item" href="#">Coaching</a>ss
                 <a class="dropdown-item" href="#">Mentoring</a>
                 <a class="dropdown-item" href="#">On-Boarding</a>
                 <a class="dropdown-item" href="#">Job Rotation</a></div>
@@ -275,7 +275,6 @@ else{
                 <a class="dropdown-item" href="flagcere_attendance_view.php">FLAG CEREMONY</a>
                 <a class="dropdown-item" href="views_archive.php">ARCHIVE</a>
                 <a class="dropdown-item" href="views_user.php">USER MANAGEMENT</a>
-                <a class="dropdown-item" href="dashboard_user_table.php">EMPLOYEE MANAGEMENT</a>
               </div>
             </li> 
             <li class="nav-item dropdown">

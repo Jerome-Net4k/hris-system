@@ -197,7 +197,8 @@ closeButton.addEventListener('click', function() {
   modal.classList.remove('');
 });
 
-        
+ 
+ 
 </script>
 
 <div class="loader">
@@ -388,8 +389,8 @@ closeButton.addEventListener('click', function() {
       <div style="padding: 10px 15px; background: #dee2e6; border-radius: 5px;">
         <i class="fa-sharp fa-solid fa-magnifying-glass"></i>
       </div>
-      <input type="text" class="form-control" id="EmployeeSearchBar">
-      <button class="btn btn-primary" id="seminarSearch"><i class="fas fa-search"></i> Search</button>
+      <input type="text" class="form-control" id="searchBar">
+              <button class="btn btn-primary" id="search"><i class="fas fa-search"></i> Search</button>
     </div>
     <table class="left-align-table custom-table" id="mainTable">
       <thead>
@@ -443,8 +444,8 @@ closeButton.addEventListener('click', function() {
       <div style="padding: 10px 15px; background: #dee2e6; border-radius: 5px;">
         <i class="fa-sharp fa-solid fa-magnifying-glass"></i>
       </div>
-      <input type="text" class="form-control" id="seminarSearchBar">
-      <button class="btn btn-primary" id="seminarSearch"><i class="fas fa-search"></i> Search</button>
+      <input type="text" class="form-control" id="searchBar">
+              <button class="btn btn-primary" id="search"><i class="fas fa-search"></i> Search</button>
     </div>
     <table class="left-align-table custom-table" id="mainTable2" >
       <thead>
@@ -488,10 +489,9 @@ closeButton.addEventListener('click', function() {
   </div>
 </div>
 
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
 <script>
-  $(document).ready(function () {
+$(document).ready(function () {
     // Function to filter the table based on the selected value or search input
     function filterTable(tableId, filterValue) {
       $(`#${tableId} tbody tr`).each(function () {
