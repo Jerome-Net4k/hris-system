@@ -44,26 +44,26 @@ function getLeaveData($id,$Rnrrec){
  * @throws None
  * @return None
  */
-    function leaverecord($Rnrrec){
+function leaverecord($Rnrrec){
     $id = $_GET['id'];  
     $result =  $Rnrrec->get_rnrrecordTbl($id);
     if($result->num_rows > 0){
-                            $currentMonth = '';
-                            $monthRecords = array();
-                                while($row = $result->fetch_assoc()){
-                                $leavedate_from = date('F', strtotime($row['leavemonth'])); // Get month name from date
-                                    if($leavedate_from != $currentMonth) { // Check if the month has changed
-                                    // Display the records of the previous month
-                                        if(!empty($monthRecords)){
-                                                                displayRecords($monthRecords);
-                                                                }
-                                    }// Start a new group for the current month
-                                $currentMonth = $leavedate_from;
-                                $monthRecords = array();
-                                }
-                                    // Add the record to the current month's group
-                                $monthRecords[] = $row;
-                                }
+        $currentMonth = '';
+        $monthRecords = array();
+        while($row = $result->fetch_assoc()){
+            $leavedate_from = date('F', strtotime($row['leavemonth'])); // Get month name from date
+            if($leavedate_from != $currentMonth) { // Check if the month has changed
+                // Display the records of the previous month
+                if(!empty($monthRecords)){
+                    displayRecords($monthRecords);
+                }
+                // Start a new group for the current month
+                $currentMonth = $leavedate_from;
+                $monthRecords = array();
+            }
+            // Add the record to the current month's group
+            $monthRecords[] = $row;
+        }
         // Display the records of the last month
         if(!empty($monthRecords)){
             displayRecords($monthRecords);
@@ -75,13 +75,13 @@ function getLeaveData($id,$Rnrrec){
 }
 //for displaying Month records to leavemanage.php credits
 function displayRecords($monthRecords){
-    echo '<tr>
-        <td class="fw-bold">MONTH OF '.date('F', strtotime($monthRecords[0]['leavemonth'])).'</td>
-        <td class="text-center">2.50</td>
-        <td></td>
-        <td class="text-center">+ 1.25</td>
-        <td class="text-center">+ 1.25</td>
-        <td colspan="5"></td>
+    
+    echo '<tr><td class="fw-bold">MONTH OF '.date('F', strtotime($monthRecords[0]['leavemonth'])).'</td>
+    <td class="text-center">2.50</td>
+    <td></td>
+    <td class="text-center">+ 1.25</td>
+    <td class="text-center">+ 1.25</td>
+    <td colspan="5"></td>
         
         
         </tr>';

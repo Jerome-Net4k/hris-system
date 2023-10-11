@@ -6,7 +6,7 @@
         moarec($moadata);
     }
 
-    function moarec($moadata) {
+function moarec($moadata) {
         include "connection.php";
       
         $input = $_POST["input"];
