@@ -82,7 +82,7 @@ class Rnrrec{
  * @throws Exception If an error occurs during the update.
  * @return void
  */
-function edit_rnrrecord($id, $day, $hrs, $min, $leavetype, $auwp, $auwop, $credits, $leavemonth, $leavedate_from, $leavedate_to, $vl_bal, $sl_bal){
+    function edit_rnrrecord($id, $day, $hrs, $min, $leavetype, $auwp, $auwop, $credits, $leavemonth, $leavedate_from, $leavedate_to, $vl_bal, $sl_bal){
     include 'connection.php';
     $query = "UPDATE `rnr_table` SET `day`=?, `hrs`=?, `min`=?, `leavetype`=?, `auwp`=?, `auwop`=?, `credits`=?, `leavemonth`=?, `leavedate_from`=?, `leavedate_to`=?, `vl_bal`=?, `sl_bal`=? WHERE `empNo`=?";
     $stmt = $con->prepare($query);
