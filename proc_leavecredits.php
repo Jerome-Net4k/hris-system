@@ -31,9 +31,9 @@ if(isset($_GET['proc'])){
  * @return string The leave data encoded in JSON format.
  */
 function getLeaveData($id,$Rnrrec){
-    $result = $Rnrrec->get_rnrleaveTbl($id);
-    $row = $result->fetch_assoc();
-    return json_encode($row);
+                                    $result = $Rnrrec->get_rnrleaveTbl($id);
+                                    $row = $result->fetch_assoc();
+                                    return json_encode($row);
 }
 
 

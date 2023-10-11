@@ -38,27 +38,25 @@
     }
     
     function uploadrnrrec($serviceRec,$Rnrrec){
-        $day = $_POST['day'];
-        $hrs = $_POST['hrs'];
-        $min = $_POST['min'];
-        $id = $_POST['id'];
-        $leavetype = $_POST['leavetype'];
-        $auwp = $_POST['auwp'];
-        $auwop = $_POST['auwop'];
-        $leavedate = $_POST['leavedate'];
-        $vl_bal = $_POST['vl_bal'];
-        $sl_bal = $_POST['sl_bal'];
-        $fl_bal = $_POST['fl_bal'];
-        $pl_bal = $_POST['pl_bal'];
-        $ml_bal = $_POST['ml_bal'];
-        $pt_bal = $_POST['pt_bal'];
-        $mc_bal = $_POST['mc_bal'];
-        $sp_bal = $_POST['sp_bal'];
-        $rb_bal = $_POST['rb_bal'];
-    
-        $Rnrrec->upload_rnrrec($id,$day,$hrs,$min,$leavetype,$auwp,$auwop,$leavedate,$vl_bal,$sl_bal,$fl_bal,$pl_bal,$ml_bal,$pt_bal,$mc_bal,$sp_bal,$rb_bal);
-
-    }
+                                                $day = $_POST['day'];
+                                                $hrs = $_POST['hrs'];
+                                                $min = $_POST['min'];
+                                                $id = $_POST['id'];
+                                                $leavetype = $_POST['leavetype'];
+                                                $auwp = $_POST['auwp'];
+                                                $auwop = $_POST['auwop'];
+                                                $leavedate = $_POST['leavedate'];
+                                                $vl_bal = $_POST['vl_bal'];
+                                                $sl_bal = $_POST['sl_bal'];
+                                                $fl_bal = $_POST['fl_bal'];
+                                                $pl_bal = $_POST['pl_bal'];
+                                                $ml_bal = $_POST['ml_bal'];
+                                                $pt_bal = $_POST['pt_bal'];
+                                                $mc_bal = $_POST['mc_bal'];
+                                                $sp_bal = $_POST['sp_bal'];
+                                                $rb_bal = $_POST['rb_bal'];
+                                                $Rnrrec->upload_rnrrec($id,$day,$hrs,$min,$leavetype,$auwp,$auwop,$leavedate,$vl_bal,$sl_bal,$fl_bal,$pl_bal,$ml_bal,$pt_bal,$mc_bal,$sp_bal,$rb_bal);
+                                                }
 
     function getLeaveData($id,$Rnrrec){
         $result = $Rnrrec->get_rnrleaveTbl($id);

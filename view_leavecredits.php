@@ -70,9 +70,10 @@ $("#newData").on("click",function(){
             type: "POST",
             data: {sortval:sortval, sortwhat:sortwhat,emptype:emptype},
             success: function(data){
-             $("#content").html(data)
+            $("#content").html(data)
             }
           })
+
         }
 </script>
 
@@ -98,18 +99,6 @@ $("#newData").on("click",function(){
         </table>
       </div>
 </body> 
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

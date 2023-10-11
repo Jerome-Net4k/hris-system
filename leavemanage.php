@@ -346,8 +346,7 @@ $.ajax({
             <div class="container-fluid pt-2">
             <div class="d-flex justify-content-end ">
             <!-- Button trigger modal -->
-            <button type="button" class="btn btn-success" id="addrec" data-bs-toggle="modal" data-bs-target="#staticBackdrop"><i class="fi fi-rr-layer-plus"> ADD RECORD</i> </button>
-            <button type="button" class="btn btn-warning" id="editrec" data-bs-toggle="modal" data-bs-target="#staticBackdrop"><i class="fi fi-rr-layer-plus"> EDIT RECORD</i> </button> 
+            <button type="button" class="btn btn-success" id="addrec" data-bs-toggle="modal" data-bs-target="#staticBackdrop"><i class="fi fi-rr-layer-plus"> ADD RECORD</i> </button> 
             </div>
             <div class="row align-items">
           
@@ -390,10 +389,10 @@ $.ajax({
           <tr>
             <td>Data</td>
           </tr>
-       <!-- <div class="form-floating">
+        <div class="form-floating">
         <input type="month" id="leavemonth" onchange="updateLeaveDates()"  class="form-control w-25" require>
         <label for="sname">MONTH FOR*</label>
-          </div>-->
+          </div>
           <label for="month">Select Month:</label>
   <select id="month" name="month">
     <option value="1">January</option>
@@ -422,7 +421,6 @@ $.ajax({
                         <th class="text-center">To</th>
                         <th class="text-center">Absence|Undertimes<br> without Pay</th>
                     </tr>
-
                     <tr>
                     <td class="text-center"><div class="input-group"> <input type="number" class="form-control input-group clr" placeholder="Day" id="day"><input type="number" class="form-control clr" placeholder="Hrs" id="hrs"> <input type="number" class="form-control clr" placeholder="Min" id="min">    </div></td>
                     <td class="text-center clr"> <input type="text" class="form-control text-center clr"  id="auwp" readonly></td>
@@ -443,11 +441,10 @@ $.ajax({
                             <option value="Miscarriage Leave">Miscarriage Leave</option>
                             <option value="Solo Parent Leave">Solo Parent Leave</option>
                             <option value="Rehabilitation Leave">Rehabilitation Leave</option>
-                        </select></td>
-
-                    <td><input type="date" id="leavedate_from" class="form-control clr"></td> 
-                    <td><input type="date" id="leavedate_to" class="form-control clr"></td> 
-                    <td><input class="form-control text-center" id="auwop" readonly ></td>
+                          </select></td>
+                      <td><input type="date" id="leavedate_from" class="form-control clr"></td> 
+                      <td><input type="date" id="leavedate_to" class="form-control clr"></td> 
+                      <td><input class="form-control text-center" id="auwop" readonly ></td>
                     
                     </tr> 
                     <tr>

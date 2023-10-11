@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-   <?php include 'partials_header.php'; ?>
+  <?php include 'partials_header.php'; ?>
     <link rel="stylesheet" type="text/css" href="stylehome.css">
     <title>Service Record</title>
     <style>
@@ -33,7 +33,7 @@
           border-top: 0px;
           line-height:10px
         }
-       
+      
     </style>
 
 <script>
@@ -181,7 +181,7 @@
                   convServBranch: convServBranch,
                   convServLv: convServLv,
                   convServCause: convServCause
-                },
+                  },
                 type: "POST",
                 url: "proc_serviceRecord.php?proc=upload",
                 success: function(data){
@@ -194,11 +194,11 @@
     </script>
 </head>
 <body>
- <?php include 'navbar.php'; ?>
+<?php include 'navbar.php'; ?>
 
     <div class="container-fluid rounded bg-white pt-2 mt-2">
         <p class="fs-3 fw-bold text-center">Service Record</p>
-       
+        
         <table style="border-collapse: collapse;">
         <tr>
             <td rowspan="2" style="width:80px; font-size: .7rem;">Name:</td>

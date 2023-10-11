@@ -2,12 +2,12 @@
 class serviceRec{
     
     function load_allRec(){
-        include 'connection.php';
-        $query = "SELECT * FROM `servicerecord_table` WHERE `serveRecTo` = 'present' GROUP BY `empNo`";
-        $stmt = $con->prepare($query);
-        $stmt->execute();
-        $result = $stmt->get_result();
-        return $result;
+    include 'connection.php';
+    $query = "SELECT * FROM `servicerecord_table` WHERE `serveRecTo` = 'present' GROUP BY `empNo`";
+    $stmt = $con->prepare($query);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    return $result;
     }
     function load_allRecforloyalty(){
         include 'connection.php';
