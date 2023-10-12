@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 06, 2023 at 10:09 AM
+-- Generation Time: Oct 12, 2023 at 04:18 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.0.28
 
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `hr_management2`
+-- Database: `hr_management`
 --
 
 -- --------------------------------------------------------
@@ -16802,10 +16802,9 @@ CREATE TABLE `rnr_table` (
 --
 
 INSERT INTO `rnr_table` (`id`, `empNo`, `name`, `day`, `hrs`, `min`, `leavemonth`, `leavedate_from`, `leavedate_to`, `credits`, `auwp`, `auwop`, `leavetype`, `vl_bal`, `sl_bal`) VALUES
-(213, 6002057945, '', 0, 0, 0, '2023-01', '0000-00-00', '0000-00-00', 2.500, 0.000, 0.000, '', 101.250, 101.250),
-(219, 6002057945, '', 0, 0, 0, '2023-02', '0000-00-00', '0000-00-00', 2.500, 0.000, 0.000, '', 103.750, 91.750),
-(220, 6002057945, '', 5, 0, 0, '2023-12', '2023-12-04', '2023-12-11', 2.500, 5.000, 0.000, 'Sick Leave', 105.000, 83.000),
-(221, 6002057945, '', 5, 0, 0, '2023-12', '2023-12-04', '2023-12-11', 2.500, 5.000, 0.000, 'Sick Leave', 105.000, 83.000);
+(222, 6002057945, '', 0, 0, 0, '2023-11', '0000-00-00', '0000-00-00', 2.500, 0.000, 0.000, '', 101.250, 101.250),
+(223, 6002057945, '', 0, 0, 0, '2023-11', '2023-11-14', '2023-11-15', 2.500, 0.000, 0.000, 'Sick Leave', 102.500, 102.500),
+(225, 6002057945, '', 3, 0, 0, '2023-11', '2023-11-20', '2023-11-22', 2.500, 3.000, 0.000, 'Sick Leave', 105.000, 100.000);
 
 -- --------------------------------------------------------
 
@@ -19656,7 +19655,7 @@ ALTER TABLE `rnr_reference_files`
 -- AUTO_INCREMENT for table `rnr_table`
 --
 ALTER TABLE `rnr_table`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=222;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=226;
 
 --
 -- AUTO_INCREMENT for table `salarygrade`

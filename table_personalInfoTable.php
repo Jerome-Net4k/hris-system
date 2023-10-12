@@ -186,7 +186,7 @@ class personalInfo{
         } else{
             $query = "SELECT * FROM personalinfo_inactive_table WHERE region LIKE '$regionFil' AND `".$filSelect."` LIKE '$infoFil'";
         }
-            
+        
         $stmt = $con->prepare($query);
         $stmt->execute();
         $result = $stmt->get_result();
@@ -236,14 +236,14 @@ class personalInfo{
      * @param int $year The year for which to retrieve the monitoring table.
      * @return mysqli_result|bool The result of the query, or false on failure.
      */
-    function get_monitoringTbl($year){
+function get_monitoringTbl($year){
         include 'connection.php';
         $query = "SELECT mst.emp_id, pit.sname, pit.fname, pit.mname, pit.ext, mst.pds, mst.saln, mst.pmcr, mst.idp, mst.opcr, mst.dpcr, mst.ipcr FROM monitoring_submission_table AS mst INNER JOIN personalinfo_table AS pit ON pit.emp_id = mst.emp_id WHERE mst.year = $year";
         $stmt = $con->prepare($query);
         $stmt->execute();
         $result = $stmt->get_result();
         return $result;
-    }
+        }
 
     /**
      * Retrieves data from the wldcrdMonitoringTbl table based on the provided filters.
