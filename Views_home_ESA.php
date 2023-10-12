@@ -167,6 +167,32 @@
 
 
 
+        $("#newData").on("click",function(){
+          window.location.href="personalInfo.php";
+        })
+
+        $("#fil").change(function(){
+          fil = $("#fil").val();
+          // alert(fil);
+        })
+          $("input#searchBar").keypress(function(){
+            var searchBar = $("input#searchBar").val();
+              if(searchBar.length >= 2){
+                $.ajax({
+                  url: "proc_personalInfo.php",
+                  type: "POST",
+                  data: {searchBar: searchBar,
+                          fil: fil},
+                  success: function(data){
+                    $("#content").html(data)
+                  }
+                })
+              }
+              else{
+                load();
+              }
+          })
+        })
 
         var fil = 'surname';
 

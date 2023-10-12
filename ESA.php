@@ -202,6 +202,7 @@ closeButton.addEventListener('click', function() {
 </script>
 
 <div class="loader">
+  
         <img src="images/loading2.gif" width="20%" height="40%">
     </div>
 
@@ -304,6 +305,7 @@ closeButton.addEventListener('click', function() {
         </div>
     </div>
 
+
     <!-- Seminar Details Modal -->
     <div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModal2Label" aria-hidden="true">
   <div class="modal-dialog modal-xl modal-dialog-scrollable">
@@ -374,6 +376,15 @@ closeButton.addEventListener('click', function() {
         <div class="row pt-2 rounded bg-white">
             <h1 class="mt-2">Learning and Development In</h1>
             <h2 class="mt-2">List of Seminars and Employees</h2>
+
+            <!-- ... existing code ... -->
+
+<!-- Add the container for the button -->
+<div class="button-container">
+  <a href="AdminDashboard.php" class="btn btn-primary">View Pie Chart</a>
+</div>
+
+<!-- ... existing code ... -->
 
 
                 <div class="row">

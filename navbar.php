@@ -97,6 +97,7 @@ echo '<script>
               <div class="dropdown-menu" aria-labelledby="L&D">
               <a class="dropdown-item fw-bold" href="#" id="local">LOCAL</a>
                 <div id="hideLocal">
+                <a class="dropdown-item" href="ESA.php">Employee Seminar Attended</a>
                 <a class="dropdown-item" href="views_lnd.php">In-House Training</a>
                 <a class="dropdown-item" href="#">Out-House Training</a>
                 <a class="dropdown-item" href="#">Coaching</a>
