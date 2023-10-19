@@ -1,3 +1,4 @@
+
 <?php
 include 'table_serviceRecTable.php';
 include 'table_personalInfoTable.php';
@@ -31,10 +32,10 @@ if(isset($_GET['proc'])){
  * @return string The leave data encoded in JSON format.
  */
 function getLeaveData($id,$Rnrrec){
-                                    $result = $Rnrrec->get_rnrleaveTbl($id);
-                                    $row = $result->fetch_assoc();
-                                    return json_encode($row);
-}
+        $result = $Rnrrec->get_rnrleaveTbl($id);
+        $row = $result->fetch_assoc();
+        return json_encode($row);
+        }
 
 
 /**
@@ -83,7 +84,6 @@ function displayRecords($monthRecords){
     <td class="text-center">+ 1.25</td>
     <td colspan="5"></td>
         
-        
         </tr>';
     foreach($monthRecords as $row){
         echo '<tr>
@@ -119,7 +119,7 @@ function displayRecords($monthRecords){
             <td>'.$row['name'].'</td>
             
             <td>'.$row['name'].'</td>
-    
+            
             <td>'.$row['designation'].'</td>
                 
             <td style="text-align: left;">
@@ -172,16 +172,6 @@ function uploadrnrrec($serviceRec,$Rnrrec){
     $sl_bal = $_POST['sl_bal'];
     $Rnrrec->upload_rnrrec($id,$day,$hrs,$min,$leavetype,$auwp,$auwop,$credits,$leavemonth,$leavedate_from,$leavedate_to,$vl_bal,$sl_bal);
     echo 'nice';
-
 }
-
-
-
-
-
-
-
-
-
 
 ?>

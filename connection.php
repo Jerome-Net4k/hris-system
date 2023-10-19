@@ -4,5 +4,4 @@
 
     $conn = new PDO('mysql:host=localhost;dbname=hr_management', 'root', '');
 
-                    
 ?>

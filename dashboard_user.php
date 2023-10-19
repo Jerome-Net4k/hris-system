@@ -100,7 +100,7 @@
     }
 
     function load()
-    {
+    {   
         include 'connection.php';
         $searchTerm = isset($_GET['searchTerm']) ? $_GET['searchTerm'] : ''; // Get the search term if it exists
         $query = "SELECT * FROM `personalinfo_table` WHERE `gsis` LIKE CONCAT('%', ?, '%') OR `mname` LIKE CONCAT('%', ?, '%') OR `fname` LIKE CONCAT('%', ?, '%') OR `sname` LIKE CONCAT('%', ?, '%')";

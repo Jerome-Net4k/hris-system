@@ -16,7 +16,23 @@
 }
     </style>
 
-  
+  <script>
+    //Edit the month selection option
+    // Get the month value from the PHP code
+    var selectedMonth = '<?php echo date('F', strtotime($monthRecords[0]['leavemonth'])); ?>';
+
+    // Find the select element
+    var monthSelect = document.getElementById('month');
+
+    // Loop through the options and set the selected option based on the value
+    for (var i = 0; i < monthSelect.options.length; i++) {
+      if (monthSelect.options[i].text === selectedMonth) {
+        monthSelect.options[i].selected = true;
+        break;
+      }
+    }
+  </script>
+
 
 
 <script>
@@ -417,6 +433,21 @@ $.ajax({
         <input type="month" id="leavemonth" onchange="updateLeaveDates()"  class="form-control w-25" require>
         <label for="sname">MONTH FOR*</label>
           </div>
+          <label for="month">Select Month:</label>
+  <select id="month" name="month">
+    <option value="1">January</option>
+    <option value="2">February</option>
+    <option value="3">March</option>
+    <option value="4">April</option>
+    <option value="5">May</option>
+    <option value="6">June</option>
+    <option value="7">July</option>
+    <option value="8">August</option>
+    <option value="9">September</option>
+    <option value="10">October</option>
+    <option value="11">November</option>
+    <option value="12">December</option>
+  </select>
     </div>
   </div>
       <table class="table table-sm table-borderless">
@@ -500,6 +531,27 @@ $.ajax({
 
 
 <button id="update" class="btn btn-primary">Update</button>
+<button onclick="openModal('modal1')">Update Modal 1</button>
+    <button onclick="openModal('modal2')">Update Modal 2</button>
+
+    <!-- Modal 1 -->
+    <div id="modal1" class="modal fade">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('modal1')">&times;</span>
+            <h2>Modal 1</h2>
+            <p>This is the content of Modal 1.</p>
+        </div>
+    </div>
+
+    <!-- Modal 2 -->
+    <div id="modal2" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('modal2')">&times;</span>
+            <h2>Modal 2</h2>
+            <p>This is the content of Modal 2.</p>
+        </div>
+    </div>
+
 
 </body>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/izitoast/1.4.0/js/iziToast.min.js" integrity="sha512-Zq9o+E00xhhR/7vJ49mxFNJ0KQw1E1TMWkPTxrWcnpfEFDEXgUiwJHIKit93EW/XxE31HSI5GEOW06G6BF1AtA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>

@@ -100,30 +100,6 @@ include 'connection.php';
         $stmt->bind_param('sssssssssssss', $id, $day, $hrs, $min, $leavetype, $auwp, $auwop, $credits, $leavemonth, $leavedate_from, $leavedate_to, $vl_bal, $sl_bal);
         $stmt->execute();
         }
-    function handleUpdateButton(){
-        //Retrieve the values from the form
-        $id = $_POST['id'];
-        $day = $_POST['day'];
-        $hrs = $_POST['hrs'];  
-        $min = $_POST['min'];
-        $leavetype = $_POST['leavetype'];
-        $auwp = $_POST['auwp'];
-        $auwop = $_POST['auwop'];
-        $credits = $_POST['credits'];
-        $leavemonth = $_POST['leavemonth'];
-        $leavedate_from = $_POST['leavedate_from'];
-        $leavedate_to = $_POST['leavedate_to'];
-        $vl_bal = $_POST['vl_bal'];
-        $sl_bal = $_POST['sl_bal'];
-        $query = "UPDATE `rnr_table` SET `day`=?,`hrs`=?,`min`=?,`leavetype`=?,`auwp`=?,`auwop`=?,`credits`=?,`leavemonth`=?,`leavedate_from`=?,`leavedate_to`=?,`vl_bal`=?,`sl_bal`=? WHERE `id`=?";
-        $stmt = $con->prepare($query);
-        $stmt->bind_param('ssssssssssss', $day, $hrs, $min, $leavetype, $auwp, $auwop, $credits, $leavemonth, $leavedate_from, $leavedate_to, $vl_bal, $sl_bal, $id);
-        $stmt->execute();
-        
-    }
-
-
-
 
     }
 ?>

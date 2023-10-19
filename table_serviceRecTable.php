@@ -8,7 +8,7 @@ class serviceRec{
         $stmt->execute();
         $result = $stmt->get_result();
         return $result;
-    }
+        }
     function load_allRecforloyalty(){
         include 'connection.php';
         $query = "SELECT `empNo`, `name`, MIN(`serveRecFrom`) AS oldestServeRecFrom FROM `servicerecord_table` GROUP BY `empNo`, `name`;";
