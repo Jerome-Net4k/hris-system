@@ -6,10 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <?php include 'partials_header.php';?>
     <?php include 'connection.php';?>
-    <?php include 'fetch_emp_data.php';?>
     <link rel="stylesheet" type="text/css" href="stylehome.css">
     <link rel="stylesheet" type="text/css" href="loading.css">
     <script src="loading.js" defer></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
 
 <style>
 * {
@@ -105,358 +106,14 @@ padding: 16px;
 <body style="overflow: hidden;">
     <?php include 'navbar.php'; ?>
 
-        <script>
 
-$(document).ready(function () {
-  // Function for fetching data for modal in List of Employees table
-  function fetchDataForEmployeesModal(bpNo, lname, fname) {
-    // Update the modal content with the received data
-    $("#exampleModal .modal-body .bpNo").text(bpNo);
-    $("#exampleModal .modal-body .lname").text(lname);
-    $("#exampleModal .modal-body .fname").text(fname);
-  }
-
-  // Attach event listener to trigger the modal and fetch data for List of Employees table
-  $('#emp_table').on('click', 'tr', function () {
-    var bpNo = $(this).data('bpno');
-    var lname = $(this).data('lname');
-    var fname = $(this).data('fname');
-
-    fetchDataForEmployeesModal(bpNo, lname, fname);
-
-    // Open the modal for List of Employees table
-    $("#exampleModal").modal("show");
-  });
-
-  // Function for fetching data for modal in List of Seminars table
-  function fetchDataForSeminarsModal(title, type, lndFrom, lndTo) {
-    // Update the modal content with the received data
-    $("#exampleModal2 .modal-body .title").text(title);
-    $("#exampleModal2 .modal-body .type").text(type);
-    $("#exampleModal2 .modal-body .lndFrom").text(lndFrom);
-    $("#exampleModal2 .modal-body .lndTo").text(lndTo);
-  }
-
-  // Attach event listener to trigger the modal and fetch data for List of Seminars table
-  $('#lnd_table').on('click', 'tr', function () {
-    var title = $(this).data('title');
-    var type = $(this).data('type');
-    var lndFrom = $(this).data('lndFrom');
-    var lndTo = $(this).data('lndTo');
-
-    fetchDataForSeminarsModal(title, type, lndFrom, lndTo);
-
-    // Open the modal for List of Seminars table
-    $("#exampleModal2").modal("show");
-  });
-
-  // Sorting functionality for List of Employees table
-  $("th[data-sort-column]").on("click", function () {
-    var column = $(this).data("sort-column");
-    var arrow = $(this).find(".sort-arrow");
-
-    // Remove sorting classes from all columns
-    $("th[data-sort-column]").not(this).removeClass("asc desc");
-    $(".sort-arrow").html("");
-
-    if (arrow.hasClass("asc")) {
-      arrow.html("&#9650;"); // Up arrow
-      arrow.removeClass("asc").addClass("desc");
-      // Perform sorting in descending order for the selected column in List of Employees table
-      // Implement your sorting logic here
-    } else {
-      arrow.html("&#9660;"); // Down arrow
-      arrow.removeClass("desc").addClass("asc");
-      // Perform sorting in ascending order for the selected column in List of Employees table
-      // Implement your sorting logic here
-    }
-  });
-});
-
-// Get a reference to the close button element
-var closeButton = document.getElementById('closeButton');
-
-// Add a click event listener to the close button
-closeButton.addEventListener('click', function() {
-  // Get a reference to the modal element
-  var modal = document.getElementById('exampleModal');
-
-  // Hide the modal by removing the "show" class
-  modal.classList.remove('');
-});
-
-// Get a reference to the close button element
-var closeButton = document.getElementById('closeButton');
-
-// Add a click event listener to the close button
-closeButton.addEventListener('click', function() {
-  // Get a reference to the modal element
-  var modal = document.getElementById('exampleModal2');
-
-  // Hide the modal by removing the "show" class
-  modal.classList.remove('');
-});
-
- 
- 
-</script>
 
 <div class="loader">
   
         <img src="images/loading2.gif" width="20%" height="40%">
     </div>
-
-    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-xl modal-dialog-scrollable">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Seminar/Training Information</h5>
-
-        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script>
-// JavaScript to handle modal display
-$("table tr").click(function() {
-    var bpNo = $(this).data("bpno");
-    
-    // Make an AJAX request to fetch data from emp_table based on bpNo
-    $.ajax({
-        url: "/hris/fetch_emp_data.php", // Create this file to handle the AJAX request
-        method: "POST",
-        data: { bpNo: bpNo },
-        success: function(data) {
-            $("#modalContent").html(data);
-            
-            // Display the modal
-            $("#exampleModal").show();
-        }
-    });
-});
-
-// Close the modal when the close button is clicked
-$("#closeModal").click(function() {
-    $("#exampleModal").hide();
-});
-
-// Close the modal when clicking outside the modal
-$(window).click(function(event) {
-    if (event.target == document.getElementById("exampleModal")) {
-        $("#exampleModal").hide();
-    }
-});
-</script>
         
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <div class="row">
-
-        </div>
-            <table class="table rounded table-hover" id="mainTable">
-            <thead style="top: 0; position: sticky;  height: auto;">
-            <tr>
-              <th data-sort-employees="title">Title <span class="sort-arrow"></span></th>
-              <th data-sort-employees="type">Type <span class="sort-arrow"></span></th>
-              <th data-sort-employees="lndFrom">From <span class="sort-arrow"></span></th>
-              <th data-sort-employees="lndTo">To <span class="sort-arrow"></span></th>
-            </tr>
-              </thead>
-               <!-- ajax request -->
-               <tbody class="left-align-table">
-               <h5 class="modal-title" id="exampleModal">
-                 <?php
-                 // Include the database connection file
-                 include 'connection.php';
-               
-                 try {
-                   // SQL statement to fetch the fname and lname data
-                   $sql = "SELECT fname, lname FROM emp_table";
-                   $result = $conn->query($sql);
-               
-                   if ($result->rowCount() > 0) {
-                     // Fetch the fname and lname from the first row
-                     $row = $result->fetch(PDO::FETCH_ASSOC);
-                     $fname = $row["fname"];
-                     $lname = $row["lname"];
-               
-                     // Output the dynamic data in the <h5> tag
-                     echo $fname . " " . $lname;
-                   } else {
-                     echo "No data found";
-                   }
-                 } catch (PDOException $e) {
-                   echo "Error: " . $e->getMessage();
-                 }
-               
-                 // Close the database connection
-                 $conn = null;
-                 ?>
-               </h5>     
-
-
-<?php
-// Include the database connection file
-include 'connection.php';
-
-try {
-    // SQL statement to fetch distinct bpNo values from the emp_table
-    $sql = "SELECT DISTINCT bpNo FROM emp_table";
-    $result = $conn->query($sql);
-
-    if ($result->rowCount() > 0) {
-        while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
-            $bpNo = $row["bpNo"];
-
-            // SQL statement to fetch data from the lnd_table based on the empNo matching the bpNo
-            $lndSql = "SELECT * FROM lnd_table WHERE empNo = '$bpNo'";
-            $lndResult = $conn->query($lndSql);
-
-            // Display the data from the lnd_table
-            if ($lndResult->rowCount() > 0) {
-                while ($lndRow = $lndResult->fetch(PDO::FETCH_ASSOC)) {
-                    $title = $lndRow["title"];
-                    $type = $lndRow["type"];
-
-                    echo "<tr data-bpno=\"" . $bpNo . "\" data-title=\"" . $title . "\" data-type=\"" . $type . "\">";
-                    echo "<td>" . $bpNo . "</td>";
-                    echo "<td>" . $title . "</td>";
-                    echo "<td>" . $type . "</td>";
-                    echo "</tr>";
-                }
-            } else {
-                echo "<tr><td colspan=\"3\">No records found for BP NO: " . $bpNo . "</td></tr>";
-            }
-        }
-    } else {
-        echo "<tr><td colspan=\"3\">No records found.</td></tr>";
-    }
-} catch (PDOException $e) {
-    echo "Error: " . $e->getMessage();
-}
-
-try {
-  // Check if the employee name is set in the request
-  if (isset($_GET['employee_name'])) {
-    // Get the employee name from the request
-    $employeeName = $_GET['employee_name'];
-
-    // SQL statement to fetch the data for the specified employee
-    $sql = "SELECT * FROM emp_table WHERE CONCAT(fname, ' ', lname) = :employeeName";
-    $stmt = $conn->prepare($sql);
-    $stmt->bindParam(':employeeName', $employeeName);
-    $stmt->execute();
-
-    if ($stmt->rowCount() > 0) {
-      // Fetch the data for the specified employee
-      $row = $stmt->fetch(PDO::FETCH_ASSOC);
-      // Access the desired columns from the row
-      $fname = $row["fname"];
-      $lname = $row["lname"];
-
-      // Output the dynamic data (employee name) as the response
-      echo $fname . " " . $lname;  
-    } else {
-      echo "No data found for " . $employeeName;
-    }
-  } else {
-    echo "No employee name specified.";
-  }
-} catch (PDOException $e) {
-  echo "Error: " . $e->getMessage();
-}
-
-// Close the database connection
-$conn = null;
-?>
-
-
-
-              </tbody>  
-        </table>
-        </div>
-
-<!-- ... Other content ... -->
-
-
-
-                <!-- Add any buttons or actions you need here -->
-
-      <div class="modal-footer">
-        <button id="closeButton" class="close-button">Close</button>
-      </div>
-    </div>
-  </div>
-</div>
-        </div>
-    </div>
-
-
-    <!-- Seminar Details Modal -->
-    <div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModal2Label" aria-hidden="true">
-  <div class="modal-dialog modal-xl modal-dialog-scrollable">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModal2Label">Seminar/Training Information</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <div class="row">
-          
-
-        </div>
-            <table class="table rounded table-hover" id="mainTable2">
-              <thead style="top: 0; position: sticky;  height: auto;">
-              <tr>
-              <th data-sort-employees="bpNo">BP NO <span class="sort-arrow"></span></th>
-              <th data-sort-employees="lname">Surname <span class="sort-arrow"></span></th>
-              <th data-sort-employees="fname">First Name <span class="sort-arrow"></span></th>
-            
-            </tr>
-              </thead>
-
-               <?php
-            // Include the database connection file
-            include 'connection.php';
-
-            try {
-                // SQL statement to fetch data from the emp_table tables
-                $sql = "SELECT * FROM emp_table";
-                $result = $conn->query($sql);
-
-                if ($result->rowCount() > 0) {
-                  
-                    while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
-                        echo "<tr data-toggle=\"modal\" data-target=\"#exampleModal\" data-BPNO=\"" . $row["bpNo"] . ", " . $row["lname"] . "\" data-lname=\"" . $row["lname"] . "\" data-fname=\"" . $row["fname"] . "\">";
-                        echo "<td>" . $row["bpNo"] . "</td>";
-                        echo "<td>" . $row["lname"] . "</td>";
-                        echo "<td>" . $row["fname"] . "</td>";
-                        echo "</tr>";
-                    }
-                } else {
-                    echo "<tr><td colspan=\"3\">No records found.</td></tr>";
-                }
-            } catch (PDOException $e) {
-                echo "Error: " . $e->getMessage();
-            }
-
-            // Close the database connection
-            $conn = null;
-          ?>
-
-    </tbody>  
-
-            
-        </table>
-    </div>
-      <div class="modal-footer">
-      <button id="closeButton" class="close-button">Close</button>
-      </div>
-    </div>
-  </div>
-</div>
-        </div>
-    </div>
-
-    <div class="container-fluid pt-2">
+   <div class="container-fluid pt-2">
         <div class="row pt-2 rounded bg-white">
             <h1 class="mt-2">Learning and Development In</h1>
             <h2 class="mt-2">List of Seminars and Employees</h2>
@@ -490,39 +147,42 @@ $conn = null;
     <table class="left-align-table custom-table" id="mainTable">
       <thead>
         <tr>
-          <th colspan="3" class="table-header" style="font-size: 14px">List Of Employees</th>
+          <th colspan="4" class="table-header" style="font-size: 14px">List Of Employees</th>
         </tr>
         <tr>
           <th class= "sticky-header">BPNO</th>
           <th class= "sticky-header">Last Name</th>
           <th class= "sticky-header">First Name</th>
+          <th class= "sticky-header">Action</th>
         </tr>
       </thead>
       <tbody style="overflow-y: auto;">
-        <?php
-          include 'connection.php';
+            <?php
+              include 'connection.php';
 
-          try {
-            $sql = "SELECT * FROM emp_table";
-            $result = $conn->query($sql);
+              try {
+                  $sql = "SELECT * FROM emp_table";
+                  $result = $conn->query($sql);
 
-            if ($result->rowCount() > 0) {
-              while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
-                echo "<tr data-toggle=\"modal\" data-target=\"#exampleModal\" data-BPNO=\"" . $row["bpNo"] . "\" data-lname=\"" . $row["lname"] . "\" data-fname=\"" . $row["fname"] . "\">";
-                echo "<td>" . $row["bpNo"] . "</td>";
-                echo "<td>" . $row["lname"] . "</td>";
-                echo "<td>" . $row["fname"] . "</td>";
-                echo "</tr>";
+                  if ($result->rowCount() > 0) {
+                      while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
+                          echo '<tr>';
+                          echo '<td>' . $row["bpNo"] . '</td>';
+                          echo '<td>' . $row["lname"] . '</td>';
+                          echo '<td>' . $row["fname"] . '</td>';
+                          echo '<td><a href="view_employee.php?bpNo=' . $row["bpNo"] . '" class="btn btn-info">View</a></td>';
+                          echo '</tr>';
+                      }
+                  } else {
+                      echo '<tr><td colspan="4">No records found.</td></tr>';
+                  }
+              } catch (PDOException $e) {
+                  echo "Error: " . $e->getMessage();
               }
-            } else {
-              echo "<tr><td colspan=\"4\">No records found.</td></tr>";
-            }
-          } catch (PDOException $e) {
-            echo "Error: " . $e->getMessage();
-          }
 
-          $conn = null;
-        ?>
+              $conn = null;
+            ?>
+
       </tbody>
     </table>
   </div>
@@ -546,84 +206,47 @@ $conn = null;
     <table class="left-align-table custom-table" id="mainTable2" >
       <thead>
         <tr>
-          <th colspan="4" class="table-header" style="font-size: 14px">List Of Seminars</th>
+          <th colspan="5" class="table-header" style="font-size: 14px">List Of Seminars</th>
         </tr>
-        
           <th class= "sticky-header">Title</th>
           <th class= "sticky-header">Type</th>
           <th class= "sticky-header">From</th>
           <th class= "sticky-header">To</th>
+          <th class= "sticky-header">Action</th>
         </tr>
       </thead>
       <tbody style="overflow-y: auto;">
-        <?php
-          include 'connection.php';
-          try {
-            $sql = "SELECT * FROM lnd_table";
-            $result = $conn->query($sql);
+      <?php
+              include 'connection.php';
 
-            if ($result->rowCount() > 0) {
-              while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
-                echo "<tr data-toggle=\"modal\" data-target=\"#exampleModal2\" data-title=\"" . $row["title"] . "\" data-type=\"" . $row["type"] . "\" data-lndFrom=\"" . $row["lndFrom"] . "\" data-lndTo=\"" . $row["lndTo"] . "\">";
-                echo "<td>" . $row["title"] . "</td>";
-                echo "<td>" . $row["type"] . "</td>";
-                echo "<td>" . $row["lndFrom"] . "</td>";
-                echo "<td>" . $row["lndTo"] . "</td>";
-                echo "</tr>";
+              try {
+                  $sql = "SELECT * FROM lnd_table";
+                  $result = $conn->query($sql);
+
+                  if ($result->rowCount() > 0) {
+                      while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
+                          echo '<tr>';
+                          echo '<td>' . $row["title"] . '</td>';
+                          echo '<td>' . $row["type"] . '</td>';
+                          echo '<td>' . $row["lndFrom"] . '</td>';
+                          echo '<td>' . $row["lndTo"] . '</td>';
+                          echo '<td><a href="view_seminar.php?id=' . $row["id"] . '" class="btn btn-info">View</a></td>';
+                          echo '</tr>';
+                      }
+                  } else {
+                      echo '<tr><td colspan="5">No records found.</td></tr>';
+                  }
+              } catch (PDOException $e) {
+                  echo "Error: " . $e->getMessage();
               }
-            } else {
-              echo "<tr><td colspan=\"4\">No records found.</td></tr>";
-            }
-          } catch (PDOException $e) {
-            echo "Error: " . $e->getMessage();
-          }
 
-          $conn = null;
-        ?>
+              $conn = null;
+              ?>
+
       </tbody>
     </table>
   </div>
 </div>
-
-
-<script>
-$(document).ready(function () {
-    // Function to filter the table based on the selected value or search input
-    function filterTable(tableId, filterValue) {
-      $(`#${tableId} tbody tr`).each(function () {
-        var rowText = $(this).text().toLowerCase();
-        if (rowText.indexOf(filterValue) !== -1) {
-          $(this).show();
-        } else {
-          $(this).hide();
-        }
-      });
-    }
-
-    // Filter the employee table
-    $('#EmployeeSearchBar').on('keyup', function () {
-      var searchValue = $(this).val().toLowerCase();
-      filterTable('mainTable', searchValue);
-    });
-
-    // Filter the seminar table
-    $('#seminarSearchBar').on('keyup', function () {
-      var searchValue = $(this).val().toLowerCase();
-      filterTable('mainTable2', searchValue);
-    });
-
-    // Filter the table when the select input changes
-    $('.filter').on('change', function () {
-      var filterValue = $(this).val().toLowerCase();
-      var tableId = $(this).closest('.column').find('table').attr('id');
-      filterTable(tableId, filterValue);
-    });
-  });
-</script>
-
-
-
-            
 
                         </div>
                     </div>
