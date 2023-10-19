@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <?php include 'partials_header.php';?>
     <?php include 'connection.php';?>
-    <?php include 'fetch_employee_data.php';?>
+    <?php include 'fetch_emp_data.php';?>
     <link rel="stylesheet" type="text/css" href="stylehome.css">
     <link rel="stylesheet" type="text/css" href="loading.css">
     <script src="loading.js" defer></script>
@@ -211,6 +211,39 @@ closeButton.addEventListener('click', function() {
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="exampleModalLabel">Seminar/Training Information</h5>
+
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+// JavaScript to handle modal display
+$("table tr").click(function() {
+    var bpNo = $(this).data("bpno");
+    
+    // Make an AJAX request to fetch data from emp_table based on bpNo
+    $.ajax({
+        url: "/hris/fetch_emp_data.php", // Create this file to handle the AJAX request
+        method: "POST",
+        data: { bpNo: bpNo },
+        success: function(data) {
+            $("#modalContent").html(data);
+            
+            // Display the modal
+            $("#exampleModal").show();
+        }
+    });
+});
+
+// Close the modal when the close button is clicked
+$("#closeModal").click(function() {
+    $("#exampleModal").hide();
+});
+
+// Close the modal when clicking outside the modal
+$(window).click(function(event) {
+    if (event.target == document.getElementById("exampleModal")) {
+        $("#exampleModal").hide();
+    }
+});
+</script>
         
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
@@ -257,34 +290,85 @@ closeButton.addEventListener('click', function() {
                  // Close the database connection
                  $conn = null;
                  ?>
-               </h5>      
+               </h5>     
 
 
-               <?php
-        include 'connection.php';
-        try {
-          $sql = "SELECT * FROM lnd_table";
-          $result = $conn->query($sql);
+<?php
+// Include the database connection file
+include 'connection.php';
 
-          if ($result->rowCount() > 0) {
-            while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
-              echo "<tr data-toggle=\"modal\" data-target=\"#exampleModal2\" " . $row["title"] . "\" data-type=\"" . $row["type"] . "\" data-lndFrom=\"" . $row["lndFrom"] . "\"data-lndTo=\"" . $row["lndTo"] . "\">";
-              echo "<td>" . $row["title"] . "</td>";
-              echo "<td>" . $row["type"] . "</td>";
-              echo "<td>" . $row["lndFrom"] . "</td>";
-              echo "<td>" . $row["lndTo"] . "</td>";
-              echo "</tr>";
+try {
+    // SQL statement to fetch distinct bpNo values from the emp_table
+    $sql = "SELECT DISTINCT bpNo FROM emp_table";
+    $result = $conn->query($sql);
+
+    if ($result->rowCount() > 0) {
+        while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
+            $bpNo = $row["bpNo"];
+
+            // SQL statement to fetch data from the lnd_table based on the empNo matching the bpNo
+            $lndSql = "SELECT * FROM lnd_table WHERE empNo = '$bpNo'";
+            $lndResult = $conn->query($lndSql);
+
+            // Display the data from the lnd_table
+            if ($lndResult->rowCount() > 0) {
+                while ($lndRow = $lndResult->fetch(PDO::FETCH_ASSOC)) {
+                    $title = $lndRow["title"];
+                    $type = $lndRow["type"];
+
+                    echo "<tr data-bpno=\"" . $bpNo . "\" data-title=\"" . $title . "\" data-type=\"" . $type . "\">";
+                    echo "<td>" . $bpNo . "</td>";
+                    echo "<td>" . $title . "</td>";
+                    echo "<td>" . $type . "</td>";
+                    echo "</tr>";
+                }
+            } else {
+                echo "<tr><td colspan=\"3\">No records found for BP NO: " . $bpNo . "</td></tr>";
             }
-          } else {
-            echo "<tr><td colspan=\"4\">No records found.</td></tr>";
-          }
-        } catch (PDOException $e) {
-          echo "Error: " . $e->getMessage();
         }
+    } else {
+        echo "<tr><td colspan=\"3\">No records found.</td></tr>";
+    }
+} catch (PDOException $e) {
+    echo "Error: " . $e->getMessage();
+}
 
-        // Close the database connection
-        $conn = null;
-      ?>
+try {
+  // Check if the employee name is set in the request
+  if (isset($_GET['employee_name'])) {
+    // Get the employee name from the request
+    $employeeName = $_GET['employee_name'];
+
+    // SQL statement to fetch the data for the specified employee
+    $sql = "SELECT * FROM emp_table WHERE CONCAT(fname, ' ', lname) = :employeeName";
+    $stmt = $conn->prepare($sql);
+    $stmt->bindParam(':employeeName', $employeeName);
+    $stmt->execute();
+
+    if ($stmt->rowCount() > 0) {
+      // Fetch the data for the specified employee
+      $row = $stmt->fetch(PDO::FETCH_ASSOC);
+      // Access the desired columns from the row
+      $fname = $row["fname"];
+      $lname = $row["lname"];
+
+      // Output the dynamic data (employee name) as the response
+      echo $fname . " " . $lname;  
+    } else {
+      echo "No data found for " . $employeeName;
+    }
+  } else {
+    echo "No employee name specified.";
+  }
+} catch (PDOException $e) {
+  echo "Error: " . $e->getMessage();
+}
+
+// Close the database connection
+$conn = null;
+?>
+
+
 
               </tbody>  
         </table>
@@ -358,7 +442,7 @@ closeButton.addEventListener('click', function() {
             $conn = null;
           ?>
 
-              </tbody>  
+    </tbody>  
 
             
         </table>
@@ -381,13 +465,13 @@ closeButton.addEventListener('click', function() {
 
 <!-- Add the container for the button -->
 <div class="button-container">
-  <a href="AdminDashboard.php" class="btn btn-primary">View Pie Chart</a>
+  <a href="Admin/AdminDashboard.php" class="btn btn-primary">View Pie Chart</a>
 </div>
 
 <!-- ... existing code ... -->
 
 
-                <div class="row">
+  <div class="row">
   <!-- List of Employees -->
   <div class="column" style="height: 750px; width: 50%; overflow-x: hidden;">
     <div class="input-group w-50 rounded col-6 pt-2">
@@ -442,6 +526,7 @@ closeButton.addEventListener('click', function() {
       </tbody>
     </table>
   </div>
+
   
   <!-- List of Seminars -->
   <div class="column" style="height: 750px; width: 50%; overflow-x: hidden;">
