@@ -23,14 +23,6 @@
         }
     </style>
     <script>
-      var statusValue = "Active";
-
-      if (statusValue === "Active") {
-  $('#viewstatus2 option[value="Active"]').css('color', 'green');
-} else {
-  $('#viewstatus2 option[value="Inactive"]').css('color', 'red');
-}
-
 
 
         $(document).ready(function(){
@@ -218,7 +210,7 @@
             type: "POST",
             data: {sortval:sortval, sortwhat:sortwhat,emptype:emptype},
             success: function(data){
-             $("#content").html(data)
+            $("#content").html(data)
             }
           })
         }
@@ -402,7 +394,7 @@
                 <td id="viewresCity"></td>
 
                 <th>Employment Status:</th>
-                <td id=""></td>
+                <td>'echo'</td>
             </tr>
 
             <tr>
@@ -461,12 +453,12 @@
                 <td id="viewtin"></td>
             </tr>
         </tbody>
-       </table>
+      </table>
       
-       <hr>
-       
-       <h1>Personal Files</h1>
-       <select name="uploadedshow" id="uploadedshow" class="form-select mb-2" style="width: 20%">
+      <hr>
+      
+      <h1>Personal Files</h1>
+      <select name="uploadedshow" id="uploadedshow" class="form-select mb-2" style="width: 20%">
         <?php
         include "connection.php";
         $stmt = $con->prepare("SELECT * FROM performance_rating_year");
@@ -529,8 +521,8 @@
       
       <div class="modal-body">
       <form id="updatepds" method="POST" enctype="multipart/form-data">
-       <table class="table table-borderless">
-       <tbody>
+      <table class="table table-borderless">
+      <tbody>
         <!-- <input type="text" class="form-control" id='idselect'> -->
             <tr>
                 <th>Surname: </th>
@@ -594,8 +586,8 @@
                 <!--<td><input type="text" class="form-control" id="viewstatus2" name="viewstatus2"></td>-->
                 <td>
                   <select name="viewstatus2" id="viewstatus2" class="form-select">
-                    <option value="Active" style="color: green;">Active</option>
-                    <option value="Inactive" style="color: red;">Inactive</option>
+                    <option value="ACTIVE" style="color: green;">ACTIVE</option>
+                    <option value="INACTIVE" style="color: red;">INACTIVE</option>
                   </select>
                 </td>
 
