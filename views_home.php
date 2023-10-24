@@ -18,11 +18,22 @@
     
   <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
     <style>
+
        *{
             font-family: 'Poppins', sans-serif;
         }
     </style>
     <script>
+      var statusValue = "Active";
+
+      if (statusValue === "Active") {
+  $('#viewstatus2 option[value="Active"]').css('color', 'green');
+} else {
+  $('#viewstatus2 option[value="Inactive"]').css('color', 'red');
+}
+
+
+
         $(document).ready(function(){
           
         $("div#editProf").hide();
@@ -573,6 +584,7 @@
 
                 <th>Employment Type:</th>
                 <td><input type="text" class="form-control" id="soa2" name="soa2"></td>
+
             </tr>
 
             <tr>
@@ -580,7 +592,13 @@
                 <td><input type="text" class="form-control" id="viewresCity2" name="viewresCity2"></td>
 
                 <th>Employment Status:</th>
-                <td><input type="text" class="form-control" id="viewstatus2" name="viewstatus2"></td>
+                <!--<td><input type="text" class="form-control" id="viewstatus2" name="viewstatus2"></td>-->
+                <td>
+                  <select name="viewstatus2" id="viewstatus2" class="form-select">
+                    <option value="Active" style="color: green;">Active</option>
+                    <option value="Inactive" style="color: red;">Inactive</option>
+                  </select>
+                </td>
 
                   <!-- <select name="viewstatus2" id="viewstatus2" class="form-select">
                     <option value="ACTIVE">ACTIVE</option>
@@ -805,7 +823,7 @@
 
 
   });
-
+  
 </script>
 
 </body>

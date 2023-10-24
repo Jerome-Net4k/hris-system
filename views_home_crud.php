@@ -56,7 +56,6 @@ function updatepds(){
     $viewphealth2 = $_POST['viewphealth2'];
     $viewtin2 = $_POST['viewtin2'];
     $viewsg2 = $_POST['viewsg2'];
-
     if ($soa2val =="Regular" || $soa2val =="REGULAR") {
         $soa2 = "P";
     } else if ($soa2val =="Casual" || $soa2val =="CASUAL") {
