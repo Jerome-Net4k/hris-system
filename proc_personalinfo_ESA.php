@@ -8,11 +8,11 @@ $personalInfo = new personalInfo();
 // }
 
 if(isset($_POST['searchBar'])){
-    searchPersonalInfo($personalinfo_ESA);
+    searchPersonalInfo($personalInfo);
 }
 
 if(isset($_GET['id'])){ 
-    echo getPdsInfo($personalinfo_ESA);
+    echo getPdsInfo($personalInfo);
 }
 
 if(isset($_POST['sortval'])){
@@ -49,7 +49,7 @@ if(isset($_POST['sortval'])){
 //                 <td>'.$soa.'</td>
 //                 <td>'.$row['emp_status'].'</td>
 
-function loadPersonalInfo($personalinfo_ESA,$sortval,$sortwhat,$emptype){
+function loadPersonalInfo($personalInfo,$sortval,$sortwhat,$emptype){
     include 'connection.php';
     $query = "SELECT * FROM `emp_table` $emptype ORDER BY $sortval $sortwhat ";
     $stmt = $con->prepare($query);
@@ -73,10 +73,10 @@ function loadPersonalInfo($personalinfo_ESA,$sortval,$sortwhat,$emptype){
             // data-bs-toggle="modal" data-bs-target="#exampleModal"
                 echo '<tr style="height: auto;" id="idshow" data-value="' . $row['id'] . '">
                 
-                <td data-bs-toggle="modal" data-bs-target="#exampleModal2">'.$row['bpNo'].'</td>
-                <td data-bs-toggle="modal" data-bs-target="#exampleModal2">'.$row['lname'].'</td> 
-                <td data-bs-toggle="modal" data-bs-target="#exampleModal2">'.$row['fname'].'</td>
-                </tr>';
+                <td data-bs-toggle="modal" data-bs-target="#exampleModal">'.$row['bpNo'].'</td>
+                <td data-bs-toggle="modal" data-bs-target="#exampleModal">'.$row['lname'].'</td> 
+                <td data-bs-toggle="modal" data-bs-target="#exampleModal">'.$row['fname'].'</td>
+                                </tr>';
                 
                 echo '<script>
                 $("#dupdelete_'. $row['id'] .'").on("click", function(){
@@ -86,7 +86,7 @@ function loadPersonalInfo($personalinfo_ESA,$sortval,$sortwhat,$emptype){
                     if (confirmation){
                     $.ajax({
                         type: "POST",
-                        url: "Views_Home_Crud_ESA.php",
+                        url: "views_home_crud.php",
                         data: { delidid: delidid },
                         success: function(data) {
                             if (data == "delete duplicate") {
@@ -100,7 +100,7 @@ function loadPersonalInfo($personalinfo_ESA,$sortval,$sortwhat,$emptype){
                                 var emptype = "";
                                 
                                 $.ajax({
-                                    url: "proc_personalinfo_ESA.php",
+                                    url: "proc_personalInfo.php",
                                     type: "POST",
                                     data: { sortval: sortval, sortwhat: sortwhat, emptype: emptype },
                                     success: function(data) {
@@ -123,13 +123,13 @@ function loadPersonalInfo($personalinfo_ESA,$sortval,$sortwhat,$emptype){
 
     echo '<script>
     
-    $("table#mainTable2 tbody tr").on("click",function(){
+    $("table#mainTable tbody tr").on("click",function(){
         var id = $(this).find("td:eq(0)").text();
         var idd = $(this).data("value");
         // alert(idd);
         $.ajax({
             type: "GET",
-            url: "proc_personalinfo_ESA.php?id=" + id,
+            url: "proc_personalInfo.php?id=" + id,
             success: function(data){
                 var conv = jQuery.parseJSON(data);
                 $("#viewsname").text(conv.sname);
@@ -250,7 +250,7 @@ function loadPersonalInfo($personalinfo_ESA,$sortval,$sortwhat,$emptype){
         var id = $(this).val();
         $.ajax({
             type: "GET",
-            url: "proc_personalinfo_ESA.php?id=" + id,
+            url: "proc_personalInfo.php?id=" + id,
             success: function(data){
                 var conv = jQuery.parseJSON(data);
                 $("#viewsname").text(conv.sname);
@@ -283,17 +283,17 @@ function loadPersonalInfo($personalinfo_ESA,$sortval,$sortwhat,$emptype){
 </script>';
 }
 
-function getPdsInfo($personalinfo_ESA){
+function getPdsInfo($personalInfo){
     $id = $_GET['id'];
-    $result = $personalinfo_ESA->get_sglTbl('gsis',$id);
+    $result = $personalInfo->get_sglTbl('gsis',$id);
     $row = $result->fetch_assoc();
     return json_encode($row);
 }
 
-function searchPersonalInfo($personalinfo_ESA){
+function searchPersonalInfo($personalInfo){
     $name = $_POST['searchBar']."%";
     $fil = $_POST['fil'];
-    $result = $personalinfo_ESA->get_wldcrdTbl2($fil,$name);
+    $result = $personalInfo->get_wldcrdTbl2($fil,$name);
     if($result->num_rows > 0){
         while($row = $result->fetch_assoc()){
             $soa = "";
@@ -332,7 +332,7 @@ function searchPersonalInfo($personalinfo_ESA){
                     if (confirmation){
                     $.ajax({
                         type: "POST",
-                        url: "Views_Home_Crud_ESA.php",
+                        url: "views_home_crud.php",
                         data: { delidid: delidid },
                         success: function(data) {
                             if (data == "delete duplicate") {
@@ -346,7 +346,7 @@ function searchPersonalInfo($personalinfo_ESA){
                                 var emptype = "";
                                 
                                 $.ajax({
-                                    url: "proc_personalinfo_ESA.php",
+                                    url: "proc_personalInfo.php",
                                     type: "POST",
                                     data: { sortval: sortval, sortwhat: sortwhat, emptype: emptype },
                                     success: function(data) {
@@ -372,7 +372,7 @@ function searchPersonalInfo($personalinfo_ESA){
         // alert(id);
         $.ajax({
             type: "GET",
-            url: "proc_personalinfo_ESA.php?id=" + id,
+            url: "proc_personalInfo.php?id=" + id,
             success: function(data){
                 var conv = jQuery.parseJSON(data);
                 $("#viewsname").text(conv.sname);
@@ -478,7 +478,7 @@ function searchPersonalInfo($personalinfo_ESA){
         var id = $(this).val();
         $.ajax({
             type: "GET",
-            url: "proc_personalinfo_ESA.php?id=" + id,
+            url: "proc_personalInfo.php?id=" + id,
             success: function(data){
                 var conv = jQuery.parseJSON(data);
                 $("#viewsname").text(conv.sname);

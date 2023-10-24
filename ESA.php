@@ -101,6 +101,7 @@ padding: 16px;
 
 
 </style>
+
   
 </head>
 <body style="overflow: hidden;">
@@ -192,6 +193,7 @@ padding: 16px;
   <div class="column" style="height: 750px; width: 50%; overflow-x: hidden;">
     <div class="input-group w-50 rounded col-6 pt-2">
       <select name="" class="form-control filter" id="fil">
+        
         <option value="" hidden>Filter</option>
         <option value="title">Title</option>
         <option value="type">Type</option>
