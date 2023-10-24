@@ -18,7 +18,6 @@
     
   <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
     <style>
-
        *{
             font-family: 'Poppins', sans-serif;
         }
@@ -235,7 +234,7 @@
         <?php include 'navbar.php'; ?>
       <div class="container-fluid">
         <div class="d-flex justify-content-start">
-          <h1 class="title fs-2 fw-bold pt-2">Personal Data Sheet</h1>
+          <h1 class="title fs-2 fw-bold pt-2">Personal Data </h1>
         </div>
           <div class="row">
             <div class="input-group rounded col-6 pt-2" style="width: 30%;">
@@ -403,7 +402,7 @@
                 <td id="viewresCity"></td>
 
                 <th>Employment Status:</th>
-                <td>ACTIVE</td>
+                <td id=""></td>
             </tr>
 
             <tr>
