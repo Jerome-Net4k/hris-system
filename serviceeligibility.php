@@ -221,7 +221,6 @@
       <input type="date" class="form-control" id="dov">   
         </td>
     </tr>
-
     <tr>
       <td id="career"><select name="" id="career" class="form-control">
         <option value="CIVIL SERVICE ELIGIBLE - PROFESSIONAL">CIVIL SERVICE ELIGIBLE - PROFESSIONAL(CSP)</option>
