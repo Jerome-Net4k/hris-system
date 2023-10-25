@@ -394,7 +394,7 @@
                 <td id="viewresCity"></td>
 
                 <th>Employment Status:</th>
-                <td>'echo'</td>
+                <td></td>
             </tr>
 
             <tr>

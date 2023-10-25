@@ -283,8 +283,8 @@ include "connection.php";
 
         
 
-      })
-      
+    })
+    
         $("#computeSubmitBtn").click(function(){
             var rowCount = $(\'#outputTable >tbody >tr\').length;
             document.getElementById(\'rowCount\').value = rowCount;
@@ -292,7 +292,7 @@ include "connection.php";
 
         });' .
 
-      '$("#computeRatingForm").on(\'submit\', function(e){
+    '$("#computeRatingForm").on(\'submit\', function(e){
         e.preventDefault();
 
         if(confirm(\'submit?\')){
@@ -330,7 +330,7 @@ include "connection.php";
                         titleSize: \'25\'
                     });
                 }
-              })
+            })
             
         }
         
