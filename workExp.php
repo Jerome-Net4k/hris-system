@@ -180,7 +180,7 @@
             })  
             $("input#divOth").hide();
 
-             setInterval(function(){
+              setInterval(function(){
               $("select#workxpDept").change(function(){
               var val = $(this).val();
               var row = $(this).closest("tr").index();
@@ -192,7 +192,7 @@
                 $("tr:eq("+(row + 2)+")").find("input#divOth").hide("slow");
               }
             })
-             },500)
+            },500)
               
           
 
@@ -236,10 +236,8 @@
 </head>
 <body>
 <?php include 'navbar.php'; ?>
-    
+
                                     <!--END OF NAVBAR!-->
-
-
     <div class="container-fluid table-responsive bg-white rounded mt-4 mb-4">
     <h1 class="fw-bolder text-center mb-2">PERSONAL DATA SHEET</h1>
     <hr>
@@ -583,12 +581,13 @@
             </tr>  
             
 
-               
+              
                     
             </tbody>
     </table>
     
 </div>
+
 <div class="d-flex justify-content-end">
         <button class="btn btn-dark p-1 m-2" id="add"><i class="fi fi-rr-add p-1"></i>Add Row</button>
         <button class="btn btn-primary m-2 p-1" id="prev">Previous</button>

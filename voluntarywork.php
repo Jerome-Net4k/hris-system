@@ -20,11 +20,11 @@
             })
             
             $("button#next").on("click",function(){
-                 var nameOrg = "";
-                 var from = "";
-                 var to = "";
-                 var noh = "";
-                 var pos = "";
+                var nameOrg = "";
+                var from = "";
+                var to = "";
+                var noh = "";
+                var pos = "";
                 $("td#nameOrg").each(function(){
                     var findNameOrg = $(this).find("input#nameOrg").val();
                     nameOrg += findNameOrg + ",";
@@ -57,21 +57,21 @@
                 var convPos = pos.substr(0,pos.length-1);
 
                 $.ajax({
-                  data: {
+                data: {
                     convNameOrg: convNameOrg,
                     convFindFrom: convFindFrom,
                     convTo: convTo,
                     convNoh: convNoh,
                     convPos: convPos
-                  },
-                  type: "POST",
-                  url: "storeVoluntaryWork.php",
-                  success: function(data){
+                },
+                type: "POST",
+                url: "storeVoluntaryWork.php",
+                success: function(data){
                     window.location.href="lnd.php";
-                  }
+                }
                 })
 
-               
+            
                 
             })
 
@@ -104,8 +104,8 @@
         </tr>
 
         <tr>
-          <th class="text-center">FROM</th>
-          <th class="text-center">TO</th>
+            <th class="text-center">FROM</th>
+            <th class="text-center">TO</th>
         </tr>
     </thead>
 

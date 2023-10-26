@@ -103,11 +103,12 @@ function loadPersonalInfo($personalInfo){
             <td style="vertical-align: middle;">'.$row['fname'].'</td>
             <td style="vertical-align: middle;">'.$row['mname'].'</td>
             <td style="vertical-align: middle;">'.$row['ext'].'</td>' .
-
-            '<td style="text-align: center; vertical-align: middle;">' .            
+//1st Row Display
+            '<td style="text-align: center; vertical-align: middle;">' .         
             '<form id="uploadFile1' . $row['empno'] . '" enctype="multipart/form-data">' .
             '<button class="btn btn-outline-success '. $eye1 .' p-1" id="viewBtn1' . $row['empno'] . '" type="button" style="margin-right: 10px;" data-bs-toggle="modal" data-bs-target="#staticBackdrop" ' . $ipcr1Exist . '><i class="fa fa-eye" aria-hidden="true" style="font-size: 25px;"></i></button>' .
             '<button type="button" class="btn '. $calc1 . ' p-1" id="computeBtn1' . $row['empno'] . '" style="font-weight: 700; margin-right: 15px;" ' . $ipcr1Exist . '><i class="fa fa-calculator" aria-hidden="true" style="font-size: 25px;"></i></button>' .
+            '<button id="deleteBtn'. $row['empno'] .'" class="btn btn-outline-danger p-1" type="button"><i class="fa fa-trash-o" aria-hidden="true" style="font-size: 25px;"></i></button>'.
             '<input type="hidden" name="ipcrUp" value="">' .            
             '<input type="hidden" name="ipcr1" value="">' .            
             '<input type="hidden" name="empNo" value="' . $row['empno'] .'">' .
@@ -118,10 +119,14 @@ function loadPersonalInfo($personalInfo){
             '</form>' .
             '</td>' .
 
+
+//2nd Row Display
             '<td style="text-align: center; vertical-align: middle;">' .
+            '2nd_TEST'.
             '<form id="uploadFile2' . $row['empno'] . '" enctype="multipart/form-data">' .
             '<button class="btn btn-outline-success '. $eye2 .' p-1" id="viewBtn2' . $row['empno'] . '" type="button" style="margin-right: 10px;" data-bs-toggle="modal" data-bs-target="#staticBackdrop" ' . $ipcr2Exist . '><i class="fa fa-eye" aria-hidden="true" style="font-size: 25px;"></i></button>' .
             '<button type="button" class="btn '. $calc2 . ' p-1" id="computeBtn2' . $row['empno'] . '" style="font-weight: 700; margin-right: 15px;" ' . $ipcr2Exist . '><i class="fa fa-calculator" aria-hidden="true" style="font-size: 25px;"></i></button>' .
+            '<button id="deleteBtn'. $row['empno'] .'" class="btn btn-outline-danger p-1" type="button"><i class="fa fa-trash-o" aria-hidden="true" style="font-size: 25px;"></i></button>'.
             '<input type="hidden" name="ipcrUp" value="">' .            
             '<input type="hidden" name="ipcr2" value="">' .            
             '<input type="hidden" name="empNo" value="' . $row['empno'] .'">' .
@@ -166,9 +171,9 @@ function loadPersonalInfo($personalInfo){
                     type: "POST",
                     success: function(data){
                     document.getElementById("staticBackdropLabel").innerHTML = "' . $row['empno'] . ' ' . $row['sname'] . ' - ' . $yearSelected . ' - 1st";
-                     $("#pendingView").html(data)
+                    $("#pendingView").html(data)
                     }
-                  })
+                })
 
               })
 
@@ -212,34 +217,34 @@ function loadPersonalInfo($personalInfo){
                     type: "POST",
                     success: function(data){
                     document.getElementById("staticBackdropLabel").innerHTML = "' . $row['empno'] . ' ' . $row['sname'] . ' - ' . $yearSelected . ' - Target";
-                     $("#pendingView").html(data)
+                    $("#pendingView").html(data)
                     }
-                  })
+                })
 
-              })
+            })
 
 
-              $(document).on(\'change\', \'#uploadFileSelect1' . $row['empno'] . '\', function () {
+            $(document).on(\'change\', \'#uploadFileSelect1' . $row['empno'] . '\', function () {
                             document.getElementById("uploadBtn1' . $row['empno'] . '").disabled = false;
                             $( "#uploadBtn1' . $row['empno'] . '" ).removeClass("btn-outline-light");
-             });
+            });
 
-              $(document).on(\'change\', \'#uploadFileSelect2' . $row['empno'] . '\', function () {
+            $(document).on(\'change\', \'#uploadFileSelect2' . $row['empno'] . '\', function () {
                             document.getElementById("uploadBtn2' . $row['empno'] . '").disabled = false;
                             $( "#uploadBtn2' . $row['empno'] . '" ).removeClass("btn-outline-light");
-             });
-             
-              $(document).on(\'change\', \'#uploadFileSelect3' . $row['empno'] . '\', function () {
+            });
+            
+            $(document).on(\'change\', \'#uploadFileSelect3' . $row['empno'] . '\', function () {
                             document.getElementById("uploadBtn3' . $row['empno'] . '").disabled = false;
                             $( "#uploadBtn3' . $row['empno'] . '" ).removeClass("btn-outline-light");
-             });' . 
+            });' . 
 
 
             '$("#uploadBtn1' . $row['empno'] . '").click(function(){
                 $("#uploadFile1' . $row['empno'] . '").submit();
             });
 
-             $("#uploadBtn2' . $row['empno'] . '").click(function(){
+            $("#uploadBtn2' . $row['empno'] . '").click(function(){
                 $("#uploadFile2' . $row['empno'] . '").submit();
             });
 
@@ -413,18 +418,18 @@ function loadPersonalInfo($personalInfo){
                     type: "POST",
                     success: function(data){
                     document.getElementById("staticBackdropLabel2").innerHTML = "' . $row['empno'] . ' ' . $row['sname'] . ' - ' . $yearSelected . ' - 1st";
-                     $("#computeRatingView").html(data)
+                    $("#computeRatingView").html(data)
                     }
-                  })
+                })
 
-                  setTimeout(function() {
+                setTimeout(function() {
                     $(\'#staticBackdrop2\').modal(\'show\');
                 }, 500);
-                  
+                
 
-              });' .
+            });' .
 
-              '$("#computeBtn2' . $row['empno'] . '").on("click",function (e){
+            '$("#computeBtn2' . $row['empno'] . '").on("click",function (e){
 
                 var yearSelect = $("#yearSelect option:selected").val();
                 
@@ -439,18 +444,18 @@ function loadPersonalInfo($personalInfo){
                     type: "POST",
                     success: function(data){
                     document.getElementById("staticBackdropLabel2").innerHTML = "' . $row['empno'] . ' ' . $row['sname'] . ' - ' . $yearSelected . ' - 1st";
-                     $("#computeRatingView").html(data)
+                    $("#computeRatingView").html(data)
                     }
-                  })
+                })
 
-                  setTimeout(function() {
+                setTimeout(function() {
                     $(\'#staticBackdrop2\').modal(\'show\');
                 }, 500);
-                  
+                
 
-              });' .
+            });' .
 
-              '$("#editBtn'. $row['empno'] .'").on("click",function (e){
+            '$("#editBtn'. $row['empno'] .'").on("click",function (e){
 
                 document.getElementById("ipcrEmpNo").value = "'. $row['empno'] .'";
                 document.getElementById("editIpcrNo").value = "'. $row['empno'] .'";
@@ -459,14 +464,14 @@ function loadPersonalInfo($personalInfo){
                 document.getElementById("editmname").value = "'. $row['mname'] .'";
                 document.getElementById("editext").value = "'. $row['ext'] .'";
 
-                  setTimeout(function() {
+                setTimeout(function() {
                     $(\'#staticBackdrop3\').modal(\'show\');
                 }, 500);
-                  
+                
 
-              });' .
+            });' .
 
-              '$("#deleteBtn'. $row['empno'] .'").on("click",function (e){
+            '$("#deleteBtn'. $row['empno'] .'").on("click",function (e){
 
                 iziToast.error({
                     timeout: 15000,
@@ -482,7 +487,7 @@ function loadPersonalInfo($personalInfo){
                     position: \'center\',
                     buttons: [
                         [\'<button><b>YES</b></button>\', function (instance, toast) {
-                 
+                
                             instance.hide({ transitionOut: \'fadeOut\' }, toast, \'button\');                                    
 
                             $.ajax({
@@ -493,7 +498,7 @@ function loadPersonalInfo($personalInfo){
                                     type: "POST",
                                     url: "upload_ipcrEncoding.php",
                                     success: function(data){
-                                      if (data == "success"){
+                                    if (data == "success"){
                                         iziToast.error({
                                             timeout: 1500,
                                             position: "center",
@@ -503,27 +508,27 @@ function loadPersonalInfo($personalInfo){
                                             message: ""
                                         });
                                         document.getElementById("ipcrRow' . $row['empno'] . '").style.display = "none";
-                                      } else {
+                                    } else {
 
-                                      }
                                     }
-                                  })
+                                    }
+                                })
 
                             
-                 
+                
                         }, true],
                         [\'<button>NO</button>\', function (instance, toast) {
-                 
+                
                             instance.hide({ transitionOut: \'fadeOut\' }, toast, \'button\');
-                 
+                
                         }],
                     ]
                 });
 
-              });' .
+            });' .
 
-              '</script>
-              <script src="https://cdnjs.cloudflare.com/ajax/libs/izitoast/1.4.0/js/iziToast.min.js" integrity="sha512-Zq9o+E00xhhR/7vJ49mxFNJ0KQw1E1TMWkPTxrWcnpfEFDEXgUiwJHIKit93EW/XxE31HSI5GEOW06G6BF1AtA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>';
+            '</script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/izitoast/1.4.0/js/iziToast.min.js" integrity="sha512-Zq9o+E00xhhR/7vJ49mxFNJ0KQw1E1TMWkPTxrWcnpfEFDEXgUiwJHIKit93EW/XxE31HSI5GEOW06G6BF1AtA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>';
         }   
     }
     else{
