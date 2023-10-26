@@ -122,7 +122,8 @@
         <option value="Skills Eligibility - Category II">Skills Eligibility - Category II(CATII)</option>
         <option value="Veteran Preference Rating Eligibility">Veteran Preference Rating Eligibility(VPRE)</option>
         <option value="Licensure Examination for Teachers">Licensure Examination for Teachers(LET)</option>
-        <option value="Professional Drivers License">Professional Driver's License/Non-Professional Driver's License</option>
+        <option value="Professional Driver's License/Non-Professional Driver's License">Professional Driver's License/Non-Professional Driver's License</option>
+        <option value="Others">Others</option>
       </select></td>
       <td id="rating"><input type="text" class="form-control" id="rating"></td>
       <td id="doe"><input type="date" class="form-control" id="doe"></td>
@@ -151,7 +152,8 @@
         <option value="Skills Eligibility - Category II">Skills Eligibility - Category II(CATII)</option>
         <option value="Veteran Preference Rating Eligibility">Veteran Preference Rating Eligibility(VPRE)</option>
         <option value="Licensure Examination for Teachers">Licensure Examination for Teachers(LET)</option>
-        <option value="Professional Drivers License">Professional Driver's License/Non-Professional Driver's License</option>
+        <option value="Professional Driver's License/Non-Professional Driver's License">Professional Driver's License/Non-Professional Driver's License</option>
+        <option value="Others">Others</option>
       </select></td>
       <td id="rating"><input type="text" class="form-control" id="rating"></td>
       <td id="doe"><input type="date" class="form-control" id="doe"></td>
@@ -180,7 +182,8 @@
         <option value="Skills Eligibility - Category II">Skills Eligibility - Category II(CATII)</option>
         <option value="Veteran Preference Rating Eligibility">Veteran Preference Rating Eligibility(VPRE)</option>
         <option value="Licensure Examination for Teachers">Licensure Examination for Teachers(LET)</option>
-        <option value="Professional Drivers License">Professional Driver's License/Non-Professional Driver's License</option>
+        <option value="Professional Driver's License/Non-Professional Driver's License">Professional Driver's License/Non-Professional Driver's License</option>
+        <option value="Others">Others</option>
       </select></td>
       <td id="rating"><input type="text" class="form-control" id="rating"></td>
       <td id="doe"><input type="date" class="form-control" id="doe"></td>
@@ -209,7 +212,8 @@
         <option value="Skills Eligibility - Category II">Skills Eligibility - Category II(CATII)</option>
         <option value="Veteran Preference Rating Eligibility">Veteran Preference Rating Eligibility(VPRE)</option>
         <option value="Licensure Examination for Teachers">Licensure Examination for Teachers(LET)</option>
-        <option value="Professional Drivers License">Professional Driver's License/Non-Professional Driver's License</option>
+        <option value="Professional Driver's License/Non-Professional Driver's License">Professional Driver's License/Non-Professional Driver's License</option>
+        <option value="Others">Others</option>
       </select></td>
       <td id="rating"><input type="text" class="form-control" id="rating"></td>
       <td id="doe"><input type="date" class="form-control" id="doe"></td>
@@ -237,7 +241,8 @@
         <option value="Skills Eligibility - Category II">Skills Eligibility - Category II(CATII)</option>
         <option value="Veteran Preference Rating Eligibility">Veteran Preference Rating Eligibility(VPRE)</option>
         <option value="Licensure Examination for Teachers">Licensure Examination for Teachers(LET)</option>
-        <option value="Professional Drivers License">Professional Driver's License/Non-Professional Driver's License</option>
+        <option value="Professional Driver's License/Non-Professional Driver's License">Professional Driver's License/Non-Professional Driver's License</option>
+        <option value="Others">Others</option>
       </select></td>
       <td id="rating"><input type="text" class="form-control" id="rating"></td>
       <td id="doe"><input type="date" class="form-control" id="doe"></td>
@@ -253,6 +258,7 @@
 
 </tbody>
 <table>
+
   <div class="d-flex justify-content-end pb-2 me-2">
         <button class="btn btn-dark p-1 m-2" id="add"><i class="fi fi-rr-add p-1"></i>Add Row</button>
         <button class="btn btn-primary m-2 p-1" id="prev">Previous</button>

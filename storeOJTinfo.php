@@ -20,7 +20,7 @@ if(!empty($_POST['Name']) && !empty($_POST['Address']) && !empty($_POST['Mobilen
         $_SESSION['NoS'] = $_POST['NoS'];
         $_SESSION['Gname'] = $_POST['Gname'];
         $_SESSION['Gmobileno'] = $_POST['Gmobileno'];
-       
+        
         
         
         echo 'nc';
