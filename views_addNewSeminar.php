@@ -4,6 +4,8 @@
     <?php include 'partials_header.php' ?>
     <title>Seminars</title>
     <link rel="stylesheet" type="text/css" href="stylehome.css">
+    <link rel="stylesheet" type="text/css" href="educbg.css">
+
 </head>
 <body>
 <style>
@@ -216,37 +218,140 @@
             </div>
            </div>
            <hr>
-            <h4>List of Participants</h4>
-                <div class="participants">
-                <div class="row step">
-                    <div class="col-1">
-                        <label for="">ID No.</label>
-                        <input type="number" class="form-control" id="idNo">
-                    </div>
-                    <div class="col-3">
-                        <label for="">Name</label>
-                        <input type="text" class="form-control" id="name">
-                    </div>
 
-                    <div class="col-2">
-                    <label for="">Salary Grade</label>
-                        <input type="text" class="form-control" id="sg">
-                    </div>
+           <?php
+// Replace the following line with your database connection code
+$conn = mysqli_connect("localhost", "root", "", "hr_management");
 
-                    <div class="col">
-                    <label for="">Position/Designation</label>
-                        <input type="text" class="form-control" id="pos">
-                    </div>
+// Replace the following line with your database query to fetch the list of employees
+$sql = "SELECT bpNo, fname, lname, division FROM emp_table";
+$result = mysqli_query($conn, $sql);
 
-                    <div class="col">
-                    <label for="">Office</label>
-                        <input type="text" class="form-control" id="office">
-                    </div>
+// Check if the query was successful
+if ($result) {
+  // Fetch the employees from the result set
+  $employees = mysqli_fetch_all($result, MYSQLI_ASSOC);
+} else {
+  // Handle the error if the query failed
+  echo "Error fetching employees from the database: " . mysqli_error($conn);
+}
 
-                </div>
-                </div>
-                <button class="btn btn-primary mt-2" id="addPart">Add Participant</button>
-            <hr>
+// Close the database connection
+mysqli_close($conn);
+?>
+
+<!DOCTYPE html>
+<html>
+<head>
+  <!-- Include necessary CSS and JavaScript libraries -->
+</head>
+<body>
+  <h4>List of Participants</h4>
+  <!-- Participant table -->
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>Select Employee</th>
+        <th>BP NO</th>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Division</th>
+      </tr>
+    </thead>
+    <tbody class="participants">
+      <tr>
+        <td>
+          <select name="employee" class="form-control" id="selectname">
+            <option value="">Select Employee</option>
+            <?php foreach ($employees as $employee): ?>
+              <option value="<?php echo $employee['bpNo']; ?>" 
+                      data-fname="<?php echo $employee['fname']; ?>"
+                      data-lname="<?php echo $employee['lname']; ?>"
+                      data-division="<?php echo $employee['division']; ?>">
+                <?php echo $employee['fname']; ?>
+              </option>
+            <?php endforeach; ?>
+          </select>
+        </td>
+        <td>
+          <input type="text" class="form-control" placeholder="Employee ID" name="bpNo" value="" disabled required />
+        </td>
+        <td>
+          <input type="text" class="form-control" placeholder="First Name" name="firstName" value="" disabled required />
+        </td>
+        <td>
+          <input type="text" class="form-control" placeholder="Last Name" name="lastName" value="" disabled required />
+        </td>
+        <td>
+          <input type="text" class="form-control" placeholder="Division" name="division" value="" disabled required />
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <button class="btn btn-primary mt-2" id="addParticipant">Add Participant</button>
+
+  <!-- JavaScript -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+  <script>
+    document.getElementById("selectname").onchange = function() {
+      var e = document.getElementById("selectname");
+      var selectedOption = e.options[e.selectedIndex];
+      
+      document.querySelector("input[name='bpNo']").value = selectedOption.valuegetAttribute("data-bpNo");
+      document.querySelector("input[name='firstName']").value = selectedOption.getAttribute("data-fname");
+      document.querySelector("input[name='lastName']").value = selectedOption.getAttribute("data-lname");
+      document.querySelector("input[name='division']").value = selectedOption.getAttribute("data-division");
+    };
+
+    $('body').on('change', '#selectname', function() {
+      var selectedOption = $('#selectname option:selected');
+      $('input[name="bpNo"]').val(selectedOption.val('bpNo'));
+      $('input[name="firstName"]').val(selectedOption.data('fname'));
+      $('input[name="lastName"]').val(selectedOption.data('lname'));
+      $('input[name="division"]').val(selectedOption.data('division'));
+    });
+
+    // JavaScript to add a new participant input field
+    $('#addParticipant').on('click', function() {
+      $('.participants').append(`
+      <tr>
+        <td>
+          <select name="employee" class="form-control" id="selectname">
+            <option value="">Select Employee</option>
+            <?php foreach ($employees as $employee): ?>
+              <option value="<?php echo $employee['bpNo']; ?>" 
+                      data-fname="<?php echo $employee['fname']; ?>"
+                      data-lname="<?php echo $employee['lname']; ?>"
+                      data-division="<?php echo $employee['division']; ?>">
+                <?php echo $employee['fname']; ?>
+              </option>
+            <?php endforeach; ?>
+          </select>
+        </td>
+        <td>
+          <input type="text" class="form-control" placeholder="Employee ID" name="bpNo" value="" disabled required />
+        </td>
+        <td>
+          <input type="text" class="form-control" placeholder="First Name" name="firstName" value="" disabled required />
+        </td>
+        <td>
+          <input type="text" class="form-control" placeholder="Last Name" name="lastName" value="" disabled required />
+        </td>
+        <td>
+          <input type="text" class="form-control" placeholder="Division" name="division" value="" disabled required />
+        </td>
+      </tr>
+      `);
+    });
+  </script>
+</body>
+</html>
+
+
+
+
+
            <div id="expenses">
            <div class="row mt-2 mb-2">
             <div class="col exp">
