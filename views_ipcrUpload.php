@@ -70,7 +70,6 @@ if(isset($_SESSION['editSuccess'])){
           //   }
           // })
         })    
-
           $("#fil").change(function(){
           var yearSelect = $("#yearSelect option:selected").val();
           fil = $("#fil").val();
@@ -430,11 +429,9 @@ if(isset($_SESSION['editSuccess'])){
                     </tr>
                 </thead>
                 <tbody id="content2">
-
                 </tbody>
             </table>
             </div>
-
         </div>
     </div>
 

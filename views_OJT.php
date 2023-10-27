@@ -123,7 +123,6 @@
                 <th>School:</th>
                 <td id='viewNoS'></td>
             </tr>
-
             <tr>
                 <th>Guardian:</th>
                 <td id='viewGname'></td>

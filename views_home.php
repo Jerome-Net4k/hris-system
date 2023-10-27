@@ -226,7 +226,7 @@
         <?php include 'navbar.php'; ?>
       <div class="container-fluid">
         <div class="d-flex justify-content-start">
-          <h1 class="title fs-2 fw-bold pt-2">Personal Data </h1>
+          <h1 class="title fs-2 fw-bold pt-2">Employee Master Record </h1>
         </div>
           <div class="row">
             <div class="input-group rounded col-6 pt-2" style="width: 30%;">
@@ -293,10 +293,10 @@
                 <th>SOA</th>
                 <th>EMPLOYEE STATUS</th>
                 <th>ACTION</th>
-               </tr>
+              </tr>
               </thead>
-               <!-- ajax request -->
-               <tbody id="content">
+              <!-- ajax request -->
+              <tbody id="content">
 
               </tbody>  
             </table>
@@ -590,7 +590,6 @@
                     <option value="INACTIVE" style="color: red;">INACTIVE</option>
                   </select>
                 </td>
-
                   <!-- <select name="viewstatus2" id="viewstatus2" class="form-select">
                     <option value="ACTIVE">ACTIVE</option>
                     <option value="INACTIVE">INACTIVE</option>

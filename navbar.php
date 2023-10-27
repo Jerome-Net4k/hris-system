@@ -6,14 +6,24 @@ echo '<script>
     $("#hideInt").hide()
     $("#spmsHide").hide();
     $("#prHide").hide();
-
+    $("#joHide").hide();
+//PR autohide
     $("#pr").hover(function(){
       $("#spmsHide").hide("fast");
       $("#prHide").show("fast");
+      $("#joHide").show("fast");
     })
+//spms autohide
     $("#spms").hover(function(){
       $("#spmsHide").show("fast");
       $("#prHide").hide("fast");
+      $("#joHide").show("fast");
+    })
+//jo autohide
+    $("#jo").hover(function(){
+      $("#spmsHide").show("fast");
+      $("#prHide").hide("fast");
+      $("#joHide").show("fast");
     })
     $("#local").hover(function(){
       $("#hideLocal").show("fast")
@@ -25,7 +35,7 @@ echo '<script>
     })
   })
   </script>
- ';
+';
   echo '<nav class="navbar navbar-expand-lg navbar-light" style="background-color: #1548C3;">
   <div class="container-fluid">
   <a class="navbar-brand" href="#">
@@ -46,7 +56,7 @@ echo '<script>
               RSP
             </a>
             <div class="dropdown-menu " aria-labelledby="RSP">
-              <a class="dropdown-item" href="views_home.php">PDS</a>
+              <a class="dropdown-item" href="views_home.php">EMS</a>
               <a class="dropdown-item" href="views_serviceRec.php">Service Record</a>
               <a class="dropdown-item" href="views_plantila.php">Plantila</a>
               <a class="dropdown-item" href="views_201Files.php">201 Files</a>
@@ -79,7 +89,15 @@ echo '<script>
               <a class="dropdown-item fw-bold" href="" id="pr">Monitoring of Submission</a>
               <a class="dropdown-item fw-bold" href="" id="pr">Success Indicator</a>
               <a class="dropdown-item fw-bold" href="pds_view_uploadfile.php">PDS FORM</a>
+              <a class="dropdown-item fw-bold" href="" id="">JO</a>
+              <div id="joHide">
+                <a class="dropdown-item" href="views_joContractUpload.php" id="">Contract</a>
+                <a class="dropdown-item" href="" id="">Monitoring</a>
+              </div>
             </div>
+            
+
+
             </li>
             <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle h5 text-white" href="#" id="Others" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

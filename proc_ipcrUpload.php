@@ -73,7 +73,7 @@ function loadPersonalInfo($personalInfo){
 
                 }
                 
-              }
+            }
 
             //need to bind params for localhost 192.168.1.16
 
@@ -175,9 +175,9 @@ function loadPersonalInfo($personalInfo){
                     }
                 })
 
-              })
+            })
 
-              $("#viewBtn2' . $row['empno'] . '").on("click",function (e){
+            $("#viewBtn2' . $row['empno'] . '").on("click",function (e){
 
                 var yearSelect = $("#yearSelect option:selected").val();
                 
@@ -194,13 +194,13 @@ function loadPersonalInfo($personalInfo){
                     type: "POST",
                     success: function(data){
                     document.getElementById("staticBackdropLabel").innerHTML = "' . $row['empno'] . ' ' . $row['sname'] . ' - ' . $yearSelected . ' - 2nd";
-                     $("#pendingView").html(data)
+                    $("#pendingView").html(data)
                     }
-                  })
+                })
 
-              })
+            })
 
-              $("#viewBtnTarget' . $row['empno'] . '").on("click",function (e){
+            $("#viewBtnTarget' . $row['empno'] . '").on("click",function (e){
 
                 var yearSelect = $("#yearSelect option:selected").val();
                 
@@ -302,7 +302,6 @@ function loadPersonalInfo($personalInfo){
                     
                 }
                 
-
             });
 
             $("#uploadFile2' . $row['empno'] . '").on(\'submit\', function(e){
@@ -463,7 +462,6 @@ function loadPersonalInfo($personalInfo){
                 document.getElementById("editfname").value = "'. $row['fname'] .'";
                 document.getElementById("editmname").value = "'. $row['mname'] .'";
                 document.getElementById("editext").value = "'. $row['ext'] .'";
-
                 setTimeout(function() {
                     $(\'#staticBackdrop3\').modal(\'show\');
                 }, 500);
@@ -509,7 +507,6 @@ function loadPersonalInfo($personalInfo){
                                         });
                                         document.getElementById("ipcrRow' . $row['empno'] . '").style.display = "none";
                                     } else {
-
                                     }
                                     }
                                 })
@@ -624,6 +621,7 @@ function searchPersonalInfo($personalInfo){
 
             echo '<tr id="ipcrRow' . $row['empno'] . '">
             <td style="vertical-align: middle;">
+            test
             <button id="editBtn'. $row['empno'] .'" class="btn btn-outline-success p-1" type="button"><i class="fa fa-pencil-square-o" aria-hidden="true" style="font-size: 25px;"></i></button>
             <button id="deleteBtn'. $row['empno'] .'" class="btn btn-outline-danger p-1" type="button"><i class="fa fa-trash-o" aria-hidden="true" style="font-size: 25px;"></i></button>
             </td>
@@ -695,13 +693,13 @@ function searchPersonalInfo($personalInfo){
                     type: "POST",
                     success: function(data){
                     document.getElementById("staticBackdropLabel").innerHTML = "' . $row['empno'] . ' ' . $row['sname'] . ' - ' . $yearSelected . ' - 1st";
-                     $("#pendingView").html(data)
+                    $("#pendingView").html(data)
                     }
-                  })
+                })
 
-              })
+            })
 
-              $("#viewBtn2' . $row['empno'] . '").on("click",function (e){
+            $("#viewBtn2' . $row['empno'] . '").on("click",function (e){
 
                 var yearSelect = $("#yearSelect option:selected").val();
                 
@@ -718,13 +716,13 @@ function searchPersonalInfo($personalInfo){
                     type: "POST",
                     success: function(data){
                     document.getElementById("staticBackdropLabel").innerHTML = "' . $row['empno'] . ' ' . $row['sname'] . ' - ' . $yearSelected . ' - 2nd";
-                     $("#pendingView").html(data)
+                    $("#pendingView").html(data)
                     }
-                  })
+                })
 
-              })
+            })
 
-              $("#viewBtnTarget' . $row['empno'] . '").on("click",function (e){
+            $("#viewBtnTarget' . $row['empno'] . '").on("click",function (e){
 
                 var yearSelect = $("#yearSelect option:selected").val();
                 
@@ -953,7 +951,7 @@ function searchPersonalInfo($personalInfo){
 
               });' .
 
-              '$("#computeBtn2' . $row['empno'] . '").on("click",function (e){
+            '$("#computeBtn2' . $row['empno'] . '").on("click",function (e){
 
                 var yearSelect = $("#yearSelect option:selected").val();
                 
@@ -968,18 +966,18 @@ function searchPersonalInfo($personalInfo){
                     type: "POST",
                     success: function(data){
                     document.getElementById("staticBackdropLabel2").innerHTML = "' . $row['empno'] . ' ' . $row['sname'] . ' - ' . $yearSelected . ' - 1st";
-                     $("#computeRatingView").html(data)
+                    $("#computeRatingView").html(data)
                     }
-                  })
+                })
 
-                  setTimeout(function() {
+                setTimeout(function() {
                     $(\'#staticBackdrop2\').modal(\'show\');
                 }, 500);
-                  
+                
 
-              });' .
+            });' .
 
-              '$("#editBtn'. $row['empno'] .'").on("click",function (e){
+            '$("#editBtn'. $row['empno'] .'").on("click",function (e){
 
                 document.getElementById("ipcrEmpNo").value = "'. $row['empno'] .'";
                 document.getElementById("editIpcrNo").value = "'. $row['empno'] .'";
@@ -988,14 +986,14 @@ function searchPersonalInfo($personalInfo){
                 document.getElementById("editmname").value = "'. $row['mname'] .'";
                 document.getElementById("editext").value = "'. $row['ext'] .'";
 
-                  setTimeout(function() {
+                setTimeout(function() {
                     $(\'#staticBackdrop3\').modal(\'show\');
                 }, 500);
-                  
+                
 
-              });' .
+            });' .
 
-              '$("#deleteBtn'. $row['empno'] .'").on("click",function (e){
+            '$("#deleteBtn'. $row['empno'] .'").on("click",function (e){
 
                 iziToast.error({
                     timeout: 15000,
@@ -1011,7 +1009,7 @@ function searchPersonalInfo($personalInfo){
                     position: \'center\',
                     buttons: [
                         [\'<button><b>YES</b></button>\', function (instance, toast) {
-                 
+                
                             instance.hide({ transitionOut: \'fadeOut\' }, toast, \'button\');                                    
 
                             $.ajax({
@@ -1022,7 +1020,7 @@ function searchPersonalInfo($personalInfo){
                                     type: "POST",
                                     url: "upload_ipcrEncoding.php",
                                     success: function(data){
-                                      if (data == "success"){
+                                    if (data == "success"){
                                         iziToast.error({
                                             timeout: 1500,
                                             position: "center",
@@ -1032,28 +1030,28 @@ function searchPersonalInfo($personalInfo){
                                             message: ""
                                         });
                                         document.getElementById("ipcrRow' . $row['empno'] . '").style.display = "none";
-                                      } else {
+                                    } else {
 
-                                      }
                                     }
-                                  })
+                                    }
+                                })
 
                             
-                 
+                
                         }, true],
                         [\'<button>NO</button>\', function (instance, toast) {
-                 
+                
                             instance.hide({ transitionOut: \'fadeOut\' }, toast, \'button\');
-                 
+                
                         }],
                     ]
                 });
 
-              });' .
+            });' .
 
         
-              '</script>
-              <script src="https://cdnjs.cloudflare.com/ajax/libs/izitoast/1.4.0/js/iziToast.min.js" integrity="sha512-Zq9o+E00xhhR/7vJ49mxFNJ0KQw1E1TMWkPTxrWcnpfEFDEXgUiwJHIKit93EW/XxE31HSI5GEOW06G6BF1AtA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>';
+            '</script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/izitoast/1.4.0/js/iziToast.min.js" integrity="sha512-Zq9o+E00xhhR/7vJ49mxFNJ0KQw1E1TMWkPTxrWcnpfEFDEXgUiwJHIKit93EW/XxE31HSI5GEOW06G6BF1AtA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>';
         }   
     }
     else{
