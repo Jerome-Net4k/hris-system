@@ -225,22 +225,36 @@
       <div class="container-fluid">
         <div class="d-flex justify-content-start">
         <?php
-// Check if $employeeRow is defined and is an array
-if (isset($employeeRow) && is_array($employeeRow)) {
-    // Access elements of the $employeeRow array
-    $lastName = $employeeRow['lname'];
-    $firstName = $employeeRow['fname'];
-    // Other code that uses $employeeRow
-} else {
-    // Handle the case when $employeeRow is not defined or is not an array
-    echo "Employee data is not available.";
+include 'connection.php';
+
+try {
+    $bpNoToFetch = 'bpNo'; // Replace with the BP NO you want to fetch
+
+    $sql = "SELECT * FROM emp_table WHERE bpNo = :bpNo";
+    $stmt = $conn->prepare($sql);
+    $stmt->bindParam(':bpNo', $bpNoToFetch, PDO::PARAM_STR);
+    $stmt->execute();
+
+    if ($stmt->rowCount() > 0) {
+        while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+            // Display employee details
+            echo '<h1>Employee Details</h1>';
+            echo '<p><strong>BP NO:</strong> '  . $row["bpNo"] .  '</p>';
+            echo '<p><strong>Last Name:</strong> '  . $row["lname"] .  '</p>';
+            echo '<p><strong>First Name:</strong> '  . $row["fname"] . '</p>';
+        }
+    } else {
+        echo 'No records found for BP NO: ' . $bpNoToFetch;
+    }
+} catch (PDOException $e) {
+    echo "Error: " . $e->getMessage();
 }
+
+$conn = null;
 ?>
 
-        <h1>Employee Details</h1>
-<p><strong>BP NO:</strong> <?= isset($employeeRow["bpNo"]) ? $employeeRow["bpNo"] : "N/A" ?></p>
-<p><strong>Last Name:</strong> <?= isset($employeeRow["lname"]) ? $employeeRow["lname"] : "N/A" ?></p>
-<p><strong>First Name:</strong> <?= isset($employeeRow["fname"]) ? $employeeRow["fname"] : "N/A" ?></p>
+
+
         </div>
           <div class="row">
             <div class="input-group rounded col-6 pt-2" style="width: 30%;">
@@ -260,11 +274,18 @@ if (isset($employeeRow) && is_array($employeeRow)) {
 
 
                 <div class="col pt-2">
-                <button class="btn silver btn-success btnload" value="P">REGULAR</button>
-                <button class="btn silver btn-warning btnload" style="color: white;" value="C" id="btnload">CASUAL</button>
-                <button class="btn silver btn-danger btnload" value="JO">JOB ORDER</button>
-                <button class="btn silver btn-primary btnload" value="ALL">OVERVIEW</button>
-              </div>
+                <div class="btn-group">
+                    <button type="button" class="btn silver btn-secondary dropdown-toggle" data-toggle="dropdown">
+                        Select Type
+                    </button>
+                    <div class="dropdown-menu">
+                        <button class="dropdown-item" value="P">REGULAR</button>
+                        <button class="dropdown-item" value="C">CASUAL</button>
+                        <button class="dropdown-item" value="JO">JOB ORDER</button>
+                        <button class="dropdown-item" value="ALL">OVERVIEW</button>
+                    </div>
+                </div>
+            </div>
             </div>
             <div class="col pt-2 d-flex justify-content-end">
             <label class="btn btn-primary btn-cool">
