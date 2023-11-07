@@ -15,7 +15,7 @@
     <link rel="stylesheet" type="text/css" href="stylehome.css">
 
     <script>
-   $(document).ready(function() {
+    $(document).ready(function() {
     loadData();
     $("#newData").on("click",function(){
       window.location.href="internupload.php";
@@ -332,14 +332,14 @@ $('#id, #name').click(function() {
             
         </tbody>
         
-       </table>
-       
-       <div class="d-flex justify-content-end me-2">
+      </table>
+      
+      <div class="d-flex justify-content-end me-2">
             <button type="submit" class="btn btn-outline-primary" id="submit" name="submit"><i class="fi fi-rr-disk"></i> | SAVE</button>
       </form></div>
             
             </div>
-           
+          
 
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -349,7 +349,7 @@ $('#id, #name').click(function() {
 </div>
 
       
-     
+    
 
     
 </body>

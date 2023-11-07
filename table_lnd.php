@@ -21,6 +21,7 @@ class lnd{
         $stmt->execute();
         $result = $stmt->get_result();
         return $result;
+        
     }
     function insert($title,$dateFrom,$dateTo,$smt,$nh,$type,$venue,$exp,$am,$total,$oo_file_name,$obj,$ref_name,$rem){
         include 'connection.php';

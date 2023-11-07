@@ -150,7 +150,7 @@ if(isset($_SESSION['editSuccess'])){
             url:"nosa_proc.php",
             type: "POST",
             success: function(data){
-             $("#content2").html(data)
+            $("#content2").html(data)
             }
           })
 

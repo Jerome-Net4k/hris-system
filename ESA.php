@@ -123,7 +123,7 @@ padding: 16px;
 
 <!-- Add the container for the button -->
 <div class="button-container">
-  <a href="Admin/AdminDashboard.php" class="btn btn-primary">View Pie Chart</a>
+  <a href="Admin/AdminDashboard.php" class="btn btn-primary">View Pie Chart11111</a>
 </div>
 
 <!-- ... existing code ... -->
@@ -224,7 +224,6 @@ padding: 16px;
               try {
                   $sql = "SELECT * FROM lnd_table";
                   $result = $conn->query($sql);
-
                   if ($result->rowCount() > 0) {
                       while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
                           echo '<tr>';

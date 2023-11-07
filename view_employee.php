@@ -323,10 +323,10 @@ $conn = null;
                       <div class="arrow arrow1 chevron3"></div>
                     </div>
                   </div></th>
-               </tr>
+              </tr>
               </thead>
-               <!-- ajax request -->
-               <tbody id="content">
+              <!-- ajax request -->
+              <tbody id="content">
 
               </tbody>  
             </table>
@@ -343,8 +343,8 @@ $conn = null;
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-       <table class="table table-borderless">
-       <tbody>
+      <table class="table table-borderless">
+      <tbody>
             <tr>
                 <th>Surname: </th>
                 <td id='viewsname'></td>

@@ -24,7 +24,7 @@ if(isset($_GET['proc'])){
         $id = $_GET['id'];
         echo loadServeRecordData($id);
     }
-  
+
 }
 
 function loadServeRecordData($id){
@@ -119,7 +119,7 @@ function getserveHistory($serviceRec){
             <td class="text-size">'.$row['branch'].'</td>
             <td class="text-size">'.$row['abs'].'</td>
             <td class="text-size text-start">'.$row['cause'].'</td>
-          </tr>';
+        </tr>';
         }
         }
     }
