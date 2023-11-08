@@ -115,10 +115,10 @@ $('#id, #name').click(function() {
     }
   });
 });
-   })
+  })
 
 
-   
+  
 
 
     </script>
@@ -155,11 +155,10 @@ $('#id, #name').click(function() {
           </thead>
           <tbody id="content"></tbody>
         </table>
-     
-            
+        
+        
         </div>
       </div>
-
   
       <div class="modal fade" id="modal1" tabindex="-1" role="dialog" aria-labelledby="modal1Label" aria-hidden="true">
   <div class="modal-dialog modal-lg" role="document">
@@ -172,8 +171,8 @@ $('#id, #name').click(function() {
             </div>
       <div class="modal-body">
       <table class="table table-borderless">
-       <tbody id="body">
-           <tr style="height: 10px;">
+      <tbody id="body">
+            <tr style="height: 10px;">
             <th>ID NUMBER:</th>
             <td id="viewidnum"></td>
             <td class="text-center" colspan="2" rowspan="6" style="width: 300px; border:1px solid #000000">
@@ -184,36 +183,29 @@ $('#id, #name').click(function() {
             <th>NAME:</th>
             <td id="viewnameintern"></td>
             </tr>
-
             <tr>
             <th>DATE OF BIRTH:</th>
             <td id="viewdob"></td>
             </tr>
-
             <tr>
             <th>SCHOOL:</th>
             <td id="viewschool"></td>
             </tr>
-
             <tr>
             <th>DEPARTMENT:</th>
             <td id="viewdept"></td>
             </tr>
-
             <tr>
             <th>BLOOD TYPE:</th>
             <td id="viewbtype"></td>
             </tr>
-
             <tr>
               <td colspan="3" class="fw-bold fs-5 text-center text-uppercase">Incase of Emergency</td>
             </tr>
-
             <tr>
               <th>Name:</th>
               <td colspan="2" id="viewnameguard"></td>
             </tr>
-
             <tr>
             <th>RELATIONSHIP:</th>
               <td colspan="2" id="viewrel"></td>
@@ -235,7 +227,7 @@ $('#id, #name').click(function() {
                   <td id="viewfile"></td>
             </tr>
         </tbody>
-       </table>
+      </table>
       </div>
       </div>
       <div class="modal-footer">
@@ -255,22 +247,18 @@ $('#id, #name').click(function() {
       </div>
       <div class="modal-body">
       <table class="table table-borderless">
-       <tbody id="body">
-           <tr style="height: 10px;">
-           <form enctype="multipart/form-data" method="post" >
-
+      <tbody id="body">
+          <tr style="height: 10px;">
+          <form enctype="multipart/form-data" method="post" >
             <th>ID NUMBER:</th>
             <td><input type="text" class="form-control w-25" id="idnum" name="idnum" readonly></td>          
           </tr>
-
             <th>PROFILE PICTURE:</th>            
-             <td><input type="file" class="form-control" id="internpic" name="internpic" aria-label="file example"></td> 
-
+            <td><input type="file" class="form-control" id="internpic" name="internpic" aria-label="file example"></td> 
             <tr>
             <th>NAME:</th>
             <td><input type="text" class="form-control" id="nameintern" name="nameintern" required></td>
             </tr>
-
             <tr>
               <th>NAME EXTENSION:</th>
               <td><input type="text" class="form-control" id="ext" name="ext"></td>

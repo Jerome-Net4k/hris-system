@@ -97,14 +97,14 @@
             }
           })
 
-           $.ajax({
+            $.ajax({
             data: {id: id},
             type: "POST",
             url: "proc_serviceRecord.php?id=" + <?php echo $_GET['id']?> + "&proc=edit",
             success: function(data){
               $("#body").html(data);
             }
-           })
+            })
             
             $("#add").on("click",function(){
                     $("#body").append('<tr class="nobord"><td class="text-size" id="servFrom"><input class="form-control" type="date" style="width: 135px" id="servFrom"></td><td class="text-size" id="servTo"><input class="form-control" type="date" style="width: 135px" id="servTo"></td><td class="text-size" id="servDesig"><input class="form-control" type="text" id="servDesig"></td><td class="text-size" id="servStatus"><input class="form-control" type="text" id="servStatus"></td><td class="text-size" id="servSalary"><input class="form-control" type="text" id="servSalary"></td><td class="text-size" id="servStation"><input class="form-control" type="text" id="servStation"></td><td class="text-size" id="servBranch"><input class="form-control" type="text" id="servBranch"></td><td class="text-size" id="servLv"><input class="form-control" type="text" id="servLv"></td><td class="text-size text-start" id="servCause"><input class="form-control" type="text" id="servCause"></td></tr>')
@@ -191,7 +191,7 @@
                   alert(data);
                 }
               })
-             
+            
             })
         })
     </script>
@@ -201,7 +201,7 @@
 
     <div class="container-fluid rounded bg-white pt-2 mt-2">
         <p class="fs-3 fw-bold text-center">Service Record</p>
-       
+        
         <table style="border-collapse: collapse;">
         <tr>
             <td rowspan="2" style="width:80px; font-size: .7rem;">Name:</td>
@@ -237,9 +237,9 @@
 
                             <!--SERVICE RECORD TABLE -->
       <div class="pt-2 text-caption">
-     <caption>This is to certify that the employee named herein above actually rendered services in this office as shown by the service record below. 
+      <caption>This is to certify that the employee named herein above actually rendered services in this office as shown by the service record below. 
       Each line of which is supported by appointment and other papers actually issued by this Office and approved by the authorities concerned.
-     </caption>
+      </caption>
       </div>
       
     <table class="table table-bordered table-hover border-dark">
@@ -251,7 +251,7 @@
             <th class="text-size text-center " scope="col" colspan="2">SERVICE <br> Inclusive Date</th>
             <th class="text-size text-center" scope="col" colspan="3" style="padding-top: 20px">RECORD OF APPOINTMENT</th>
             <th  class="text-size"scope="col" colspan="3" style="padding-top: 20px">OFFICE/ENTITY/DIVISION</th>
-             <th class="text-size" scope="col" colspan="1" style="padding-top: 20px">SEPARATION</th>
+            <th class="text-size" scope="col" colspan="1" style="padding-top: 20px">SEPARATION</th>
       </tr>
 
       <tr>
@@ -290,7 +290,7 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-       <div class="row">
+      <div class="row">
           <div class="col">
           <label for="">From</label>
           <input type="date" class="form-control" id="from">
@@ -300,7 +300,7 @@
           <label for="">To</label>
           <input type="date" class="form-control" id="to">
           </div>       
-       </div>
+      </div>
 
        <div class="row pt-2">
         <div class="col col-9">

@@ -56,7 +56,7 @@ echo '<script>
               RSP
             </a>
             <div class="dropdown-menu " aria-labelledby="RSP">
-              <a class="dropdown-item" href="views_home.php">EMS</a>
+              <a class="dropdown-item" href="views_home.php">EMR</a>
               <a class="dropdown-item" href="views_serviceRec.php">Service Record</a>
               <a class="dropdown-item" href="views_plantila.php">Plantila</a>
               <a class="dropdown-item" href="views_201Files.php">201 Files</a>
@@ -74,8 +74,6 @@ echo '<script>
               <div class="dropdown-menu" aria-labelledby="PM">
               <a class="dropdown-item fw-bold" href="" id="spms">SPMS</a>
               <div id="spmsHide">
-                <a class="dropdown-item" href="" id="">1st Edition</a>
-                <a class="dropdown-item" href="" id="">Enhanced Edition</a>
               </div>
               <a class="dropdown-item fw-bold" href="" id="pr">Performance Rating</a>
               <div id="prHide">
@@ -89,10 +87,10 @@ echo '<script>
               <a class="dropdown-item fw-bold" href="" id="pr">Monitoring of Submission</a>
               <a class="dropdown-item fw-bold" href="" id="pr">Success Indicator</a>
               <a class="dropdown-item fw-bold" href="pds_view_uploadfile.php">PDS FORM</a>
-              <a class="dropdown-item fw-bold" href="" id="">JO</a>
+              <a class="dropdown-item fw-bold" href="" id="">JO | Contract Of Service</a>
               <div id="joHide">
                 <a class="dropdown-item" href="views_joContractUpload.php" id="">Contract</a>
-                <a class="dropdown-item" href="" id="">Monitoring</a>
+                <a class="dropdown-item" href="views_joMonitoring.php" id="">Monitoring</a>
               </div>
             </div>
             
