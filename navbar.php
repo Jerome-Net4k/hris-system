@@ -72,10 +72,12 @@ echo '<script>
                 PM
               </a>
               <div class="dropdown-menu" aria-labelledby="PM">
-              <a class="dropdown-item fw-bold" href="" id="spms">SPMS</a>
-              <div id="spmsHide">
-              </div>
-              <a class="dropdown-item fw-bold" href="" id="pr">Performance Rating</a>
+              <a class="dropdown-item fw-bold" href="views_spms.php" id="spms">SPMS</a>' . 
+              // <div id="spmsHide">
+              //   <a class="dropdown-item" href="" id="">1st Edition</a>
+              //   <a class="dropdown-item" href="" id="">Enhanced Edition</a>
+              // </div>
+              '<a class="dropdown-item fw-bold" href="#" id="pr">Performance Rating</a>
               <div id="prHide">
                 <a class="dropdown-item" href="" id="">OPCR</a>
                 <a class="dropdown-item" href="" id="">DPCR</a>

@@ -151,7 +151,7 @@ padding: 16px;
    <div class="container-fluid pt-2">
         <div class="row pt-2 rounded bg-white">
             <h1 class="mt-2">Learning and Development In</h1>
-            <h2 class="mt-2">List of Seminars and Employees</h2>
+            <h2 class="mt-2">List of Seminars and Employee</h2>
 
             <!-- ... existing code ... -->
 
@@ -414,10 +414,8 @@ function populateTable(data) {
  <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel2">Modal title</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
+        <h5 class="modal-title" id="exampleModalLabel">Seminar/Training Information</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
         <h4>Details:</h4>
