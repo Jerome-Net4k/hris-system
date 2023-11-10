@@ -151,7 +151,7 @@ padding: 16px;
    <div class="container-fluid pt-2">
         <div class="row pt-2 rounded bg-white">
             <h1 class="mt-2">Learning and Development In</h1>
-            <h2 class="mt-2">List of Seminars and Employee</h2>
+            <h2 class="mt-2">List of Seminars and Employees</h2>
 
             <!-- ... existing code ... -->
 
@@ -190,30 +190,30 @@ padding: 16px;
         </tr>
       </thead>
       <tbody style="overflow-y: auto;">
-      <?php
-        include 'connection.php';
+            <?php
+              include 'connection.php';
 
-        try {
-              $sql = "SELECT * FROM emp_table";
-              $result = $conn->query($sql);
+              try {
+                  $sql = "SELECT * FROM emp_table";
+                  $result = $conn->query($sql);
 
-              if ($result->rowCount() > 0) {
-                  while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
-                    echo '<tr class="clickable-row" data-toggle="modal" data-target="#exampleModal' . $row["bpNo"] . '">';
-                    echo '<td>' . $row["bpNo"] . '</td>';
-                      echo '<td>' . $row["lname"] . '</td>';
-                      echo '<td>' . $row["fname"] . '</td>';
-                      echo '</tr>';
+                  if ($result->rowCount() > 0) {
+                      while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
+                        echo '<tr class="clickable-row" data-title="exampleModal' . $row["bpNo"] . '" data-type="' . $row["lname"] . '" data-from="' . $row["fname"] . '">';
+                        echo '<td>' . $row["bpNo"] . '</td>';
+                          echo '<td>' . $row["lname"] . '</td>';
+                          echo '<td>' . $row["fname"] . '</td>';
+                          echo '</tr>';
+                      }
+                  } else {
+                      echo '<tr><td colspan="4">No records found.</td></tr>';
                   }
-              } else {
-                  echo '<tr><td colspan="4">No records found.</td></tr>';
+              } catch (PDOException $e) {
+                  echo "Error: " . $e->getMessage();
               }
-        } catch (PDOException $e) {
-              echo "Error: " . $e->getMessage();
-        }
 
-        $conn = null;
-      ?>
+              $conn = null;
+            ?>
     <script>
       // Attach an event listener to the search button
 document.getElementById('search').addEventListener('click', function() {
@@ -258,46 +258,44 @@ function populateTable(data) {
     tbody.innerHTML = html;
 }
     </script>
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p class="modal-text">Modal body text goes here.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
+    <!-- jQuery and Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            $('.exampleModal2').on('click', function() {
+                $('#exampleModal').modal('show');
+                $('.modal-title').text($(this).data('title'));
+                $('.modal-text').text('Type: ' + $(this).data('type') + ', From: ' + $(this).data('from') + ', To: ' + $(this).data('to'));
+            });
+        });
+    </script>
       </tbody>
     </table>
   </div>
 
-  <!-- List of Seminars Modal -->
-<!-- Button trigger modal -->
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
- Launch demo modal
-</button>
-
-<!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
- <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">New message</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <form>
-          <div class="form-group">
-            <label for="recipient-name" class="col-form-label">Recipient:</label>
-            <input type="text" class="form-control" id="recipient-name">
-          </div>
-          <div class="form-group">
-            <label for="message-text" class="col-form-label">Message:</label>
-            <textarea class="form-control" id="message-text"></textarea>
-          </div>
-        </form>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Send message</button>
-      </div>
-    </div>
- </div>
-</div>
 
 
   
@@ -339,7 +337,7 @@ function populateTable(data) {
 
       if ($result->rowCount() > 0) {
         while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
-          echo '<tr class="clickable-row" data-title="exampleModal2' . $row["title"] . '" data-type="' . $row["type"] . '" data-from="' . $row["lndFrom"] . '" data-to="' . $row["lndTo"] . '">';
+          echo '<tr class="exampleModal2" data-title="' . $row["title"] . '" data-type="' . $row["type"] . '" data-from="' . $row["lndFrom"] . '" data-to="' . $row["lndTo"] . '">';
           echo '<td>' . $row["title"] . '</td>';
           echo '<td>' . $row["type"] . '</td>';
           echo '<td>' . $row["lndFrom"] . '</td>';
@@ -352,11 +350,36 @@ function populateTable(data) {
     } catch (PDOException $e) {
       echo "Error: " . $e->getMessage();
     }
-
+    
     $conn = null;
     ?>
+
+<!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p class="modal-text">Modal body text goes here.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- jQuery and Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+
     <script>
-      // Attach an event listener to the search button
+// Attach an event listener to the search button
 document.getElementById('search2').addEventListener('click', function() {
     var filter = document.getElementById('fil').value;
     var searchBar2 = document.getElementById('searchBar2').value;
@@ -399,41 +422,15 @@ function populateTable(data) {
 
     tbody.innerHTML = html;
 }
-    </script>
+</script>
+</body>
+</html>
   </tbody>
 </table>
 
 <!-- Employee Details Modal -->
-<!-- Button trigger modal -->
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal2">
- Open Modal
-</button>
 
-<!-- Modal -->
-<div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel2" aria-hidden="true">
- <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Seminar/Training Information</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <h4>Details:</h4>
-        <p>Title: <span id="modal-title"></span></p>
-        <p>Type: <span id="modal-type"></span></p>
-        <p>From: <span id="modal-from"></span></p>
-        <p>To: <span id="modal-to"></span></p>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div>
-    </div>
- </div>
-</div>
-
-
-
+<!-- List of Seminars Modal -->
 
 
                         </div>
