@@ -147,7 +147,7 @@ $('#id, #name').click(function() {
           <thead>
             <tr>
               <th id="id" data-sortby="idnum" style="width:54px;">ID <i class="fi fi-br-angle-up"></i></th>
-              <th id="name" data-sortby="nameintern">NAME <i class="fi fi-br-angle-up"></i></th>
+              <th id="name" data-sortby="nameintern" >NAME <i class="fi fi-br-angle-up"></i></th>
               <th>SCHOOL</th> 
               <th>DEPARTMENT</th>
               <th colspan="2"class="header text-center">Action</th>
@@ -179,10 +179,7 @@ $('#id, #name').click(function() {
             <img id="viewinternpic" src="internpic/<?php echo $row['viewinternpic']; ?>" style="width: 150px; height: 225px;">
             </td>            
           </tr>
-            <tr>
-            <th>NAME:</th>
-            <td id="viewnameintern"></td>
-            </tr>
+
             <tr>
             <th>DATE OF BIRTH:</th>
             <td id="viewdob"></td>
@@ -251,17 +248,24 @@ $('#id, #name').click(function() {
           <tr style="height: 10px;">
           <form enctype="multipart/form-data" method="post" >
             <th>ID NUMBER:</th>
-            <td><input type="text" class="form-control w-25" id="idnum" name="idnum" readonly></td>          
+            <td><input type="text" class="form-control w-25" id="idnum" name="idnum"?></td>          
           </tr>
             <th>PROFILE PICTURE:</th>            
             <td><input type="file" class="form-control" id="internpic" name="internpic" aria-label="file example"></td> 
             <tr>
-            <th>NAME:</th>
-            <td><input type="text" class="form-control" id="nameintern" name="nameintern" required></td>
+            <th>FIRST NAME:</th>
+            <td><input type="text" class="form-control" id="fname" name="fname"></td>
             </tr>
             <tr>
-              <th>NAME EXTENSION:</th>
-              <td><input type="text" class="form-control" id="ext" name="ext"></td>
+            <th>MIDDLE NAME:</th>
+            <td><input type="text" class="form-control" id="mname" name="mname"></td>
+            </tr>
+            <tr>
+            <th>LAST NAME:</th>
+            <td><input type="text" class="form-control" id="lname" name="lname"></td>
+            </tr>
+            <th>NAME EXTENSION:</th>
+            <td><input type="text" class="form-control" id="ext" name="ext"></td>
             </tr>
 
             <tr>
