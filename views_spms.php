@@ -21,7 +21,7 @@ if(isset($_SESSION['insertSuccess'])){
 } else{
   $insertSuccess = 'false';
 }
-
+a
 if(isset($_SESSION['editSuccess'])){
   if($_SESSION['editSuccess'] == 'true'){
     $editSuccess = 'true';
@@ -227,7 +227,7 @@ if(isset($_SESSION['editSuccess'])){
             url:"proc_spmsView.php",
             type: "POST",
             success: function(data){
-             $("#firstEditionView").html(data)
+            $("#firstEditionView").html(data)
             }
           })
 
@@ -238,7 +238,7 @@ if(isset($_SESSION['editSuccess'])){
             url:"proc_spmsView.php",
             type: "POST",
             success: function(data){
-             $("#enhancedEditionView").html(data)
+            $("#enhancedEditionView").html(data)
             }
           })
 
