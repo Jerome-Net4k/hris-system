@@ -16,7 +16,7 @@
         </div>
         <div class="d-flex justify-content-center">
         <table class="table table-bordered">
-               <thead>
+            <thead>
                     <tr class="bg-secondary">
                         <th class="text-center fw-bolder" colspan="4">I. PERSONAL INFORMATION</th>
                     </tr>

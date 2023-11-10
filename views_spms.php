@@ -1,4 +1,6 @@
 <?php
+
+//JEWERLYN Motivational Code
 session_start();
 include 'connection.php';
 
@@ -21,7 +23,7 @@ if(isset($_SESSION['insertSuccess'])){
 } else{
   $insertSuccess = 'false';
 }
-a
+
 if(isset($_SESSION['editSuccess'])){
   if($_SESSION['editSuccess'] == 'true'){
     $editSuccess = 'true';
