@@ -214,69 +214,8 @@ padding: 16px;
 
               $conn = null;
             ?>
-    <script>
-      // Attach an event listener to the search button
-document.getElementById('search').addEventListener('click', function() {
-    var filter = document.getElementById('fil').value;
-    var searchBar = document.getElementById('searchBar').value;
 
-    // If filter or searchBar are empty, return without performing any action
-    if (filter === '' || searchBar === '') {
-        return;
-    }
-
-    // Prepare AJAX request
-    var xhr = new XMLHttpRequest();
-    xhr.open('POST', 'search.php', true);
-    xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-
-    // Handle response
-    xhr.onload = function() {
-        if (this.status === 200) {
-            var data = JSON.parse(this.responseText);
-            populateTable(data);
-        }
-    };
-
-    // Send AJAX request
-    xhr.send('filter=' + filter + '&searchBar=' + searchBar);
-});
-
-function populateTable(data) {
-    var table = document.getElementById('mainTable');
-    var tbody = table.getElementsByTagName('tbody')[0];
-    var html = '';
-
-    for (var i = 0; i < data.length; i++) {
-        html += '<tr class="exampleModal" data-fname="' + data[i].fname + '" data-lname="' + data[i].lname + '" data-bpNo="' + data[i].bpNo + '">';
-        html += '<td>' + data[i].fname + '</td>';
-        html += '<td>' + data[i].lname + '</td>';
-        html += '<td>' + data[i].bpNo + '</td>';
-        html += '</tr>';
-    }
-
-    tbody.innerHTML = html;
-}
-    </script>
     <!-- Modal -->
-    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <p class="modal-text">Modal body text goes here.</p>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                </div>
-            </div>
-        </div>
-    </div>
 
     <!-- jQuery and Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
@@ -286,9 +225,15 @@ function populateTable(data) {
     <script>
         $(document).ready(function() {
             $('.exampleModal2').on('click', function() {
+                var row = $(this).closest('tr');
+                var id = row.find('td:eq(0)').text();
+                var type = row.find('td:eq(1)').text();
+                var from = row.find('td:eq(2)').text();
+                var to = row.find('td:eq(3)').text();
+
                 $('#exampleModal').modal('show');
                 $('.modal-title').text($(this).data('title'));
-                $('.modal-text').text('Type: ' + $(this).data('type') + ', From: ' + $(this).data('from') + ', To: ' + $(this).data('to'));
+                $('.modal-text').html('<table class="table table-striped table-bordered"><tbody><tr><th>ID</th><td>' + id + '</td></tr><tr><th>Type</th><td>' + type + '</td></tr><tr><th>From</th><td>' + from + '</td></tr><tr><th>To</th><td>' + to + '</td></tr></tbody></table>');
             });
         });
     </script>
@@ -355,30 +300,140 @@ function populateTable(data) {
     ?>
 
 <!-- Modal -->
-    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <p class="modal-text">Modal body text goes here.</p>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>                </div>
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Employee Details</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <table class="table table-striped table-bordered">
+                    <tbody>
+                        <tr>
+                            <th>ID</th>
+                            <td id="employeeId"></td>
+                        </tr>
+                        <tr>
+                            <th>Last Name</th>
+                            <td id="employeeLastName"></td>
+                        </tr>
+                        <tr>
+                            <th>First Name</th>
+                            <td id="employeeFirstName"></td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
         </div>
     </div>
+</div>
 
-    <!-- jQuery and Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+<table class="table table-striped table-bordered">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Last Name</th>
+            <th>First Name</th>
+        </tr>
+    </thead>
+    <tbody>
+        <?php
+        include 'connection.php';
 
-    <script>
+        try {
+            $sql = "SELECT * FROM emp_table";
+            $result = $conn->query($sql);
+
+            if ($result->rowCount() > 0) {
+                while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
+                    echo '<tr class="clickable-row" data-toggle="modal" data-target="#exampleModal" data-id="' . $row["bpNo"] . '" data-lname="' . $row["lname"] . '" data-fname="' . $row["fname"] . '">';
+                    echo '<td>' . $row["bpNo"] . '</td>';
+                    echo '<td>' . $row["lname"] . '</td>';
+                    echo '<td>' . $row["fname"] . '</td>';
+                    echo '</tr>';
+                }
+            } else {
+                echo '<tr><td colspan="3">No records found.</td></tr>';
+            }
+        } catch (PDOException $e) {
+            echo "Error: " . $e->getMessage();
+        }
+
+        $conn = null;
+        ?>
+    </tbody>
+</table>
+
+<!-- jQuery and Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+
+<script>
+    $(document).ready(function () {
+        $('.clickable-row').on('click', function () {
+            var id = $(this).data('id');
+            var lname = $(this).data('lname');
+            var fname = $(this).data('fname');
+
+            $('#employeeId').text(id);
+            $('#employeeLastName').text(lname);
+            $('#employeeFirstName').text(fname);
+        });
+    });
+</script>
+
+
+<script>
+      // Attach an event listener to the search button
+document.getElementById('search').addEventListener('click', function() {
+    var filter = document.getElementById('fil').value;
+    var searchBar = document.getElementById('searchBar').value;
+
+    // If filter or searchBar are empty, return without performing any action
+    if (filter === '' || searchBar === '') {
+        return;
+    }
+
+    // Prepare AJAX request
+    var xhr = new XMLHttpRequest();
+    xhr.open('POST', 'search.php', true);
+    xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+
+    // Handle response
+    xhr.onload = function() {
+        if (this.status === 200) {
+            var data = JSON.parse(this.responseText);
+            populateTable(data);
+        }
+    };
+
+    // Send AJAX request
+    xhr.send('filter=' + filter + '&searchBar=' + searchBar);
+});
+
+function populateTable(data) {
+    var table = document.getElementById('mainTable');
+    var tbody = table.getElementsByTagName('tbody')[0];
+    var html = '';
+
+    for (var i = 0; i < data.length; i++) {
+        html += '<tr class="exampleModal" data-fname="' + data[i].fname + '" data-lname="' + data[i].lname + '" data-bpNo="' + data[i].bpNo + '">';
+        html += '<td>' + data[i].fname + '</td>';
+        html += '<td>' + data[i].lname + '</td>';
+        html += '<td>' + data[i].bpNo + '</td>';
+        html += '</tr>';
+    }
+
+    tbody.innerHTML = html;
+}
+    </script>
+
+    
+<script>
 // Attach an event listener to the search button
 document.getElementById('search2').addEventListener('click', function() {
     var filter = document.getElementById('fil').value;
@@ -423,11 +478,6 @@ function populateTable(data) {
     tbody.innerHTML = html;
 }
 </script>
-</body>
-</html>
-  </tbody>
-</table>
-
 <!-- Employee Details Modal -->
 
 <!-- List of Seminars Modal -->
