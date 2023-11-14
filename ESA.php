@@ -145,12 +145,130 @@ text-align: center; /* Center align text within the header cell */
 padding: 16px;
 }
 
+.padded-header, .padded-data {
+  padding-left: 200px; /* Adjust this value as needed */
+}
+
+.from-to-header, .from-to-data {
+  padding-left: 150px; /* Adjust this value as needed */
+}
+
+#searchEmployee, #searchSeminar {
+  width: 100%;
+  box-sizing: border-box;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+  background-color: white;
+  padding: 12px 20px 12px 50px; /* Increased left padding */
+}
+
+#searchEmployee::placeholder, #searchSeminar::placeholder {
+  font-size: 16px;
+  padding-left: 30px; /* Increased left padding */
+  background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>') no-repeat;
+  background-size: 20px 20px;
+  background-position: 10px center; /* Adjusted position */
+}
 
 </style>
 </head>
 
 <body>
 <?php include 'navbar.php'; ?>
+
+<script>
+$(document).ready(function(){
+  $("#seminarTable tr").click(function() {
+    var seminarId = $(this).find("td:first").text(); // Assuming the seminarId is in the first cell of the row
+
+    $.ajax({
+      url: 'fetch_seminar_details.php',
+      type: 'post',
+      data: {seminarId: seminarId},
+      dataType: 'json',
+      success: function(response) {
+        $("#seminarType").text(response.seminarType);
+        $("#seminarName").text(response.seminarName);
+        $("#seminarFrom").text(response.seminarFrom);
+        $("#seminarTo").text(response.seminarTo);
+      }
+    });
+
+    $.ajax({
+      url: 'fetch_employees.php',
+      type: 'post',
+      data: {seminarId: seminarId},
+      success: function(response) {
+        $("#employeeTableBodyModal").html(response);
+      }
+    });
+
+    // Show the modal
+    $('#seminarModal').modal('show');
+  });
+
+  // Employee table
+  $('#employeeTable tbody tr').click(function(){
+    var id = $(this).children('td').eq(0).text();
+    var fname = $(this).children('td').eq(1).text();
+    var lname = $(this).children('td').eq(2).text();
+
+    $('#employeeBpno').text('BP NO: ' + id);
+    $('#employeeFname').text('First Name: ' + fname);
+    $('#employeeLname').text('Last Name: ' + lname);
+    $('#employeeModal').modal('show');
+  });
+});
+
+
+$(document).ready(function(){
+  $("#employeeTable tr").click(function() {
+    var bpNo = $(this).find("td:first").text(); // Assuming the bpNo is in the first cell of the row
+
+    $.ajax({
+      url: 'fetch_seminars.php',
+      type: 'post',
+      data: {bpNo: bpNo},
+      success: function(response) {
+        $("#seminarTableBodyModal").html(response);
+      }
+    });
+  });
+});
+
+$(document).ready(function(){
+  // When the close button or the close icon is clicked...
+  $('.modal .close, .modal .btn-secondary').click(function(){
+    // Hide the modal
+    $('.modal').modal('hide');
+    // Manually remove the modal backdrop
+    $('.modal-backdrop').remove();
+    // Manually remove the 'modal-open' class from the body
+    $('body').removeClass('modal-open');
+  });
+});
+
+$(document).ready(function(){
+  $("#searchEmployee").on("keyup", function() {
+    var value = $(this).val().toLowerCase();
+    $("#employeeTable tr").filter(function() {
+      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+    });
+  });
+});
+
+$(document).ready(function(){
+  $("#searchSeminar").on("keyup", function() {
+    var value = $(this).val().toLowerCase();
+    $("#seminarTable tr").filter(function() {
+      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+    });
+  });
+});
+
+
+</script>
 
 <?php 
 include 'connection.php';
@@ -176,28 +294,32 @@ $lnd_result = $conn->query("SELECT * FROM lnd_table");
         </div> 
     </div>
 
+
+    <!-- Employee Table -->
+    
     <div class="table-container" style="justify-content: center;"> <!-- Adjust the space between tables -->
-        <!-- Employee Table -->
         <div class="table-wrapper" style="margin-right: 10px;"> <!-- Added margin-right -->
             <div class="scrollable-table">
-              <table>
+            <input type="text" id="searchEmployee" placeholder="Search Employee">
+
+            <table id="employeeTable"> <!-- Added ID here -->
                 <thead>
                   <tr class="sticky-header">
-                    <th colspan="3" class="table-header" style="font-size: 20px">List Of Seminar</th>
+                    <th colspan="3" class="table-header" style="font-size: 20px">List Of Employee</th>
                   </tr>
                   <tr class="sticky-header">
-                    <th>Employee ID</th>
-                    <th>Employee Name</th>
-                    <th>Department</th>
+                    <th>Employee BP NO</th>
+                    <th>First Name</th>
+                    <th>Last Name</th>
                   </tr>
                 </thead>
               </table>
               <div class="scrollable-tbody">
-                <table>
+              <table id="employeeTable"> <!-- Added ID here -->
                   <tbody>
                     <?php while($row = $emp_result->fetch(PDO::FETCH_ASSOC)) { ?>                
-                      <tr>
-                        <td><?php echo $row['id']; ?></td>
+                      <tr data-toggle="modal" data-target="#employeeModal">
+                        <td><?php echo $row['bpNo']; ?></td>
                         <td><?php echo $row['fname']; ?></td>
                         <td><?php echo $row['lname']; ?></td>
                       </tr>
@@ -207,29 +329,67 @@ $lnd_result = $conn->query("SELECT * FROM lnd_table");
               </div>
             </div>
           </div>
+              <!-- Employee Modal -->
+          <div class="modal fade" id="employeeModal" tabindex="-1" role="dialog" aria-labelledby="employeeModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="employeeModalLabel">Employee Details</h5>
+                </div>
+                <div class="modal-body">
+                <p id="employeeBpno"></p> <!-- Placeholder for employee ID -->
+                <p id="employeeFname"></p> <!-- Placeholder for employee first name -->
+                <p id="employeeLname"></p> <!-- Placeholder for employee last name -->               
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                  <table id="seminarTableModal">
+                  <thead>
+                    <tr>
+                      <th>Seminar Type</th>
+                      <th>Seminar Name</th>
+                      <th>Date From</th>
+                      <th>Date To</th>
+                      <!-- Other headers -->
+                    </tr>
+                  </thead>
+                  <tbody id="seminarTableBodyModal">
+                    <!-- Seminar data will be inserted here -->
+                  </tbody>
+                </table>
+                 </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          </button>
 
+           <!-- Seminar Table -->
           <div class="table-wrapper" style="margin-right: 10px;"> <!-- Added margin-right -->
+          <input type="text" id="searchSeminar" placeholder="Search Seminar">
             <div class="scrollable-table">
-            <table>
+            <table id="seminarTable"> <!-- Added ID here -->
               <thead>
                 <tr class="sticky-header">
-                  <th colspan="3" class="table-header" style="font-size: 20px">List Of Seminar</th>
+                  <th colspan="4" class="table-header" style="font-size: 20px">List Of Seminar</th>
                 </tr>
                 <tr class="sticky-header">
-                  <th>Learning ID</th>
-                  <th>Learning Name</th>
-                  <th>Category</th>
+                  <th>Title</th>
+                  <th class="padded-header">Type</th>
+                  <th class="padded-header from-to-header">To</th>
+                  <th class="padded-header from-to-header">From</th>
                 </tr>
               </thead>
             </table>
             <div class="scrollable-tbody">
-              <table>
+            <table id="seminarTable"> <!-- Added ID here -->
                 <tbody>
                   <?php while($row = $lnd_result->fetch(PDO::FETCH_ASSOC)) { ?>                
-                    <tr>
+                    <tr data-toggle="modal" data-target="#seminarModal">
                       <td><?php echo $row['title']; ?></td>
-                      <td><?php echo $row['type']; ?></td>
-                      <td><?php echo $row['lndFrom']; ?></td>
+                      <td class="padded-data"><?php echo $row['type']; ?></td>
+                      <td class="padded-data from-to-data"><?php echo $row['lndFrom']; ?></td>
+                      <td class="padded-data from-to-data"><?php echo $row['lndTo']; ?></td>
                     </tr>
                   <?php } ?>
                 </tbody>
@@ -238,6 +398,39 @@ $lnd_result = $conn->query("SELECT * FROM lnd_table");
           </div>
         </div>
     </div>
-</div>
+  <!-- Seminar Modal -->
+          <div class="modal fade" id="seminarModal" tabindex="-1" role="dialog" aria-labelledby="seminarModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="seminarModalLabel">Seminar Details</h5>
+                </div>
+                <div class="modal-body">
+                  <p id="seminarType"></p> <!-- Placeholder for seminar type -->
+                  <p id="seminarName"></p> <!-- Placeholder for seminar name -->
+                  <p id="seminarFrom"></p> <!-- Placeholder for seminar start date -->
+                  <p id="seminarTo"></p> <!-- Placeholder for seminar end date -->
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <table id="employeeTableModal">
+                      <thead>
+                        <tr>
+                          <th>Employee ID</th>
+                          <th>First Name</th>
+                          <th>Last Name</th>
+                          <!-- Other headers -->
+                        </tr>
+                      </thead>
+                      <tbody id="employeeTableBodyModal">
+                        <!-- Employee data will be inserted here -->
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          </button>
 </body>
 </html>
