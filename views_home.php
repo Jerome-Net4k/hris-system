@@ -3,9 +3,7 @@
   if(!isset($_SESSION['user'])){
     header("Location:views_login.php");
   }
-
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -258,7 +256,7 @@
         <div class="table-responsive" style="height: 750px; overflow-x: scroll;">
             <table class="table bg-white rounded table-hover" id="mainTable">
               <thead style="top: 0; position: sticky; background: whitesmoke; height: auto;">
-               <tr>
+                <tr>
                 <th>
                   <div class="d-flex justify-content-center bpsort">BPNO
                     <div class="sort" data-value="bpNo">
