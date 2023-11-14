@@ -12,7 +12,7 @@
 <body>
     <div class="container-fluid">
         <div class="d-flex justify-content-center pt-2 pb-2">
-            <h1>PERSONAL DATA sdksdksdl</h1>
+            
         </div>
         <div class="d-flex justify-content-center">
         <table class="table table-bordered">
