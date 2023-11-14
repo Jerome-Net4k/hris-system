@@ -304,14 +304,16 @@
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-lg modal-dialog-scrollable">
     <div class="modal-content">
+
       <div class="modal-header">
         <h5 class="modal-title" id="exampleModalLabel">View PDS</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>TEST
       </div>
       <div class="modal-body">
       <table class="table table-borderless">
       <tbody>
             <tr>
+
                 <th>Surname: </th>
                 <td id='viewsname'></td>
                 <td id="profile" rowspan="6" colspan="2" class="text-center" style="width: 200px; border: 2px solid;">
@@ -511,7 +513,7 @@
   <div class="modal-dialog modal-lg modal-dialog-scrollable">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Update the Personal Data Sheet (PDS).</h5>
+        <h5 class="modal-title" id="exampleModalLabel">Update the Employee Master Record (EMR).</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       
