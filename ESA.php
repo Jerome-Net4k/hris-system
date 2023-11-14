@@ -33,7 +33,7 @@
 }
 
 .column {
-    width: 100%;
+    width: 50%;
     padding: 5px;
     text-align: left;
     overflow-x: hidden;
@@ -50,14 +50,13 @@
 
 .scrollable-table {
   width: 100%;
-  height: auto;
-  overflow: hidden;
 }
+
 .scrollable-tbody {
-  overflow: scroll;
-  height: 610px; /* Adjust this value to fit your needs */     /*you cant adjust the height if you only using zoom */
-  overflow-x:hidden;
+  overflow-y: auto;
+  max-height: 610px; /* Adjust this value to fit your needs */
 }
+
 table {
   width: 100%;
   border-collapse: collapse;
@@ -102,7 +101,9 @@ td {
     text-align: left;
 }
 
-
+tbody {
+    height: 700px;
+}
 
 .sticky-header th {
   position: sticky;
@@ -163,123 +164,80 @@ $lnd_query = "SELECT * FROM lnd_table";
 $lnd_result = $conn->query("SELECT * FROM lnd_table");
 ?>
 
-<div class="loader">
-  
+<div class="container-fluid" style="background-color: #f8f9fa;"> <!-- Add your desired background color here -->
+    <div class="loader">
         <img src="images/loading2.gif" width="20%" height="40%">
     </div>
         
-   <div class="container-fluid pt-2">
+    <div class="container-fluid pt-2">
         <h1 class="mt-2">Learning and Development In</h1>
         <h2 class="mt-2">List of Seminars and Employees</h2>
-    <div class="row">
-    </div> 
-</div>
-
-
-
-  
-  
-
-
-
-      <label><h3>Search</h3></label><input type="text" name="search" id="search" placeholder="Search By Name" class="formcontrol">
-
-
-
-
-
-
-
-    <script src="jquery/jquery.min.js"></script>
-    <script src="jquery/bootstrap.bundle.min.js"></script>
-    <script type="text/javascript">
-        $(document).ready(function () {
-            // Function to filter the table based on the selected value or search input
-              $('#search').keyup(function(){
-                search_table($(this).val());
-              });
-              function search_table(value){
-                  $('#myTable tr').each(function(){
-                    var found ="false";
-                    $(this).each(function(){
-                        if($(this).text().toLowerCase().indexOf(value.toLowerCase())>=0)
-                        {
-                          found='true';
-                        }
-                    });
-                    if(found=='true'){
-                        $(this).show()
-                    }
-                    else{
-                      $(this).hide();
-                    }
-                  })
-              }
-          });
-      </script>
-
-<div class="table-container">
-    <!-- Employee Table -->
-    <div class="table-wrapper">
-        <div class="
-        able-table">
-          <table>
-            <thead>
-              <tr class="sticky-header">
-                <th colspan="3" class="table-header" style="font-size: 20px">List Of Employees</th>
-              </tr>
-              <tr class="sticky-header">
-                <th>BPNO</th>
-                <th>Employee Name</th>
-                <th>Department</th>
-              </tr>
-            </thead>
-          </table>
-          <div class="scrollable-tbody">
-            <table>
-              <tbody>
-                <?php while($row = $emp_result->fetch(PDO::FETCH_ASSOC)) { ?>                
-                  <tr>
-                    <td><?php echo $row['id']; ?></td>
-                    <td><?php echo $row['fname']; ?></td>
-                    <td><?php echo $row['lname']; ?></td>
-                  </tr>
-                <?php } ?>
-              </tbody>
-            </table>
-          </div>
-        </div>
-      </div>
-
-    <div class="table-wrapper">
-        <div class="scrollable-table">
-        <table>
-          <thead>
-            <tr class="sticky-header">
-              <th colspan="3" class="table-header" style="font-size: 20px">List Of Seminar</th>
-            </tr>
-            <tr class="sticky-header">
-              <th>Learning ID</th>
-              <th>Learning Name</th>
-              <th>Category</th>
-            </tr>
-          </thead>
-        </table>
-        <div class="scrollable-tbody">
-          <table>
-            <tbody>
-              <?php while($row = $lnd_result->fetch(PDO::FETCH_ASSOC)) { ?>                
-                <tr>
-                  <td><?php echo $row['title']; ?></td>
-                  <td><?php echo $row['type']; ?></td>
-                  <td><?php echo $row['lndFrom']; ?></td>
-                </tr>
-              <?php } ?>
-            </tbody>
-          </table>
-        </div>
-      </div>
+        <div class="row">
+        </div> 
     </div>
 
+    <div class="table-container" style="justify-content: center;"> <!-- Adjust the space between tables -->
+        <!-- Employee Table -->
+        <div class="table-wrapper" style="margin-right: 10px;"> <!-- Added margin-right -->
+            <div class="scrollable-table">
+              <table>
+                <thead>
+                  <tr class="sticky-header">
+                    <th colspan="3" class="table-header" style="font-size: 20px">List Of Seminar</th>
+                  </tr>
+                  <tr class="sticky-header">
+                    <th>Employee ID</th>
+                    <th>Employee Name</th>
+                    <th>Department</th>
+                  </tr>
+                </thead>
+              </table>
+              <div class="scrollable-tbody">
+                <table>
+                  <tbody>
+                    <?php while($row = $emp_result->fetch(PDO::FETCH_ASSOC)) { ?>                
+                      <tr>
+                        <td><?php echo $row['id']; ?></td>
+                        <td><?php echo $row['fname']; ?></td>
+                        <td><?php echo $row['lname']; ?></td>
+                      </tr>
+                    <?php } ?>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
+          <div class="table-wrapper" style="margin-right: 10px;"> <!-- Added margin-right -->
+            <div class="scrollable-table">
+            <table>
+              <thead>
+                <tr class="sticky-header">
+                  <th colspan="3" class="table-header" style="font-size: 20px">List Of Seminar</th>
+                </tr>
+                <tr class="sticky-header">
+                  <th>Learning ID</th>
+                  <th>Learning Name</th>
+                  <th>Category</th>
+                </tr>
+              </thead>
+            </table>
+            <div class="scrollable-tbody">
+              <table>
+                <tbody>
+                  <?php while($row = $lnd_result->fetch(PDO::FETCH_ASSOC)) { ?>                
+                    <tr>
+                      <td><?php echo $row['title']; ?></td>
+                      <td><?php echo $row['type']; ?></td>
+                      <td><?php echo $row['lndFrom']; ?></td>
+                    </tr>
+                  <?php } ?>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+    </div>
+</div>
 </body>
 </html>
