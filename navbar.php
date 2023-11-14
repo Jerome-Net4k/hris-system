@@ -65,7 +65,7 @@ echo '<script>
               <a class="dropdown-item" href="coe_view_uploadfile.php">COE</a>
               <a class="dropdown-item" href="saln_view_uploadfile.php">SALN</a>
               <a class="dropdown-item" href="#">PDF</a>
-              <a class="dropdown-item" href="#">Personel Compliment</a>
+              <a class="dropdown-item" href="#">Personnel Compliment</a>
             </div>
           </li>
           <li class="nav-item dropdown">
