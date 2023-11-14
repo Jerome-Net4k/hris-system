@@ -5,6 +5,8 @@
     <title>Seminars</title>
     <link rel="stylesheet" type="text/css" href="stylehome.css">
     <link rel="stylesheet" type="text/css" href="educbg.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css" rel="stylesheet" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
 
 </head>
 <body>
@@ -268,7 +270,7 @@ mysqli_close($conn);
                       data-fname="<?php echo $employee['fname']; ?>"
                       data-lname="<?php echo $employee['lname']; ?>"
                       data-division="<?php echo $employee['division']; ?>">
-                <?php echo $employee['fname']; ?>
+                      <?php echo $employee['fname'] . ' ' . $employee['lname']; ?>
               </option>
             <?php endforeach; ?>
           </select>
@@ -294,22 +296,12 @@ mysqli_close($conn);
   <!-- JavaScript -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
   <script>
-    document.getElementById("selectname").onchange = function() {
-      var e = document.getElementById("selectname");
-      var selectedOption = e.options[e.selectedIndex];
-      
-      document.querySelector("input[name='bpNo']").value = selectedOption.valuegetAttribute("data-bpNo");
-      document.querySelector("input[name='firstName']").value = selectedOption.getAttribute("data-fname");
-      document.querySelector("input[name='lastName']").value = selectedOption.getAttribute("data-lname");
-      document.querySelector("input[name='division']").value = selectedOption.getAttribute("data-division");
-    };
-
-    $('body').on('change', '#selectname', function() {
-      var selectedOption = $('#selectname option:selected');
-      $('input[name="bpNo"]').val(selectedOption.val('bpNo'));
-      $('input[name="firstName"]').val(selectedOption.data('fname'));
-      $('input[name="lastName"]').val(selectedOption.data('lname'));
-      $('input[name="division"]').val(selectedOption.data('division'));
+    $('body').on('change', '.selectname', function() {
+      var selectedOption = $(this).find('option:selected');
+      $(this).closest('tr').find('input[name="bpNo"]').val(selectedOption.val());
+      $(this).closest('tr').find('input[name="firstName"]').val(selectedOption.data('fname'));
+      $(this).closest('tr').find('input[name="lastName"]').val(selectedOption.data('lname'));
+      $(this).closest('tr').find('input[name="division"]').val(selectedOption.data('division'));
     });
 
     // JavaScript to add a new participant input field
@@ -317,7 +309,7 @@ mysqli_close($conn);
       $('.participants').append(`
       <tr>
         <td>
-          <select name="employee" class="form-control" id="selectname">
+          <select name="employee" class="form-control selectname">
             <option value="">Select Employee</option>
             <?php foreach ($employees as $employee): ?>
               <option value="<?php echo $employee['bpNo']; ?>" 

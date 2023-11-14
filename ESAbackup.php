@@ -171,6 +171,10 @@ padding: 16px;
   background-position: 10px center; /* Adjusted position */
 }
 
+.custom-width {
+  max-width: 90%; /* or any other percentage or pixel value you want */
+}
+
 </style>
 </head>
 
@@ -179,19 +183,23 @@ padding: 16px;
 
 <script>
 $(document).ready(function(){
-  // Seminar table
-  $('#seminarTable tbody tr').click(function(){
-    var id = $(this).children('td').eq(0).text();
-    var title = $(this).children('td').eq(1).text();
-    var date = $(this).children('td').eq(2).text();
+  $("#seminarTable tr").click(function() {
+    var seminarId = $(this).find("td:first").text(); // Assuming the seminarId is in the first cell of the row
 
-    $('#seminarID').text('ID: ' + id);
-    $('#seminarTitle').text('Title: ' + title);
-    $('#seminarDate').text('Date: ' + date);
-    $('#seminarModal').modal('show');
-  });
+    $.ajax({
+      url: 'fetch_seminar_details.php',
+      type: 'post',
+      data: {seminarId: seminarId},
+      dataType: 'json',
+      success: function(response) {
+        $("#seminarType").text(response.seminarType);
+        $("#seminarName").text(response.seminarName);
+        $("#seminarFrom").text(response.seminarFrom);
+        $("#seminarTo").text(response.seminarTo);
+      }
+    });
 
-  $.ajax({
+    $.ajax({
       url: 'fetch_employees.php',
       type: 'post',
       data: {seminarId: seminarId},
@@ -199,8 +207,10 @@ $(document).ready(function(){
         $("#employeeTableBodyModal").html(response);
       }
     });
-  });
 
+    // Show the modal
+    $('#seminarModal').modal('show');
+  });
 
   // Employee table
   $('#employeeTable tbody tr').click(function(){
@@ -213,6 +223,7 @@ $(document).ready(function(){
     $('#employeeLname').text('Last Name: ' + lname);
     $('#employeeModal').modal('show');
   });
+});
 
 
 $(document).ready(function(){
@@ -324,8 +335,8 @@ $lnd_result = $conn->query("SELECT * FROM lnd_table");
           </div>
               <!-- Employee Modal -->
           <div class="modal fade" id="employeeModal" tabindex="-1" role="dialog" aria-labelledby="employeeModalLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-              <div class="modal-content">
+          <div class="modal-dialog custom-width">
+          <div class="modal-content">
                 <div class="modal-header">
                   <h5 class="modal-title" id="employeeModalLabel">Employee Details</h5>
                 </div>
