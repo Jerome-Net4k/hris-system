@@ -549,14 +549,18 @@
 <!-- Tab panes -->
 <div class="tab-content">
   <div class="tab-pane fade show active" id="form1" role="tabpanel" aria-labelledby="form1-tab">
+    
     <form>
-    <div class="modal-body">
+    <div class="modal-body" >
+    
       <form id="updatepds" method="POST" enctype="multipart/form-data">
+      <div style="height: 500px; overflow: auto;">
       <table class="table table-borderless">
-      <tbody>
+        test
+      
         <!-- <input type="text" class="form-control" id='idselect'> -->
             <tr>
-                <th>Surname: </th>
+                <th>Surname:sss </th>
                 <td><input type="text" class="form-control" id='viewsname2' name='viewsname2'></td>
                 <th>First Name:</th>
                 <td><input type="text" class="form-control" id='viewfname2' name='viewfname2'></td>
@@ -680,6 +684,7 @@
             </tr>
         </tbody>
        </table>
+      
        
         <div>
           <div class="mt-2 mb-2">
@@ -691,6 +696,7 @@
 
           <b style="color: #0d6efd;">* Please refrain from modifying the GSIS ID. <i style="color: red; cursor: pointer; margin: 0; padding: 0;" id="prof2">Click here to update</i></b>
         </div>
+      </div>
       </div>
     </form>
   </div>
