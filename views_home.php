@@ -702,8 +702,57 @@
   </div>
   <div class="tab-pane fade" id="form2" role="tabpanel" aria-labelledby="form2-tab">
     <form>
-      <!-- Form 2 fields here -->
-      <h1>FAMILY BACKGROUND</h1>
+      <!-- Form 2 fields here // FOR FAMILYBACKGROUND FORM -->
+<?php
+// Check if form is submitted
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+  // Get form data
+  $fatherName = $_POST['fatherName'];
+  $fatherOccupation = $_POST['fatherOccupation'];
+  $motherName = $_POST['motherName'];
+  $motherOccupation = $_POST['motherOccupation'];
+  $spouseName = $_POST['spouseName'];
+  $spouseOccupation = $_POST['spouseOccupation'];
+
+  // TODO: Update family background data in database
+
+  // Redirect to success page
+  header('Location: familybg_success.php');
+  exit;
+}
+
+// TODO: Get family background data from database
+
+// TODO: Populate form fields with family background data
+?>
+
+<form method="POST">
+  <div>
+    <label for="fatherName">Father's Name:</label>
+    <input type="text" id="fatherName" name="fatherName" value="<?php echo $fatherName; ?>">
+  </div>
+  <div>
+    <label for="fatherOccupation">Father's Occupation:</label>
+    <input type="text" id="fatherOccupation" name="fatherOccupation" value="<?php echo $fatherOccupation; ?>">
+  </div>
+  <div>
+    <label for="motherName">Mother's Name:</label>
+    <input type="text" id="motherName" name="motherName" value="<?php echo $motherName; ?>">
+  </div>
+  <div>
+    <label for="motherOccupation">Mother's Occupation:</label>
+    <input type="text" id="motherOccupation" name="motherOccupation" value="<?php echo $motherOccupation; ?>">
+  </div>
+  <div>
+    <label for="spouseName">Spouse's Name:</label>
+    <input type="text" id="spouseName" name="spouseName" value="<?php echo $spouseName; ?>">
+  </div>
+  <div>
+    <label for="spouseOccupation">Spouse's Occupation:</label>
+    <input type="text" id="spouseOccupation" name="spouseOccupation" value="<?php echo $spouseOccupation; ?>">
+  </div>
+  <button type="submit">Update</button>
+</form>
     </form>
   </div>
   <div class="tab-pane fade" id="form3" role="tabpanel" aria-labelledby="form3-tab">
