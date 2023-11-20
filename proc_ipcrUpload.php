@@ -51,7 +51,7 @@ function loadPersonalInfo($personalInfo){
             $ipcrQuery->execute(array($row['empno']));
             $ipcrQueryResult = $ipcrQuery->fetchAll(PDO::FETCH_ASSOC);
             foreach ($ipcrQueryResult as $ipcrCheck){
-                                                      
+                                                    
                 if($ipcrCheck['firsthalf'] == 1){
                     $ipcr1Exist = '';
                     $eye1 = '';
@@ -1040,16 +1040,12 @@ function searchPersonalInfo($personalInfo){
                 
                         }, true],
                         [\'<button>NO</button>\', function (instance, toast) {
-                
+                            
                             instance.hide({ transitionOut: \'fadeOut\' }, toast, \'button\');
-                
                         }],
                     ]
                 });
-
             });' .
-
-        
             '</script>
             <script src="https://cdnjs.cloudflare.com/ajax/libs/izitoast/1.4.0/js/iziToast.min.js" integrity="sha512-Zq9o+E00xhhR/7vJ49mxFNJ0KQw1E1TMWkPTxrWcnpfEFDEXgUiwJHIKit93EW/XxE31HSI5GEOW06G6BF1AtA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>';
         }   
@@ -1057,7 +1053,5 @@ function searchPersonalInfo($personalInfo){
     else{
         echo '<tr><td colspan="10" class="text-center"><h1>No Data Found</h1></td></tr>';
     }
-
 }
-
 ?>
