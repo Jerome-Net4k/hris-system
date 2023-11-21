@@ -49,12 +49,12 @@
 
         looptryear();
 
-        function looptryear(){
+        funtion looptryear(){
             var selectedOption = $("#pdsyear").find(":selected");
             var yearload = new Date(selectedOption.val()).getFullYear();
             var endload = yearload - 15;
             var sortval = "lname";
-            var sortwhat = "ASC";
+            var sortwhat = "ASC";c
             $.ajax({
                 url:"pds_year.php",
                 method:"POST",

@@ -575,7 +575,7 @@ function searchPersonalInfo($personalInfo){
             $ipcrQuery->execute(array($row['empno']));
             $ipcrQueryResult = $ipcrQuery->fetchAll(PDO::FETCH_ASSOC);
             foreach ($ipcrQueryResult as $ipcrCheck){
-                                                      
+                
                 if($ipcrCheck['firsthalf'] == 1){
                     $ipcr1Exist = '';
                     $eye1 = '';
@@ -1009,9 +1009,8 @@ function searchPersonalInfo($personalInfo){
                     position: \'center\',
                     buttons: [
                         [\'<button><b>YES</b></button>\', function (instance, toast) {
-                
-                            instance.hide({ transitionOut: \'fadeOut\' }, toast, \'button\');                                    
-
+                            
+                            instance.hide({ transitionOut: \'fadeOut\' }, toast, \'button\');
                             $.ajax({
                                 data: {
                                     delIpcr: true,
