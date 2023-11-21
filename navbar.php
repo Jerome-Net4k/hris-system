@@ -101,7 +101,7 @@ echo '<script>
 
             </li>
             <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle h5 text-white" href="#" id="Others" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <a class="nav-link dropdown-toggwqee h5 text-white" href="#" id="Others" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               R&R
             </a>
             <div class="dropdown-menu" aria-labelledby="R&R">

@@ -51,6 +51,7 @@ function nosiloaddata($result, $startyear, $endyear) {
             echo '<tr>
                 <td class="text-center" style="padding: 10px 0 10px 10px; margin: 0;">' . $row['bpNo'] . '</td>
                 <td>' . $row['fullname'] . '</td>';
+                
             
             for ($i = $startyear; $i > $endyear; $i--) {
                 $stmt = $con->prepare("SELECT * FROM pds_monitoring_table WHERE year = ? and pdsempNo = ?");

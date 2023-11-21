@@ -319,12 +319,12 @@
                 </td>
                 <td>
                 <div class="input-group">
-                   <select name="" id="secTo" class="form-control">
+                <select name="" id="secTo" class="form-control">
                         <option value="present">Present</option>
                         <option value="secDGrad">Date of Graduation</option>
                     </select> 
                     <input type="text" class="form-control" id="inSecGrad">
-                   </div> 
+                </div> 
                 </td>
                 <td>
                     <input type="text" class="form-control" id="secUnit">
@@ -346,12 +346,12 @@
                 <td>
                     <!-- <input type="date" class="form-control" id="vocTo"> -->
                     <div class="input-group">
-                   <select name="" id="vocTo" class="form-control">
+                    <select name="" id="vocTo" class="form-control">
                         <option value="present">Present</option>
                         <option value="vocDGrad">Date of Graduation</option>
                     </select> 
                     <input type="text" class="form-control" id="inVocGrad">
-                   </div> 
+                </div> 
                 </td>
                 <td>
                     <input type="text" class="form-control" id="vocUnit">
