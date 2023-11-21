@@ -5,19 +5,17 @@ error_reporting(E_ALL);
 
 include 'connection.php';
 
-$bpNo = $_POST['bpNo'];
+$bpNo = $_POST['empNo'];
 
-$lnd_query = "SELECT * FROM lnd_table WHERE empNo = ?";
+$lnd_query = "SELECT * FROM emp_table WHERE bpNo = :bpNo";
 $stmt = $conn->prepare($lnd_query);
-$stmt->execute([$bpNo]);
+$stmt->execute([':bpNo' => $bpNo]);
 
 while($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
     echo "<tr>";
-    echo "<td>" . $row['type'] . "</td>";
-    echo "<td>" . $row['title'] . "</td>";
-    echo "<td>" . $row['lndFrom'] . "</td>";
-    echo "<td>" . $row['lndTo'] . "</td>";
-
+    echo "<td>" . $row['bpNo'] . "</td>";
+    echo "<td>" . $row['fname'] . "</td>";
+    echo "<td>" . $row['lname'] . "</td>";
     // Output other data
     echo "</tr>";
 }

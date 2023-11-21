@@ -72,13 +72,13 @@
 <div class="col-6">
 <form enctype="multipart/form-data" method="post">
 
-    <div class="form-floating mb-3 ">
+    <div class="form-floating mb-3">
   <input type="text" id="idnum" name="idnum" class="form-control required w-50" required>
   <label for="idnum">ID Number*</label>
     </div>
     </div>
 
-    <div class="col-6">
+    <div class="col-6"> 
     <div class="input-group mb-3">
   <label class="input-group-text bg-dark text-white" for="inputGroupFile01">Upload Profile Picture</label>
   <input type="file" class="form-control" name="internpic" id="inputGroupFile01">
@@ -87,12 +87,25 @@
   
     <div class="col">
     <div class="form-floating mb-3">
-  <input type="text" id="name" name="nameintern" class="form-control required" required>
-  <label for="sname">Fullname* (Last name, First name, MI)</label>
+  <input type="text" id="fname" name="fname" class="form-control required" required>
+  <label for="fname">First Name*</label>
+    </div>
+    </div>
+  
+    <div class="col">
+    <div class="form-floating mb-3">
+  <input type="text" id="mname" name="mname" class="form-control required" required>
+  <label for="mname">Middle Name*</label>
+    </div>
+    </div>
+  <div class="col">
+    <div class="form-floating mb-3">
+  <input type="text" id="lname" name="lname" class="form-control required" required>
+  <label for="lname">Last Name*</label>
     </div>
     </div>
 
-    <div class="col col-md-3">
+    <div class="col">
     <div class="form-floating mb-3">
   <input type="text" id="ext" name="ext"class="form-control" >
   <label for="ext">Name Extension (Jr. Sr.)</label>

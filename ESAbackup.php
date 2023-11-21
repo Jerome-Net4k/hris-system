@@ -171,10 +171,6 @@ padding: 16px;
   background-position: 10px center; /* Adjusted position */
 }
 
-.custom-width {
-  max-width: 90%; /* or any other percentage or pixel value you want */
-}
-
 </style>
 </head>
 
@@ -335,8 +331,8 @@ $lnd_result = $conn->query("SELECT * FROM lnd_table");
           </div>
               <!-- Employee Modal -->
           <div class="modal fade" id="employeeModal" tabindex="-1" role="dialog" aria-labelledby="employeeModalLabel" aria-hidden="true">
-          <div class="modal-dialog custom-width">
-          <div class="modal-content">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
                 <div class="modal-header">
                   <h5 class="modal-title" id="employeeModalLabel">Employee Details</h5>
                 </div>

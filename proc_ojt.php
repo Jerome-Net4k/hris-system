@@ -40,7 +40,9 @@ function loadData($ojtrec) {
       while($row = mysqli_fetch_Assoc($result)){
         echo '<tr>
         <td>' . $row['idnum'] . '</td>
-        <td>' . $row['nameintern'] . '</td>
+        <td>' . $row['fname'] . '</td>
+        <td>' . $row['mname'] . '</td>
+        <td>' . $row['lname'] . '</td>
         <td>' . $row['school'] . '</td>
         <td>' . $row['dept'] . '</td>
         <td class="text-center" style="width:110px;"><button class="btn btn-outline-success btn-sm" id="view" value="' . $row['idnum'] . '" data-toggle="modal" data-target="#modal1"><i class="fi fi-rr-eye p-1"></i> | VIEW</button></td>

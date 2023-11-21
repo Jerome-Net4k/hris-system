@@ -307,7 +307,7 @@
 
       <div class="modal-header">
         <h5 class="modal-title" id="exampleModalLabel">View PDS</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>TEST
       </div>
       <div class="modal-body">
       <table class="table table-borderless">
@@ -392,7 +392,7 @@
                 <td id="viewresCity"></td>
 
                 <th>Employment Status:</th>
-                <td></td>
+                <td id=viewstatus></td>
             </tr>
 
             <tr>
@@ -516,41 +516,8 @@
         <h5 class="modal-title" id="exampleModalLabel">Update the Employee Master Record (EMR).</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
-<!-- FILEPATH: /c:/xampp/htdocs/hris-system/views_home.php -->
-
-<!-- Nav tabs -->
-<ul class="nav nav-tabs" id="myTab" role="tablist">
-  <li class="nav-item" role="presentation">
-    <button class="nav-link active" id="form1-tab" data-bs-toggle="tab" data-bs-target="#form1" type="button" role="tab" aria-controls="form1" aria-selected="true">Personal Info</button>
-  </li>
-  <li class="nav-item" role="presentation">
-    <button class="nav-link" id="form2-tab" data-bs-toggle="tab" data-bs-target="#form2" type="button" role="tab" aria-controls="form2" aria-selected="false">Family Background</button>
-  </li>
-  <li class="nav-item" role="presentation">
-    <button class="nav-link" id="form3-tab" data-bs-toggle="tab" data-bs-target="#form3" type="button" role="tab" aria-controls="form3" aria-selected="false">Educational Background</button>
-  </li>
-  <li class="nav-item" role="presentation">
-    <button class="nav-link" id="form4-tab" data-bs-toggle="tab" data-bs-target="#form4" type="button" role="tab" aria-controls="form4" aria-selected="false">Service Eligibility</button>
-  </li>
-  <li class="nav-item" role="presentation">
-    <button class="nav-link" id="form5-tab" data-bs-toggle="tab" data-bs-target="#form5" type="button" role="tab" aria-controls="form5" aria-selected="false">Work Experience</button>
-  </li>
-  <li class="nav-item" role="presentation">
-    <button class="nav-link" id="form6-tab" data-bs-toggle="tab" data-bs-target="#form6" type="button" role="tab" aria-controls="form6" aria-selected="false">Voluntary Work</button>
-  </li>
-  <li class="nav-item" role="presentation">
-    <button class="nav-link" id="form7-tab" data-bs-toggle="tab" data-bs-target="#form7" type="button" role="tab" aria-controls="form7" aria-selected="false">Learning&Development</button>
-  </li>
-  <li class="nav-item" role="presentation">
-    <button class="nav-link" id="form8-tab" data-bs-toggle="tab" data-bs-target="#form8" type="button" role="tab" aria-controls="form" aria-selected="false">Other Information</button>
-  </li>
-</ul>
-
-<!-- Tab panes -->
-<div class="tab-content">
-  <div class="tab-pane fade show active" id="form1" role="tabpanel" aria-labelledby="form1-tab">
-    <form>
-    <div class="modal-body">
+      
+      <div class="modal-body">
       <form id="updatepds" method="POST" enctype="multipart/form-data">
       <table class="table table-borderless">
       <tbody>
@@ -605,10 +572,15 @@
                 <td><input type="text" class="form-control" id="viewresBrgy2" name="viewresBrgy2"></td>
 
                 <th>Employment Type:</th>
-                <td><input type="text" class="form-control" id="soa2" name="soa2"></td>
-
+                <td>
+                  <select name="soa2" id="soa2" class="form-select">
+                    <option value="regular" style="color: green;">Regular</option>
+                    <option value="casual" style="color: yellow;">Casual</option>
+                    <option value="job-order" style="color: red;">Job Order</option>
+                  </select>
+                </td>
             </tr>
-
+        
             <tr>
                 <th>City:</th>
                 <td><input type="text" class="form-control" id="viewresCity2" name="viewresCity2"></td>
@@ -616,7 +588,7 @@
                 <th>Employment Status:</th>
                 <!--<td><input type="text" class="form-control" id="viewstatus2" name="viewstatus2"></td>-->
                 <td>
-                  <select name="viewstatus2" id="viewstatus2" class="form-select">
+                  <select name="viewstatus" id="viewstatus" class="form-select">
                     <option value="ACTIVE" style="color: green;">ACTIVE</option>
                     <option value="INACTIVE" style="color: red;">INACTIVE</option>
                   </select>
@@ -692,54 +664,6 @@
           <b style="color: #0d6efd;">* Please refrain from modifying the GSIS ID. <i style="color: red; cursor: pointer; margin: 0; padding: 0;" id="prof2">Click here to update</i></b>
         </div>
       </div>
-    </form>
-  </div>
-  <div class="tab-pane fade" id="form2" role="tabpanel" aria-labelledby="form2-tab">
-    <form>
-      <!-- Form 2 fields here -->
-      <h1>FAMILY BACKGROUND</h1>
-    </form>
-  </div>
-  <div class="tab-pane fade" id="form3" role="tabpanel" aria-labelledby="form3-tab">
-    <form>
-      <!-- Form 3 fields here -->
-      <h1>EDUCATIONAL BACKGROUND</h1>
-    </form>
-  </div>
-  <div class="tab-pane fade" id="form4" role="tabpanel" aria-labelledby="form4-tab">
-    <form>
-      <!-- Form 4 fields here -->
-      <h1>SERVICE ELIGIBILITY</h1>
-    </form>
-  </div>
-  <div class="tab-pane fade" id="form5" role="tabpanel" aria-labelledby="form5-tab">
-    <form>
-      <!-- Form 5 fields here -->
-      <h1>WORK EXPERIENCE</h1>
-    </form>
-  </div>
-  <div class="tab-pane fade" id="form6" role="tabpanel" aria-labelledby="form6-tab">
-    <form>
-      <!-- Form 6 fields here -->
-      <h1>VOLUNTARY WORK</h1>
-    </form>
-  </div>
-  <div class="tab-pane fade" id="form7" role="tabpanel" aria-labelledby="form7-tab">
-    <form>
-      <!-- Form 7 fields here -->
-      <h1>LEARNING & DEVELOPMENT</h1>
-    </form>
-  </div>
-  <div class="tab-pane fade" id="form8" role="tabpanel" aria-labelledby="form8-tab">
-    <form>
-      <!-- Form 8 fields here -->
-      <h1>OTHER INFORMATION</h1>
-    </form>
-  </div>
-
-</div>
-
-      
       
       <div class="modal-footer">
         <!-- <button type="button" class="btn btn-danger" id="delpdsinfo"><i class="fa fa-trash-o" style='font-size:24px' aria-hidden="true"></i></button> -->

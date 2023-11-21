@@ -147,7 +147,7 @@ $('#id, #name').click(function() {
           <thead>
             <tr>
               <th id="id" data-sortby="idnum" style="width:54px;">ID <i class="fi fi-br-angle-up"></i></th>
-              <th id="name" data-sortby="nameintern" >NAME <i class="fi fi-br-angle-up"></i></th>
+              <th id="fname" data-sortby="fname" >First <i class="fi fi-br-angle-up"></i></th>
               <th>SCHOOL</th> 
               <th>DEPARTMENT</th>
               <th colspan="2"class="header text-center">Action</th>
