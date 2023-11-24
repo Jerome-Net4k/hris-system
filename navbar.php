@@ -80,8 +80,8 @@ echo '<script>
               // </div>
               '<a class="dropdown-item fw-bold" href="#" id="pr">Performance Rating</a>
               <div id="prHide">
-                <a class="dropdown-item" href="" id="">OPCR</a>
-                <a class="dropdown-item" href="" id="">DPCR</a>
+                <a class="dropdown-item" href="views_opcr.php" id="">OPCR</a>
+                <a class="dropdown-item" href="views_dpcr.php" id="">DPCR</a>
                 <a class="dropdown-item" href="views_ipcrUpload.php" id="">IPCR</a>
                 <a class="dropdown-item" href="views_ipcrEncoding.php" id="">IPCR Encoding</a>
                 <a class="dropdown-item" href="views_ipcrRatingSummary.php" id="">Summary of Ratings</a>

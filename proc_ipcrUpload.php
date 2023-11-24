@@ -940,16 +940,16 @@ function searchPersonalInfo($personalInfo){
                     type: "POST",
                     success: function(data){
                     document.getElementById("staticBackdropLabel2").innerHTML = "' . $row['empno'] . ' ' . $row['sname'] . ' - ' . $yearSelected . ' - 1st";
-                     $("#computeRatingView").html(data)
+                    $("#computeRatingView").html(data)
                     }
-                  })
+                })
 
-                  setTimeout(function() {
+                setTimeout(function() {
                     $(\'#staticBackdrop2\').modal(\'show\');
                 }, 500);
-                  
+                
 
-              });' .
+            });' .
 
             '$("#computeBtn2' . $row['empno'] . '").on("click",function (e){
 

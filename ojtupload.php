@@ -12,22 +12,12 @@ function checkDuplicateIdnum($idnum) {
         return false;
     }
 }
-$query = "INSERT INTO ojt_tbl (idnum, internpic, nameintern, fname, mname, lname, ext, dob, school, dept, btype, nameguard, rel, address, contactnum, remarks, file) 
-VALUES ('$idnum', '$internpic', '$nameintern', '$fname', '$mname', '$lname' '$ext', '$dob', '$school', '$dept', '$btype', '$nameguard', '$rel', '$address', '$contactnum', '$remarks', '$file')";
 
-if (mysqli_query($connect, $query)) {
-    echo "success";
-} else {
-    echo "Error: " . mysqli_error($connect);
-}
 $idnum = mysqli_real_escape_string($connect, $_POST['idnum']);
 
 // Continue with inserting the new record if the idnum is not a duplicate
 if (!checkDuplicateIdnum($idnum)) {
     $nameintern = mysqli_real_escape_string($connect, $_POST['nameintern']);
-    $fname = mysqli_real_escape_string($connect, $_POST['fname']);
-    $mname = mysqli_real_escape_string($connect, $_POST['mname']);
-    $lname = mysqli_real_escape_string($connect, $_POST['lname']);
     $ext = mysqli_real_escape_string($connect, $_POST['ext']);
     $dob = mysqli_real_escape_string($connect, $_POST['dob']);
     $school = mysqli_real_escape_string($connect, $_POST['school']);
@@ -52,8 +42,8 @@ if (!checkDuplicateIdnum($idnum)) {
     $targets = "ojtfiles/" . basename($file);
     move_uploaded_file($temps, $targets);
 
-    $query = "INSERT INTO ojt_tbl (idnum, internpic, nameintern, fname, mname, lname, ext, dob, school, dept, btype, nameguard, rel, address, contactnum, remarks, file) 
-    VALUES ('$idnum', '$internpic', '$nameintern', '$fname', '$mname', '$lname', '$ext', '$dob', '$school', '$dept', '$btype', '$nameguard', '$rel', '$address', '$contactnum', '$remarks', '$file')";
+    $query = "INSERT INTO ojt_tbl (idnum, internpic, nameintern, ext, dob, school, dept, btype, nameguard, rel, address, contactnum, remarks, file) 
+    VALUES ('$idnum', '$internpic', '$nameintern', '$ext', '$dob', '$school', '$dept', '$btype', '$nameguard', '$rel', '$address', '$contactnum', '$remarks', '$file')";
     
     if (mysqli_query($connect, $query)) {
         echo "success";
