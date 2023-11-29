@@ -88,7 +88,7 @@ echo '<script>
                 <a class="dropdown-item" href="" id="">JO Evaluation Report</a>
               </div>
               <a class="dropdown-item fw-bold" href="" id="pr">Monitoring of Submission</a>
-              <a class="dropdown-item fw-bold" href="" id="pr">Success Indicator</a>
+              <a class="dropdown-item fw-bold" href="views_successIndicator.php" id="pr">Success Indicator</a>
               <a class="dropdown-item fw-bold" href="pds_view_uploadfile.php">PDS FORM</a>
               <a class="dropdown-item fw-bold" href="" id="">JO | Contract Of Service</a>
               <div id="joHide">

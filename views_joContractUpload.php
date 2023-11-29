@@ -76,7 +76,7 @@ if(isset($_SESSION['editSuccess'])){
           var regionFil = $("#regionInactive").val();
           var searchBar = $("input#searchBarInactive").val();
           $.ajax({
-                  url: "proc_ipcrUpload.php",
+                  url: "proc_jocontract.php",
                   type: "POST",
                   data: {searchBar: searchBar,
                     yearSelected: yearSelect,
@@ -418,13 +418,12 @@ if(isset($_SESSION['editSuccess'])){
                         <th>Surname</th>
                         <th>Firstname</th>
                         <th>Middlename</th>
-                        <th>Ext</th>
                         <!-- <th>Region</th> -->
                         <!-- <th style="text-align: center;">Select Year <button class="btn btn-outline-success p-1" id="createYearBtn" style="margin-left: 10px;"><i class="fa fa-calendar-plus-o" aria-hidden="true" style="font-size: 25px;" data-bs-toggle="modal" data-bs-target="#staticBackdrop1"></i></button></th> -->
-                        <th style="text-align: center;">1st</th>
-                        <th style="text-align: center;">2nd</th>
-                        <th style="text-align: center;">3rd</th>
-                        <th style="text-align: center;">4th</th>
+                        <th style="text-align: center;">Q1</th>
+                        <th style="text-align: center;">Q2</th>
+                        <th style="text-align: center;">Q3</th>
+                        <th style="text-align: center;">Q4</th>
                         <!-- <th>DPCR</th>
                         <th>IPCR</th> -->
                     </tr>
