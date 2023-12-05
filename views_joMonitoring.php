@@ -1,8 +1,8 @@
 <?php
-  session_start();
-  if(!isset($_SESSION['user'])){
+session_start();
+if(!isset($_SESSION['user'])){
     header("Location:views_login.php");
-  }
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">

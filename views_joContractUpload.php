@@ -237,73 +237,10 @@ if(isset($_SESSION['editSuccess'])){
 
         })
 
-        $("#newData").on("click",function(){
-          window.location.href="views_ipcrEncoding.php";
-        })
-
-        $("button#editSubmitBtn").on("click",function(){
-            $("#editIpcrForm").submit();
-        })
-
-        $("#editIpcrForm").on('submit', function(e){
-          e.preventDefault();
-
-                    $.ajax({
-                        type: "POST",
-                        url: "upload_ipcrEncoding.php",
-                        data: new FormData(this),
-                        contentType: false,
-                        cache: false,
-                        processData:false,
-                        success: function(data){
-                            if (data == "success"){
-                                iziToast.success({
-                                position: "center",
-                                timeout: 1000,
-                                title: "OK",
-                                message: "Data Edited Successfully!!",
-                                messageSize: '30',
-                                titleSize: '25'
-                                });
-
-                                setTimeout(function() {
-                                  window.location.href = "views_ipcrUpload.php";
-                                }, 2000);
-
-                            } else {
-                              iziToast.error({
-                                position: "center",
-                                title: "",
-                                message: data,
-                                messageSize: '30',
-                                titleSize: '25'
-                            });
-                            }
-                        },
-                        error: function() {
-                            iziToast.error({
-                                position: "center",
-                                title: "",
-                                message: "Something went wrong..",
-                                messageSize: '30',
-                                titleSize: '25'
-                            });
-                        }
-                    })
-        })
+        
 
 
-        // var outputCount = 2;        
-
-        // $("button#outputAdd").on("click",function(){
-        //   outputCount += 1;
-        //         $("#computeRatingView").append('<tr><td><input type="text" name="" id="" value="' + outputCount +'" style="width: 50px; font-weight: bold;" disabled></td><td><input type="number" name="" id="" style="width: 75px;" step="0.25" max="5" min="0"></td><td><input type="number" name="" id="" style="width: 75px;" step="0.25" max="5" min="0"></td><td><input type="number" name="" id="" style="width: 75px;" step="0.25" max="5" min="0"></td><td><input type="text" name="" id="" style="width: 75px;" disabled></td></tr>');
-        //     })
-
-        // $("button#computeModalCloseBtn").on("click",function(){
-        //   $("#computeRatingView").html('<tr><td><input type="text" name="" id="" value="1" style="width: 50px; font-weight: bold;" disabled></td><td><input type="number" name="" id="" style="width: 75px;" step="0.25" max="5" min="0"></td><td><input type="number" name="" id="" style="width: 75px;" step="0.25" max="5" min="0"></td><td><input type="number" name="" id="" style="width: 75px;" step="0.25" max="5" min="0"></td><td><input type="text" name="" id="" style="width: 75px;" disabled></td></tr><tr><td><input type="text" name="" id="" value="2" style="width: 50px; font-weight: bold;" disabled></td><td><input type="number" name="" id="" style="width: 75px;" step="0.25" max="5" min="0"></td><td><input type="number" name="" id="" style="width: 75px;" step="0.25" max="5" min="0"></td><td><input type="number" name="" id="" style="width: 75px;" step="0.25" max="5" min="0"></td><td><input type="text" name="" id="" style="width: 75px;" disabled></td></tr>');
-        //   outputCount = 2;
-        //     })
+       
 
         }
 
@@ -369,7 +306,10 @@ if(isset($_SESSION['editSuccess'])){
                 </div>
             </div>
             <div class="row mb-2">
-                <div class="col" style="max-width: 5%;">
+
+
+<!--Region if needed-->
+<!--                <div class="col" style="max-width: 5%;">
                     <h4>Region:</h4>
                 </div>
                 <div class="col-10 ps-1">
@@ -396,7 +336,7 @@ if(isset($_SESSION['editSuccess'])){
                         <option value="15">15 - Butuan City (CARAGA)</option>
                     </select>
                 </div>
-            </div>
+            </div>-->
 
             <div class="input-group w-25">
                 <select name="" id="fil" class="form-control filter" style="max-width: 28%;">
@@ -413,7 +353,7 @@ if(isset($_SESSION['editSuccess'])){
             <table class="table table-bordered mt-2 table-hover">
             <thead>
                     <tr>
-                        <th><button class="btn btn-dark p-1" id="newData"><i class="fi fi-rr-layer-plus p-1"></i></button></th>
+                        <th>Action</th>
                         <th style="width: 90px">GSIS BP No.</th>                  
                         <th>Surname</th>
                         <th>Firstname</th>

@@ -49,6 +49,10 @@ if(isset($_POST['sortval'])){
 //                 <td>'.$soa.'</td>
 //                 <td>'.$row['emp_status'].'</td>
 
+// <td class="header"><button class="btn btn-outline-success p-1 m-1" id="view" value="'.$row['empNo'].'" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fa fa-eye" aria-hidden="true"></i> | View</button>
+// <button class="btn btn-outline-primary p-1" id="update" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> | Update</button></td>
+
+
 function loadPersonalInfo($personalInfo,$sortval,$sortwhat,$emptype){
     include 'connection.php';
     $query = "SELECT * FROM `emp_table` $emptype ORDER BY $sortval $sortwhat ";
