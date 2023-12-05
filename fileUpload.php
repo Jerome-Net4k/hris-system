@@ -527,4 +527,28 @@ function uploadNosi($datetoday, $convmonth){
                 }
         // --------------------
 
+        //for contract uploads
+            function uploadJocontract(){
+                include 'connection.php';
+                $empId = $_POST['empNo'];
+                $sname = $_POST['sname'];
+                $yearSelected = $_POST['yearSelected'];
+        
+                $newfileName = $empId . ' ' . trim($sname,'"') . ".pdf";
+                $stmtPending = $con->prepare("INSERT INTO `jo_contract_table`(`empNo`, `year`, `first_quarter`) VALUES ('$empId', $yearSelected, '1') ON DUPLICATE KEY UPDATE `first_quarter` = '1'");
+        
+                
+                $file_tmp = $_FILES['pcrDocs']['tmp_name'];
+                $to = "pmupload/" . $yearSelected  . '/JOCONTRACT/' . $newfileName;
+        
+                if(move_uploaded_file($file_tmp, $to)){
+                    if($stmtPending->execute()){
+                    } else {
+                        $_SESSION['uploadSuccess'] = false;            
+                    }
+                } else {
+                    $_SESSION['uploadSuccess'] = false;
+                }       
+            }
+
 ?>
