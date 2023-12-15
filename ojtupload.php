@@ -29,7 +29,6 @@ if (!checkDuplicateIdnum($idnum)) {
     $contactnum = mysqli_real_escape_string($connect, $_POST['contactnum']);
     $remarks = mysqli_real_escape_string($connect, $_POST['remarks']);
 
-
     $internpic = $_FILES['internpic']['name'];
     $temp = $_FILES['internpic']['tmp_name'];
 
@@ -48,7 +47,7 @@ if (!checkDuplicateIdnum($idnum)) {
     if (mysqli_query($connect, $query)) {
         echo "success";
     } else {
-        echo "failed";
+        echo "Error: " . mysqli_error($connect);
     }
 } else {
     echo "duplicate";

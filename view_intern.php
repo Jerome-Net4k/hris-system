@@ -60,6 +60,21 @@
 });
 
 
+function loadData() {
+  var searchValue = $('#search').val();
+  $.ajax({
+    url: 'proc_ojt.php',
+    method: 'POST',
+    data: { 
+      input: searchValue,
+      fields: ['fname', 'mname', 'lname']
+    },
+    success: function(data) {
+      $('#content').html(data);
+    }
+  });
+}
+
 // Function to load the data
 function loadData() {
   var searchValue = $('#search').val();
@@ -85,37 +100,37 @@ $('#search').keyup(function(e) {
   }
 });
 
-// Bind the click event to the table headers for sorting
-$('#id, #name').click(function() {
-  // Get the sorting order from the data-sortby attribute
-  var sortby = $(this).data('sortby');
+  // Bind the click event to the table headers for sorting
+  $('#id, #fname, #lname').click(function() {
+    // Get the sorting order from the data-sortby attribute
+    var sortby = $(this).data('sortby');
 
-  // Determine the new sorting order based on the current table state
-  var sortorder = 'ASC';
-  if ($(this).hasClass('sorted-asc')) {
-    sortorder = 'DESC';
-  }
-
-  // Send an AJAX request to the server to sort the data
-  $.ajax({
-    url: 'proc_ojt.php',
-    method: 'POST',
-    data: { input: $('#search').val(), sortby: sortby, sortorder: sortorder },
-    success: function(data) {
-      // Update the table with the sorted data
-      $('#content').html(data);
-
-      // Update the sorting indicator in the table header
-      $('#id, #name').removeClass('sorted-asc sorted-desc');
-      if (sortorder == 'ASC') {
-        $(this).addClass('sorted-asc');
-      } else {
-        $(this).addClass('sorted-desc');
-      }
+    // Determine the new sorting order based on the current table state
+    var sortorder = 'ASC';
+    if ($(this).hasClass('sorted-asc')) {
+      sortorder = 'DESC';
     }
+
+    // Send an AJAX request to the server to sort the data
+    $.ajax({
+      url: 'proc_ojt.php',
+      method: 'POST',
+      data: { input: $('#search').val(), sortby: sortby, sortorder: sortorder },
+      success: function(data) {
+        // Update the table with the sorted data
+        $('#content').html(data);
+
+        // Update the sorting indicator in the table header
+        $('#id, #fname, #lname').removeClass('sorted-asc sorted-desc');
+        if (sortorder == 'ASC') {
+          $(this).addClass('sorted-asc');
+        } else {
+          $(this).addClass('sorted-desc');
+        }
+      }
+    });
   });
-});
-  })
+    })
 
 
   
@@ -146,8 +161,12 @@ $('#id, #name').click(function() {
         <table class="table bg-white shadow-sm roundTable">
           <thead>
             <tr>
-              <th id="id" data-sortby="idnum" style="width:54px;">ID <i class="fi fi-br-angle-up"></i></th>
-              <th id="fname" data-sortby="fname" >First <i class="fi fi-br-angle-up"></i></th>
+              <th id="id" data-sortby="idnum" style="width:54px;">ID<i class="fi fi-br-angle-up"></i></th>
+              <!-- HTML i changed this --> 
+              <th id="fname" data-sortby="lname" >Surname<i class="fi fi-br-angle-up"></i></th>
+              <th id="fname" data-sortby="fname" >First Name<i class="fi fi-br-angle-up"></i></th>
+              <th id="fname" data-sortby="mname" >Middle Name<i class="fi fi-br-angle-up"></i></th>
+
               <th>SCHOOL</th> 
               <th>DEPARTMENT</th>
               <th colspan="2"class="header text-center">Action</th>
@@ -200,7 +219,7 @@ $('#id, #name').click(function() {
               <td colspan="3" class="fw-bold fs-5 text-center text-uppercase">Incase of Emergency</td>
             </tr>
             <tr>
-              <th>Name:</th>
+              <th>NAME:</th>
               <td colspan="2" id="viewnameguard"></td>
             </tr>
             <tr>
@@ -217,6 +236,10 @@ $('#id, #name').click(function() {
             </tr>
             <tr>
               <th>REMARKS:</th>
+              <td colspan="2" id="viewremarks"></td>
+            </tr>
+            <tr>
+              <th></th>
               <td colspan="2" id="viewremarks"></td>
             </tr>
             <tr>

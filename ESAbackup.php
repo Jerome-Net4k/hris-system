@@ -178,50 +178,7 @@ padding: 16px;
 <?php include 'navbar.php'; ?>
 
 <script>
-$(document).ready(function(){
-  $("#seminarTable tr").click(function() {
-    var seminarId = $(this).find("td:first").text(); // Assuming the seminarId is in the first cell of the row
-
-    $.ajax({
-      url: 'fetch_seminar_details.php',
-      type: 'post',
-      data: {seminarId: seminarId},
-      dataType: 'json',
-      success: function(response) {
-        $("#seminarType").text(response.seminarType);
-        $("#seminarName").text(response.seminarName);
-        $("#seminarFrom").text(response.seminarFrom);
-        $("#seminarTo").text(response.seminarTo);
-      }
-    });
-
-    $.ajax({
-      url: 'fetch_employees.php',
-      type: 'post',
-      data: {seminarId: seminarId},
-      success: function(response) {
-        $("#employeeTableBodyModal").html(response);
-      }
-    });
-
-    // Show the modal
-    $('#seminarModal').modal('show');
-  });
-
-  // Employee table
-  $('#employeeTable tbody tr').click(function(){
-    var id = $(this).children('td').eq(0).text();
-    var fname = $(this).children('td').eq(1).text();
-    var lname = $(this).children('td').eq(2).text();
-
-    $('#employeeBpno').text('BP NO: ' + id);
-    $('#employeeFname').text('First Name: ' + fname);
-    $('#employeeLname').text('Last Name: ' + lname);
-    $('#employeeModal').modal('show');
-  });
-});
-
-
+  // Employee modal
 $(document).ready(function(){
   $("#employeeTable tr").click(function() {
     var bpNo = $(this).find("td:first").text(); // Assuming the bpNo is in the first cell of the row
@@ -235,7 +192,47 @@ $(document).ready(function(){
       }
     });
   });
+
+  $('#employeeTable tbody tr').click(function(){
+    var id = $(this).children('td').eq(0).text();
+    var fname = $(this).children('td').eq(1).text();
+    var lname = $(this).children('td').eq(2).text();
+
+    $('#employeeBpno').text('BP NO: ' + id);
+    $('#employeeName').text('Name: ' + fname + ' ' + lname); // Concatenate the first name and last name
+    $('#employeeModal').modal('show');
+  });
 });
+
+// Seminar modal
+$(document).ready(function(){
+  $("#seminarTable tr").click(function() {
+    var empNo = $(this).find("td:first").text(); // Assuming the title is in the first cell of the row
+
+    $.ajax({
+      url: 'fetch_seminar_attendees.php',
+      type: 'post',
+      data: {empNo: empNo},
+      success: function(response) {
+        $("#employeeTableBodyModal").html(response);
+      }
+    });
+  });
+
+  $('#seminarTable tbody tr').click(function(){
+    var title = $(this).children('td').eq(0).text();
+    var type = $(this).children('td').eq(1).text();
+    var from = $(this).children('td').eq(2).text();
+    var to = $(this).children('td').eq(3).text();
+
+    $('#seminarType').text('Type: ' + type);
+    $('#seminarName').text('Title: ' + title);
+    $('#seminarFrom').text('From: ' + from);
+    $('#seminarTo').text('To: ' + to);
+    $('#seminarModal').modal('show');
+  });
+});
+
 
 $(document).ready(function(){
   // When the close button or the close icon is clicked...
@@ -267,7 +264,17 @@ $(document).ready(function(){
   });
 });
 
-
+$.ajax({
+  url: 'get_employees.php',
+  type: 'GET',
+  success: function(response) {
+    console.log('Response:', response);
+    // Rest of the code...
+  },
+  error: function(jqXHR, textStatus, errorThrown) {
+    console.log('AJAX error:', textStatus, errorThrown);
+  }
+});
 </script>
 
 <?php 
@@ -278,8 +285,8 @@ $emp_query = "SELECT * FROM emp_table";
 $emp_result = $conn->query("SELECT * FROM emp_table");
 
 // Fetch data for lnd_table
-$lnd_query = "SELECT * FROM lnd_table";
-$lnd_result = $conn->query("SELECT * FROM lnd_table");
+$seminars_query = "SELECT * FROM seminars_table";
+$seminars_result = $conn->query($seminars_query);
 ?>
 
 <div class="container-fluid" style="background-color: #f8f9fa;"> <!-- Add your desired background color here -->
@@ -329,17 +336,21 @@ $lnd_result = $conn->query("SELECT * FROM lnd_table");
               </div>
             </div>
           </div>
+
+          
               <!-- Employee Modal -->
           <div class="modal fade" id="employeeModal" tabindex="-1" role="dialog" aria-labelledby="employeeModalLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
+            <div class="modal-dialog modal-xl" role="document">
               <div class="modal-content">
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#chartModal">
+                  Open Chart
+                </button>
                 <div class="modal-header">
                   <h5 class="modal-title" id="employeeModalLabel">Employee Details</h5>
                 </div>
                 <div class="modal-body">
                 <p id="employeeBpno"></p> <!-- Placeholder for employee ID -->
-                <p id="employeeFname"></p> <!-- Placeholder for employee first name -->
-                <p id="employeeLname"></p> <!-- Placeholder for employee last name -->               
+                <p id="employeeName"></p> <!-- Placeholder for employee last name -->               
                 <div class="modal-footer">
                   <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                   <table id="seminarTableModal">
@@ -384,14 +395,13 @@ $lnd_result = $conn->query("SELECT * FROM lnd_table");
             <div class="scrollable-tbody">
             <table id="seminarTable"> <!-- Added ID here -->
                 <tbody>
-                  <?php while($row = $lnd_result->fetch(PDO::FETCH_ASSOC)) { ?>                
-                    <tr data-toggle="modal" data-target="#seminarModal">
-                      <td><?php echo $row['title']; ?></td>
-                      <td class="padded-data"><?php echo $row['type']; ?></td>
-                      <td class="padded-data from-to-data"><?php echo $row['lndFrom']; ?></td>
-                      <td class="padded-data from-to-data"><?php echo $row['lndTo']; ?></td>
-                    </tr>
-                  <?php } ?>
+                  <?php while($row = $seminars_result->fetch(PDO::FETCH_ASSOC)) { ?>                
+                <tr data-toggle="modal" data-target="#seminarModal">
+                    <td><?php echo $row['title']; ?></td>
+                    <td class="padded-data"><?php echo $row['typeLnd']; ?></td>
+                    <td class="padded-data from-to-data"><?php echo $row['dateFrom']; ?></td>
+                    <td class="padded-data from-to-data"><?php echo $row['dateTo']; ?></td>                </tr>
+            <?php } ?>
                 </tbody>
               </table>
             </div>
@@ -400,7 +410,7 @@ $lnd_result = $conn->query("SELECT * FROM lnd_table");
     </div>
   <!-- Seminar Modal -->
           <div class="modal fade" id="seminarModal" tabindex="-1" role="dialog" aria-labelledby="seminarModalLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
+            <div class="modal-dialog modal-xl" role="document">
               <div class="modal-content">
                 <div class="modal-header">
                   <h5 class="modal-title" id="seminarModalLabel">Seminar Details</h5>
@@ -421,12 +431,43 @@ $lnd_result = $conn->query("SELECT * FROM lnd_table");
                           <!-- Other headers -->
                         </tr>
                       </thead>
-                      <tbody id="employeeTableBodyModal">
+                      <tbody id="employeesTable">
                         <!-- Employee data will be inserted here -->
                       </tbody>
                     </table>
                   </div>
                 </div>
+                <script>
+                  // Add event listener for when a new seminar is added
+                      $('#seminarModal').on('show.bs.modal', function (event) {
+                        // Send an AJAX request to fetch the employees
+                        $.ajax({
+                          url: 'get_employees.php',
+                          type: 'GET',
+                          success: function(response) {
+                            var employees = JSON.parse(response);
+
+                            // Clear the table
+                            $('#employeesTable').empty();
+
+                            // Add the employees to the table
+                            for (var i = 0; i < employees.length; i++) {
+                              var row = '<tr>' +
+                                    '<td>' + employees[i].bpNo + '</td>' +
+                                    '<td>' + employees[i].fname + '</td>' +
+                                    '<td>' + employees[i].lname + '</td>' +
+                                    // Add more cells as needed
+                                    '</tr>';
+
+                              $('#employeesTable').append(row);
+                            }
+                          },
+                          error: function(jqXHR, textStatus, errorThrown) {
+                            console.log('AJAX error:', textStatus, errorThrown);
+                          }
+                        });
+                      });
+                </script>
               </div>
             </div>
           </div>

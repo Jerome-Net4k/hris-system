@@ -134,65 +134,7 @@
         <hr>
         <h4>Participants</h4>
         <table class="table table-bordered">
-            <tr>
-                <th>Name</th>
-                <th>Sex</th>
-                <th>Age</th>
-                <th>Salary Grade</th>
-                <th>Position</th>
-                <th>Type Of Certificate</th>
-                <th>Remarks</th>
-            </tr>
-            
-            <tr>
-                <td>Adduru, Ronald Karl C.</td>
-                <td>Male</td>
-                <td>21</td>
-                <td>18</td>
-                <td>Computer Programmer II</td>
-                <td></td>
-                <td></td>
-            </tr>
 
-            <tr>
-                <td>Adduru, Ronald Karl C.</td>
-                <td>Male</td>
-                <td>21</td>
-                <td>18</td>
-                <td>Computer Programmer II</td>
-                <td></td>
-                <td></td>
-            </tr>
-
-            <tr>
-                <td>Adduru, Ronald Karl C.</td>
-                <td>Male</td>
-                <td>21</td>
-                <td>18</td>
-                <td>Computer Programmer II</td>
-                <td></td>
-                <td></td>
-            </tr>
-
-            <tr>
-                <td>Adduru, Ronald Karl C.</td>
-                <td>Male</td>
-                <td>21</td>
-                <td>18</td>
-                <td>Computer Programmer II</td>
-                <td></td>
-                <td></td>
-            </tr>
-
-            <tr>
-                <td>Adduru, Ronald Karl C.</td>
-                <td>Male</td>
-                <td>21</td>
-                <td>18</td>
-                <td>Computer Programmer II</td>
-                <td></td>
-                <td></td>
-            </tr>
         </table>
     </div>
       <div class="modal-footer">
@@ -205,7 +147,39 @@
         </div>
     </div>
       
-      
-    
+<!-- Your script -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+            $('body').on('change', '.selectname', function() {
+                var fnameDropdown = $('#fnameDropdown'); // Get the first name dropdown
+                var lnameDropdown = $('#lnameDropdown'); // Get the last name dropdown
+
+                if (!fnameDropdown.length || !lnameDropdown.length) {
+                    console.error('Dropdowns not found');
+                    return;
+                }
+
+                var fname = fnameDropdown.val(); // Get the selected first name
+                var lname = lnameDropdown.val(); // Get the selected last name
+
+                $.ajax({
+                    url: 'fetch_participants.php',
+                    method: 'GET',
+                    data: { fname: fname, lname: lname },
+                    success: function(data) {
+                        var participant = JSON.parse(data);
+                        var newRow = `
+                            <tr>
+                                <td>${participant.bpNo}</td>
+                                <td>${participant.fname}</td>
+                                <td>${participant.lname}</td>
+                            </tr>
+                        `;
+                        $('#participantsTable').append(newRow);
+                    }
+                });
+            });
+</script>
+   
 </body>
 </html>

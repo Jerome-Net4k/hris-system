@@ -264,7 +264,17 @@ $(document).ready(function(){
   });
 });
 
-
+$.ajax({
+  url: 'get_employees.php',
+  type: 'GET',
+  success: function(response) {
+    console.log('Response:', response);
+    // Rest of the code...
+  },
+  error: function(jqXHR, textStatus, errorThrown) {
+    console.log('AJAX error:', textStatus, errorThrown);
+  }
+});
 </script>
 
 <?php 
@@ -326,10 +336,15 @@ $seminars_result = $conn->query($seminars_query);
               </div>
             </div>
           </div>
+
+          
               <!-- Employee Modal -->
           <div class="modal fade" id="employeeModal" tabindex="-1" role="dialog" aria-labelledby="employeeModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-xl" role="document">
               <div class="modal-content">
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#chartModal">
+                  Open Chart
+                </button>
                 <div class="modal-header">
                   <h5 class="modal-title" id="employeeModalLabel">Employee Details</h5>
                 </div>
@@ -381,13 +396,12 @@ $seminars_result = $conn->query($seminars_query);
             <table id="seminarTable"> <!-- Added ID here -->
                 <tbody>
                   <?php while($row = $seminars_result->fetch(PDO::FETCH_ASSOC)) { ?>                
-                    <tr data-toggle="modal" data-target="#seminarModal">
-                      <td><?php echo $row['title']; ?></td>
-                      <td class="padded-data"><?php echo $row['typeLnd']; ?></td>
-                      <td class="padded-data from-to-data"><?php echo $row['dateFrom']; ?></td>
-                      <td class="padded-data from-to-data"><?php echo $row['dateTo']; ?></td>
-                    </tr>
-                  <?php } ?>
+                <tr data-toggle="modal" data-target="#seminarModal">
+                    <td><?php echo $row['title']; ?></td>
+                    <td class="padded-data"><?php echo $row['typeLnd']; ?></td>
+                    <td class="padded-data from-to-data"><?php echo $row['dateFrom']; ?></td>
+                    <td class="padded-data from-to-data"><?php echo $row['dateTo']; ?></td>                </tr>
+            <?php } ?>
                 </tbody>
               </table>
             </div>
@@ -417,12 +431,43 @@ $seminars_result = $conn->query($seminars_query);
                           <!-- Other headers -->
                         </tr>
                       </thead>
-                      <tbody id="employeeTableBodyModal">
+                      <tbody id="employeesTable">
                         <!-- Employee data will be inserted here -->
                       </tbody>
                     </table>
                   </div>
                 </div>
+                <script>
+                  // Add event listener for when a new seminar is added
+                      $('#seminarModal').on('show.bs.modal', function (event) {
+                        // Send an AJAX request to fetch the employees
+                        $.ajax({
+                          url: 'get_employees.php',
+                          type: 'GET',
+                          success: function(response) {
+                            var employees = JSON.parse(response);
+
+                            // Clear the table
+                            $('#employeesTable').empty();
+
+                            // Add the employees to the table
+                            for (var i = 0; i < employees.length; i++) {
+                              var row = '<tr>' +
+                                    '<td>' + employees[i].bpNo + '</td>' +
+                                    '<td>' + employees[i].fname + '</td>' +
+                                    '<td>' + employees[i].lname + '</td>' +
+                                    // Add more cells as needed
+                                    '</tr>';
+
+                              $('#employeesTable').append(row);
+                            }
+                          },
+                          error: function(jqXHR, textStatus, errorThrown) {
+                            console.log('AJAX error:', textStatus, errorThrown);
+                          }
+                        });
+                      });
+                </script>
               </div>
             </div>
           </div>

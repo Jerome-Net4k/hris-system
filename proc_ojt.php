@@ -28,7 +28,7 @@ function loadData($ojtrec) {
   $query = "SELECT * FROM ojt_tbl";
 
   if ($input != "") {
-    $query .= " WHERE nameintern LIKE '{$input}%' OR idnum LIKE '{$input}%' OR school LIKE '{$input}%' OR dept LIKE '{$input}%' ";
+    $query .= " WHERE nameintern LIKE '{$input}%' OR idnum LIKE '{$input}%' OR school LIKE '{$input}%' OR dept LIKE '{$input}%' OR fname LIKE '{$input}%' OR mname LIKE '{$input}%' OR lname LIKE '{$input}%' OR nameintern LIKE '{$input}%' OR idnum LIKE '{$input}%' OR school LIKE '{$input}%' OR dept LIKE '{$input}%' OR btype LIKE '{$input}%' OR nameguard LIKE '{$input}%' OR rel LIKE '{$input}%' OR address LIKE '{$input}%' OR contactnum LIKE '{$input}%' OR remarks LIKE '{$input}%' OR file LIKE '{$input}%' ";
   }
 
   // Add the sorting clause to the query
@@ -36,17 +36,20 @@ function loadData($ojtrec) {
 
   $result = mysqli_query($con, $query);
     
-    if(mysqli_num_rows($result)>0){
-      while($row = mysqli_fetch_Assoc($result)){
-        echo '<tr>
-        <td>' . $row['idnum'] . '</td>
-        <td>' . $row['nameintern'] . '</td>
-        <td>' . $row['school'] . '</td>
-        <td>' . $row['dept'] . '</td>
-        <td class="text-center" style="width:110px;"><button class="btn btn-outline-success btn-sm" id="view" value="' . $row['idnum'] . '" data-toggle="modal" data-target="#modal1"><i class="fi fi-rr-eye p-1"></i> | VIEW</button></td>
-        <td class="text-center" style="width:120px;"><button class="btn btn-outline-primary btn-sm" id="update" value="' . $row['idnum'] . '" data-toggle="modal" data-target="#modal2"><i class="fi fi-rr-refresh"></i> | UPDATE</button></td>
-        </tr>';
-      }
+if(mysqli_num_rows($result)>0){
+  while($row = mysqli_fetch_Assoc($result)){
+    $fullname = $row['fname'] . ' ' . $row['mname'] . ' ' . $row['lname'];
+    echo '<tr>>
+    <td>' . $row['idnum'] . '</td>
+    <td>' . $row['lname'] . '</td>
+    <td>' . $row['fname'] . '</td>
+    <td>' . $row['mname'] . '</td>
+    <td>' . $row['school'] . '</td>
+    <td>' . $row['dept'] . '</td>
+    <td class="text-center" style="width:110px;"><button class="btn btn-outline-success btn-sm" id="view" value="' . $row['idnum'] . '" data-toggle="modal" data-target="#modal1"><i class="fi fi-rr-eye p-1"></i> </button></td>
+    <td class="text-center" style="width:120px;"><button class="btn btn-outline-primary btn-sm" id="update" value="' . $row['idnum'] . '" data-toggle="modal" data-target="#modal2"><i class="fi fi-rr-refresh"></i>  </button></td>
+    </tr>';
+  }
     } else {
       echo '<tr>
         <td colspan="7" class="text-center"><h1>No Record Found</h1></td>
@@ -62,6 +65,7 @@ function loadData($ojtrec) {
                 var conv = jQuery.parseJSON(data);
                 $("#viewidnum").text(conv.idnum);
                 $("#viewnameintern").text(conv.nameintern);
+                $("#viewfname").text(conv.fname);
                 $("#viewinternpic").attr("src", "internpic/" + conv.internpic);
                 $("#viewext").text(conv.ext);
                 $("#viewdob").text(conv.dob);
@@ -85,6 +89,7 @@ function loadData($ojtrec) {
                 var conv = jQuery.parseJSON(data);
                 $("#idnum").val(conv.idnum);
                 $("#nameintern").val(conv.nameintern);
+                $("#fname").val(conv.fname);
                 $("#internpic").attr(conv.internpic);
                 $("#ext").val(conv.ext);
                 $("#dob").val(conv.dob);
@@ -101,3 +106,4 @@ function loadData($ojtrec) {
 </script>
 ';
 }
+

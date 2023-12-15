@@ -1,6 +1,6 @@
 <?php
 session_start();
-@include_once("../Database/config.php");
+@include_once("connection.php");
 @include_once("../Components/PopupAlert.php");
 
 // prevent user from accessing the page without logging in
@@ -12,24 +12,25 @@ session_start();
 }*/
 
 $sql = "SELECT COUNT(bpNo), COUNT(fname), COUNT(lname) FROM emp_table;";
-$result = mysqli_query($conn, $sql);
+$result = $conn->query($sql);
 
-if (mysqli_num_rows($result) > 0) {
-    $row = mysqli_fetch_row($result);
+if ($result->rowCount() > 0) {
+    $row = $result->fetch(PDO::FETCH_NUM);
     $TotalTrainee = $row[0];
     $Deployed = $row[1];
     $Completed = $row[2];
 }
 
-function Program($column)
-{
+function Program($column) {
     global $conn;
-    $sql = "SELECT COUNT($column) FROM lnd_table WHERE $column = 1";
-    $result = mysqli_query($conn, $sql);
+    $sql = "SELECT COUNT($column) FROM lnd_table";
+    $result = $conn->query($sql);
 
-    if (mysqli_num_rows($result) > 0) {
-        $row = mysqli_fetch_row($result);
+    if ($result->rowCount() > 0) {
+        $row = $result->fetch(PDO::FETCH_NUM);
         return $row[0];
+    } else {
+        return 0;
     }
 }
 
@@ -46,27 +47,29 @@ function studentassign($columnID)
 }
 
 //gender chart
-function maleChart()
-{
+function maleChart() {
     global $conn;
-    $sql = "SELECT COUNT(bpNo) FROM `emp_table` WHERE `sex` = 'male'";
-    $result = mysqli_query($conn, $sql);
+    $sql = "SELECT COUNT(bpNo) FROM emp_table WHERE sex = 'Male'";
+    $result = $conn->query($sql);
 
-    if (mysqli_num_rows($result) > 0) {
-        $row = mysqli_fetch_row($result);
+    if ($result->rowCount() > 0) {
+        $row = $result->fetch(PDO::FETCH_NUM);
         return $row[0];
+    } else {
+        return 0;
     }
 }
 
-function femaleChart()
-{
+function femaleChart() {
     global $conn;
-    $sql = "SELECT COUNT(bpNo) FROM `emp_table` WHERE `sex` = 'female'";
-    $result = mysqli_query($conn, $sql);
+    $sql = "SELECT COUNT(bpNo) FROM emp_table WHERE sex = 'Female'";
+    $result = $conn->query($sql);
 
-    if (mysqli_num_rows($result) > 0) {
-        $row = mysqli_fetch_row($result);
+    if ($result->rowCount() > 0) {
+        $row = $result->fetch(PDO::FETCH_NUM);
         return $row[0];
+    } else {
+        return 0;
     }
 }
 
@@ -222,7 +225,6 @@ function MonthlyChart($month)
                             <canvas id="gender"
                                 title="There are <?php echo $maleFormatted; ?> Male's, and <?php echo $femaleFormatted ?> Female's in the system."
                                 style="cursor: pointer;"></canvas>
-                            <?php include_once '../Components/Chart/GenderChart.php'; ?>
                             <div class=" text-center" hidden>
                                 <div
                                     class="d-flex justify-content-evenly mt-2 text-center text-light rounded blurback shadow-lg border border-1 border-success bg-transparent">

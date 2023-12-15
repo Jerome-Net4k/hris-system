@@ -84,7 +84,7 @@ if(isset($_SESSION['editSuccess'])){
                     sortval:sortval
                   },
                   success: function(data){
-                    $("#content2").html(data)
+                  $("#content2").html(data)
                   }
                 })
         })

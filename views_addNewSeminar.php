@@ -5,9 +5,8 @@
     <title>Seminars</title>
     <link rel="stylesheet" type="text/css" href="stylehome.css">
     <link rel="stylesheet" type="text/css" href="educbg.css">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css" rel="stylesheet" />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
-
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
 </head>
 <body>
 <style>
@@ -337,12 +336,34 @@ mysqli_close($conn);
       `);
     });
   </script>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+      <script>
+        $('body').on('change', '.selectname', function() {
+          var selectedOption = $(this).find('option:selected');
+          var bpNo = selectedOption.val();
+          var firstName = selectedOption.data('fname'); // Make sure the data attribute in your HTML is 'data-fname'
+          var lastName = selectedOption.data('lname'); // Make sure the data attribute in your HTML is 'data-lname'
+
+          // Log the values to the console for debugging
+          console.log(bpNo, fname, lname);
+
+          // Create a new row with the selected participant's details
+          var newRow = `
+            <tr>
+              <td>${bpNo}</td>
+              <td>${fname}</td>
+              <td>${lname}</td>
+            </tr>
+          `;
+
+          // Append the new row to the participants table
+          $('#participantsTable').append(newRow);
+        });
+      </script>
+  </body>
+  </html>
 </body>
 </html>
-
-
-
-
 
            <div id="expenses">
            <div class="row mt-2 mb-2">
