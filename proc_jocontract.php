@@ -69,7 +69,7 @@ function loadPersonalInfo($personalInfo){
                 if($ipcrCheck['target'] == 1){
                     $ipcrTargetExist = '';
                     $eye3 = '';
-                    $prompt3 = 'File already exists; uploading another file will result in overwriting it!! Proceed??';
+                    $prompt3 = 'File already exists; uploading anothe r file will result in overwriting it!! Proceed??';
 
                 }
                 
@@ -93,8 +93,8 @@ function loadPersonalInfo($personalInfo){
                 $calc2 = 'btn-outline-success';
             }
 
-            echo '<tr id="ipcrRow' . $row['empno'] . '">
-            <td style="vertical-align: middle;">
+//            echo '<tr id="ipcrRow' . $row['empno'] . '">
+//            <td style="vertical-align: middle;">
             <button id="editBtn'. $row['empno'] .'" class="btn btn-outline-success p-1" type="button"><i class="fa fa-pencil-square-o" aria-hidden="true" style="font-size: 25px;"></i></button>
             <button id="deleteBtn'. $row['empno'] .'" class="btn btn-outline-danger p-1" type="button"><i class="fa fa-trash-o" aria-hidden="true" style="font-size: 25px;"></i></button>
             </td>
@@ -737,38 +737,38 @@ function searchPersonalInfo($personalInfo){
                     type: "POST",
                     success: function(data){
                     document.getElementById("staticBackdropLabel").innerHTML = "' . $row['empno'] . ' ' . $row['sname'] . ' - ' . $yearSelected . ' - Target";
-                     $("#pendingView").html(data)
+                    $("#pendingView").html(data)
                     }
-                  })
+                })
 
-              })
+            })
 
 
-              $(document).on(\'change\', \'#uploadFileSelect1' . $row['empno'] . '\', function () {
+            $(document).on(\'change\', \'#uploadFileSelect1' . $row['empno'] . '\', function () {
                             document.getElementById("uploadBtn1' . $row['empno'] . '").disabled = false;
                             $( "#uploadBtn1' . $row['empno'] . '" ).removeClass("btn-outline-light");
-             });
+            });
 
-              $(document).on(\'change\', \'#uploadFileSelect2' . $row['empno'] . '\', function () {
+            $(document).on(\'change\', \'#uploadFileSelect2' . $row['empno'] . '\', function () {
                             document.getElementById("uploadBtn2' . $row['empno'] . '").disabled = false;
                             $( "#uploadBtn2' . $row['empno'] . '" ).removeClass("btn-outline-light");
-             });
-             
-              $(document).on(\'change\', \'#uploadFileSelect3' . $row['empno'] . '\', function () {
+            });
+            
+            $(document).on(\'change\', \'#uploadFileSelect3' . $row['empno'] . '\', function () {
                             document.getElementById("uploadBtn3' . $row['empno'] . '").disabled = false;
                             $( "#uploadBtn3' . $row['empno'] . '" ).removeClass("btn-outline-light");
-             });' . 
+            });' . 
 
 
             '$("#uploadBtn1' . $row['empno'] . '").click(function(){
                 $("#uploadFile1' . $row['empno'] . '").submit();
             });
 
-             $("#uploadBtn2' . $row['empno'] . '").click(function(){
+            $("#uploadBtn2' . $row['empno'] . '").click(function(){
                 $("#uploadFile2' . $row['empno'] . '").submit();
             });
 
-             $("#uploadBtn3' . $row['empno'] . '").click(function(){
+            $("#uploadBtn3' . $row['empno'] . '").click(function(){
                 $("#uploadFile3' . $row['empno'] . '").submit();
             });' .
 
