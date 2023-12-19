@@ -47,6 +47,10 @@
   justify-content: space-between;
 }
 
+.fixed-row {
+    height: 50px;
+    overflow: auto;
+}
 
 .scrollable-table {
   width: 100%;
@@ -76,10 +80,10 @@ table {
   width: 49%; /* Adjust this value as needed */
 }
 
-{.box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
-background-color: #fff;
-font-size: 12px;  
-}
+/* .box-shadow: 0 0 20px rgba(0, 0, 0, 0.15); {
+  background-color: #fff;
+  font-size: 12px;  
+} */
 
 .custom-table {
     width: 100%;
@@ -339,41 +343,41 @@ $seminars_result = $conn->query($seminars_query);
 
           
               <!-- Employee Modal -->
-          <div class="modal fade" id="employeeModal" tabindex="-1" role="dialog" aria-labelledby="employeeModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-xl" role="document">
-              <div class="modal-content">
-                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#chartModal">
-                  Open Chart
-                </button>
-                <div class="modal-header">
-                  <h5 class="modal-title" id="employeeModalLabel">Employee Details</h5>
-                </div>
-                <div class="modal-body">
+              <div class="modal fade" id="employeeModal" tabindex="-1" role="dialog" aria-labelledby="employeeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl" role="document">
+        <div class="modal-content">
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#chartModal">
+                Open Chart
+            </button>
+            <div class="modal-header">
+                <h5 class="modal-title" id="employeeModalLabel">Employee Details</h5>
+            </div>
+            <div class="modal-body">
                 <p id="employeeBpno"></p> <!-- Placeholder for employee ID -->
                 <p id="employeeName"></p> <!-- Placeholder for employee last name -->               
                 <div class="modal-footer">
-                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                  <table id="seminarTableModal">
-                  <thead>
-                    <tr>
-                      <th>Seminar Type</th>
-                      <th>Seminar Name</th>
-                      <th>Date From</th>
-                      <th>Date To</th>
-                      <!-- Other headers -->
-                    </tr>
-                  </thead>
-                  <tbody id="seminarTableBodyModal">
-                    <!-- Seminar data will be inserted here -->
-                  </tbody>
-                </table>
-                 </div>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <table id="seminarTableModal">
+                        <thead>
+                            <tr class="fixed-row">
+                                <th>Seminar Type</th>
+                                <th>Seminar Name</th>
+                                <th>Date From</th>
+                                <th>Date To</th>
+                                <!-- Other headers -->
+                            </tr>
+                        </thead>
+                        <tbody id="seminarTableBodyModal" class="fixed-row">
+                            <!-- Seminar data will be inserted here -->
+                        </tbody>
+                    </table>
                 </div>
-              </div>
             </div>
-          </div>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          </button>
+        </div>
+    </div>
+</div>
+<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+</button>
 
            <!-- Seminar Table -->
           <div class="table-wrapper" style="margin-right: 10px;"> <!-- Added margin-right -->
