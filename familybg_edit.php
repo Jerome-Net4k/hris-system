@@ -29,7 +29,7 @@
                             $("input#spMname").val("");
                             $("input#spExt").val("");
                             $("input#spOccu").val("");
-                            $("input#spEmpName").val("");
+                            $("input#spEmpNcame").val("");
                             $("input#spBadd").val("");
                             $("input#spTel").val("");
                         }
