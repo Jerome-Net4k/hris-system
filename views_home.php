@@ -3,7 +3,9 @@
   if(!isset($_SESSION['user'])){
     header("Location:views_login.php");
   }
+
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -21,8 +23,6 @@
         }
     </style>
     <script>
-
-
         $(document).ready(function(){
           
         $("div#editProf").hide();
@@ -117,10 +117,10 @@
             method: "POST",
             data: formData,
             success: function(data) {
-              if (data === "EMR update") {
+              if (data === "PDS update") {
                 iziToast.success({
                   title: 'UPDATED',
-                  message: 'THE EMR UPDATED SUCCESSFULLY!'
+                  message: 'THE PDS UPDATED SUCCESSFULLY!'
                 });
                 $("#updateinfo").modal('hide');
                 $("#exampleModal").modal('hide');
@@ -208,10 +208,12 @@
             type: "POST",
             data: {sortval:sortval, sortwhat:sortwhat,emptype:emptype},
             success: function(data){
-            $("#content").html(data)
+             $("#content").html(data)
             }
           })
         }
+
+
     </script>
 </head>
 <body style="overflow: hidden;">
@@ -222,10 +224,10 @@
         <?php include 'navbar.php'; ?>
       <div class="container-fluid">
         <div class="d-flex justify-content-start">
-          <h1 class="title fs-2 fw-bold pt-2">Employee Master Record </h1>
+          <h1 class="title fs-2 fw-bold pt-2">Personal Data Sheet</h1>
         </div>
           <div class="row">
-            <div class="input-group rounded col-6 pt-2" style="width: 30%;">
+            <div class="input-group rounded col-6 pt-5" style="width: 30%;">
               <!-- <select name="" class="form-control filter" id="fil">
                 <option value="" hidden>Filter</option>
                 <option value="lname">Surname</option>
@@ -240,23 +242,33 @@
               <button class="btn btn-primary" id="search"><i class="fas fa-search"></i> Search</button>
             </div>
 
-              <div class="col pt-2">
+              <div class="col pt-8">
                 <button class="btn silver btn-success btnload" value="P">REGULAR</button>
                 <button class="btn silver btn-warning btnload" style="color: white;" value="C" id="btnload">CASUAL</button>
                 <button class="btn silver btn-danger btnload" value="JO">JOB ORDER</button>
                 <button class="btn silver btn-primary btnload" value="ALL">OVERVIEW</button>
+                <button class="btn silver dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">Region</button>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                  <!-- Dropdown menu items go here -->
+                  <li><a class="dropdown-item" href="#">Region 1</a></li>
+                  <li><a class="dropdown-item" href="#">Region 2</a></li>
+                  <!-- Add more regions as needed -->
+                </ul>
+                <div class="col pt-2 d-flex justify-content-end">
+                <button class="btn btn-outline-dark p-1" id="newData"><i class="far fa-user p-1"></i> | New Data</button>
+                </div>
+              </div>
+              </div>
               </div>
 
-            <div class="col pt-2 d-flex justify-content-end">
-              <button class="btn btn-outline-dark p-1" id="newData"><i class="far fa-user p-1"></i> | New Data</button>
-            </div>
+
         </div>
       </div>
       <div class="container-fluid mt-2">
         <div class="table-responsive" style="height: 750px; overflow-x: scroll;">
             <table class="table bg-white rounded table-hover" id="mainTable">
               <thead style="top: 0; position: sticky; background: whitesmoke; height: auto;">
-                <tr>
+               <tr>
                 <th>
                   <div class="d-flex justify-content-center bpsort">BPNO
                     <div class="sort" data-value="bpNo">
@@ -289,10 +301,10 @@
                 <th>SOA</th>
                 <th>EMPLOYEE STATUS</th>
                 <th>ACTION</th>
-              </tr>
+               </tr>
               </thead>
-              <!-- ajax request -->
-              <tbody id="content">
+               <!-- ajax request -->
+               <tbody id="content">
 
               </tbody>  
             </table>
@@ -305,12 +317,12 @@
   <div class="modal-dialog modal-lg modal-dialog-scrollable">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">View EMR</h5>
+        <h5 class="modal-title" id="exampleModalLabel">View PDS</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-      <table class="table table-borderless">
-      <tbody>
+       <table class="table table-borderless">
+       <tbody>
             <tr>
                 <th>Surname: </th>
                 <td id='viewsname'></td>
@@ -365,7 +377,7 @@
                 <th>Civil Status:</th>
                 <td id="viewcivil"></td>
 
-                <th >Position:</th>
+                <th>Position:</th>
                 <td id="pos"></td>
             </tr>
 
@@ -390,10 +402,10 @@
                 <td id="viewresCity"></td>
 
                 <th>Employment Status:</th>
-                <td></td>
+                <td id ="viewstatus2"></td>
             </tr>
 
-            <tr>
+            <tr>civilStat
                 <th>Zipcode:</th>
                 <td id="viewresZip"></td>
 
@@ -449,12 +461,12 @@
                 <td id="viewtin"></td>
             </tr>
         </tbody>
-      </table>
+       </table>
       
-      <hr>
-      
-      <h1>Personal Files</h1>
-      <select name="uploadedshow" id="uploadedshow" class="form-select mb-2" style="width: 20%">
+       <hr>
+       
+       <h1>Personal Files</h1>
+       <select name="uploadedshow" id="uploadedshow" class="form-select mb-2" style="width: 20%">
         <?php
         include "connection.php";
         $stmt = $con->prepare("SELECT * FROM performance_rating_year");
@@ -511,14 +523,14 @@
   <div class="modal-dialog modal-lg modal-dialog-scrollable">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Update the Personal Data Sheet (EMR).</h5>
+        <h5 class="modal-title" id="exampleModalLabel">Update the Personal Data Sheet (PDS).</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       
       <div class="modal-body">
       <form id="updatepds" method="POST" enctype="multipart/form-data">
-      <table class="table table-borderless">
-      <tbody>
+       <table class="table table-borderless">
+       <tbody>
         <!-- <input type="text" class="form-control" id='idselect'> -->
             <tr>
                 <th>Surname: </th>
@@ -570,8 +582,13 @@
                 <td><input type="text" class="form-control" id="viewresBrgy2" name="viewresBrgy2"></td>
 
                 <th>Employment Type:</th>
-                <td><input type="text" class="form-control" id="soa2" name="soa2"></td>
-
+                <td>
+                  <select class="form-select" id="soa2" name="soa2">
+                    <option value="Regular">Regular</option>
+                    <option value="Casual">Casual</option>
+                    <option value="Job-Order">Job Order</option>
+                  </select>
+                </td>
             </tr>
 
             <tr>
@@ -579,17 +596,11 @@
                 <td><input type="text" class="form-control" id="viewresCity2" name="viewresCity2"></td>
 
                 <th>Employment Status:</th>
-                <!--<td><input type="text" class="form-control" id="viewstatus2" name="viewstatus2"></td>-->
                 <td>
                   <select name="viewstatus2" id="viewstatus2" class="form-select">
-                    <option value="ACTIVE" style="color: green;">ACTIVE</option>
-                    <option value="INACTIVE" style="color: red;">INACTIVE</option>
-                  </select>
-                </td>
-                  <!-- <select name="viewstatus2" id="viewstatus2" class="form-select">
                     <option value="ACTIVE">ACTIVE</option>
                     <option value="INACTIVE">INACTIVE</option>
-                  </select> -->
+                  </select>
                 </td>
             </tr>
 
@@ -809,7 +820,7 @@
 
 
   });
-  
+
 </script>
 
 </body>

@@ -42,7 +42,7 @@ function updatepds(){
 
     $soa2val = $_POST['soa2'];
     $viewresCity2 = $_POST['viewresCity2'];
-    $viewstatus2 = $_POST['viewstatus'];
+    $viewstatus2 = $_POST['viewstatus2'];
     $viewresZip2 = $_POST['viewresZip2'];
 
     $viewmobile2 = $_POST['viewmobile2'];
@@ -56,14 +56,15 @@ function updatepds(){
     $viewphealth2 = $_POST['viewphealth2'];
     $viewtin2 = $_POST['viewtin2'];
     $viewsg2 = $_POST['viewsg2'];
-    if ($soa2val =="regular") {
+
+    if ($soa2val =="Regular") {
         $soa2 = "P";
-    } else if ($soa2val =="casual") { 
+    } else if ($soa2val =="Casual") {
         $soa2 = "C";
-    } else if ($soa2val =="job-order") {
-        $soa2 = "COS";
+    } else if ($soa2val =="Job Order") {
+        $soa2 = "JO";
     } else {
-        $soa2 = "test";
+        $soa2 = "";
     }
 
     // Where?
@@ -148,7 +149,7 @@ if (isset($_POST['delidid'])) {
     $delidid = $_POST['delidid'];
     $delsql2 = "DELETE FROM `emp_table` WHERE `id` = ?";
     $delstmt2 = mysqli_prepare($con, $delsql2);
-    mysqli_stmt_bind_param($delstmt2, 'f', $delidid);
+    mysqli_stmt_bind_param($delstmt2, 's', $delidid);
     
     $success2 = mysqli_stmt_execute($delstmt2);
     
