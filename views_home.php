@@ -224,42 +224,34 @@
         <?php include 'navbar.php'; ?>
       <div class="container-fluid">
         <div class="d-flex justify-content-start">
-          <h1 class="title fs-2 fw-bold pt-2">Personal Data Sheet</h1>
+          <h1 class="title fs-2 fw-bold pt-2">Employee Master Record</h1>
         </div>
-          <div class="row">
-            <div class="input-group rounded col-6 pt-5" style="width: 30%;">
-              <!-- <select name="" class="form-control filter" id="fil">
-                <option value="" hidden>Filter</option>
-                <option value="lname">Surname</option>
-                <option value="fname">First Name</option>
-                <option value="mname">Middle Name</option>
-                <option value="ext">Name Extension</option>
-              </select> -->
+          <div class="row pt-5">
+            <div class="input-group rounded col-6" style="width:30%;">
               <div style="padding: 10px 15px; background: #dee2e6; border-radius: 5px;">
-              <i class="fa-sharp fa-solid fa-magnifying-glass"></i>
+                <i class="fa-sharp fa-solid fa-magnifying-glass"></i>
               </div>
               <input type="text" class="form-control" id="searchBar">
               <button class="btn btn-primary" id="search"><i class="fas fa-search"></i> Search</button>
             </div>
 
-              <div class="col pt-8">
-                <button class="btn silver btn-success btnload" value="P">REGULAR</button>
-                <button class="btn silver btn-warning btnload" style="color: white;" value="C" id="btnload">CASUAL</button>
-                <button class="btn silver btn-danger btnload" value="JO">JOB ORDER</button>
-                <button class="btn silver btn-primary btnload" value="ALL">OVERVIEW</button>
-                <button class="btn silver dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">Region</button>
+            <div class="col d-flex align-items-center justify-content-between">
+              <div>
+                <button class="btn silver btn-success btnload me-2" value="P">REGULAR</button>
+                <button class="btn silver btn-warning btnload me-2" style="color: white;" value="C" id="btnload">CASUAL</button>
+                <button class="btn silver btn-danger btnload me-2" value="JO">JOB ORDER</button>
+                <button class="btn silver btn-primary btnload me-2" value="ALL">OVERVIEW</button>
+                <button class="btn silver dropdown-toggle me-2" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">Region</button>
                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                   <!-- Dropdown menu items go here -->
                   <li><a class="dropdown-item" href="#">Region 1</a></li>
                   <li><a class="dropdown-item" href="#">Region 2</a></li>
                   <!-- Add more regions as needed -->
                 </ul>
-                <div class="col pt-2 d-flex justify-content-end">
-                <button class="btn btn-outline-dark p-1" id="newData"><i class="far fa-user p-1"></i> | New Data</button>
-                </div>
               </div>
-              </div>
-              </div>
+              <button class="btn btn-outline-dark p-1" id="newData"><i class="far fa-user p-1"></i> | New Data</button>
+            </div>
+          </div>
 
 
         </div>
@@ -317,7 +309,7 @@
   <div class="modal-dialog modal-lg modal-dialog-scrollable">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">View PDS</h5>
+        <h5 class="modal-title" id="exampleModalLabel">View EMR</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
@@ -405,7 +397,8 @@
                 <td id ="viewstatus2"></td>
             </tr>
 
-            <tr>civilStat
+            <tr>
+                
                 <th>Zipcode:</th>
                 <td id="viewresZip"></td>
 
@@ -523,7 +516,7 @@
   <div class="modal-dialog modal-lg modal-dialog-scrollable">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Update the Personal Data Sheet (PDS).</h5>
+        <h5 class="modal-title" id="exampleModalLabel">Update the Employee Master Record (PDS).</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       
@@ -586,7 +579,7 @@
                   <select class="form-select" id="soa2" name="soa2">
                     <option value="Regular">Regular</option>
                     <option value="Casual">Casual</option>
-                    <option value="Job-Order">Job Order</option>
+                    <option value="Job Order">Job Order</option>
                   </select>
                 </td>
             </tr>

@@ -84,7 +84,7 @@ function updatepds(){
     $success = $success && mysqli_stmt_execute($stmt2);
 
     if ($success) {
-        echo "PDS update";
+        echo "EMR update";
     } else {
         echo "Error updating PDS";
     }
@@ -115,9 +115,9 @@ function deletepds(){
     $success2 = mysqli_stmt_execute($delstmt2);
 
     if ($success1 && $success2) {
-        echo "PDS deleted";
+        echo "EMR deleted";
     } else {
-        echo "Error updating PDS";
+        echo "Error updating EMR";
     }
 }
 
