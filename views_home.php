@@ -120,7 +120,7 @@
               if (data === "PDS update") {
                 iziToast.success({
                   title: 'UPDATED',
-                  message: 'THE PDS UPDATED SUCCESSFULLY!'
+                  message: 'THE EMR UPDATED SUCCESSFULLY!'
                 });
                 $("#updateinfo").modal('hide');
                 $("#exampleModal").modal('hide');
@@ -149,7 +149,7 @@
               if (data === "PDS deleted") {
                 iziToast.success({
                   title: 'DELETED',
-                  message: 'THE PDS RECORD DELETE SUCCESSFULLY!'
+                  message: 'THE EMR RECORD DELETE SUCCESSFULLY!'
                 });
                 $("#updateinfo").modal('hide');
                 $("#exampleModal").modal('hide');
@@ -398,7 +398,7 @@
             </tr>
 
             <tr>
-                
+
                 <th>Zipcode:</th>
                 <td id="viewresZip"></td>
 
@@ -516,7 +516,7 @@
   <div class="modal-dialog modal-lg modal-dialog-scrollable">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Update the Employee Master Record (PDS).</h5>
+        <h5 class="modal-title" id="exampleModalLabel">Update the Employee Master Record (EMR).</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       
